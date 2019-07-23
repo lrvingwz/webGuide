@@ -1,0 +1,164 @@
+/* 基础部分 */
+body,ul,li p h1{
+    margin: 0;
+    padding: 0;
+}
+a {
+    text-decoration: none;
+}
+ul{
+    list-style: none;
+}
+img{
+    vertical-align: bottom;
+}
+.fl{
+    float: left;
+}
+.fr{
+    float: right;
+}
+.w{
+    width: 1200px;
+    margin: 0 auto;
+}
+.overhidden{
+    overflow: hidden;
+}
+/* header部分 */
+.header{
+    border-bottom: 1px solid #999;
+    background: white;
+}
+.header-inner{
+    height: 100px;
+}
+.header .logo img{
+    width: auto;
+    height: 100px;
+}
+.header .company{
+    height: 0px;
+    text-indent: -999em;
+    overflow: hidden;
+}
+.header .nav {
+    height: 100px;
+}
+.nav>li {
+    float: left;
+    position: relative;
+    height: 100px;
+    padding: 0 20px;
+    font-size: 20px;
+    line-height: 100px;
+    text-align: center;
+    -webkit-transition: background-color 0.2s;
+    -moz-transition: background-color 0.2s;
+    -ms-transition: background-color 0.2s;
+    -o-transition: background-color 0.2s;
+    transition: background-color 0.2s;
+}
+.nav>li:hover{
+    background-color: rgba(204, 242, 255,0.5);
+}
+.sec-nav{
+    position: absolute;
+    top: 100px;
+    width: 100%;
+    height: 0;
+    z-index: 99;
+    background-color: rgba(204, 242, 255,0.5);
+    margin-left: -20px;
+    overflow: hidden;
+}
+.sec-nav li {
+    height: 50px;
+    font-size: 16px;
+    line-height: 50px;
+    text-align: center;
+}
+.sec-nav li:hover {
+    background: #ffb3e5;
+}
+.header a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: #333;
+}
+.toservice{
+    display: block;
+    position: fixed;
+    right: 60px;
+    bottom: 162px;
+    width: 100px;
+    height: 100px;
+    z-index: 999;
+    border-radius: 50%;
+}
+.totop{
+    display: block;
+    position: fixed;
+    right: 60px;
+    bottom: 60px;
+    width: 100px;
+    height: 100px;
+    border: 1px solid #d7d7d7;
+    z-index: 999;
+    border-radius: 50%;
+}
+/* main部分 */
+.main {
+    position: relative;
+    /*height: 300px;*/
+    /*background-color: #999999;*/
+    z-index: 1;
+}
+/* footer部分 */
+.footer{
+    background-color: #5c616a;
+}
+.footer-inner{
+    padding-top: 20px;
+}
+.footer .top{
+    position: relative;
+    margin-left: 40%;
+}
+.footer p {
+    margin: 5px;
+    font-size: 14px;
+    margin-top: 0;
+}
+.footer a {
+    color: #ddd;
+}
+.footer a:hover {
+    color: #99e5ff;
+}
+.footer span {
+    color: #999999;
+    margin: 5px;
+}
+.footer hr {
+    border-color: #aaa;
+}
+.footer .pdcode{
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    left: -100px;
+    top: 0;
+    background-color: white;
+}
+.footer .copy{
+    color: #999;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    background-color: #2a3135;
+    margin: 0;
+    margin-top: 20px;
+}

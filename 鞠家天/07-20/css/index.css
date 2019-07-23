@@ -1,0 +1,248 @@
+
+.middle-box1{
+    width: 100px;
+    height: 600px;
+    margin: 0 auto;
+    position: relative;
+}
+.poster{
+    position: absolute;
+    left: 50%;
+    margin-left: -960px;
+    width: 1920px;
+    height: 600px;
+    overflow: hidden;
+    background-color: aquamarine;
+}
+.poster-box{
+    position: absolute;
+    width: 7680px;
+    overflow: hidden;
+}
+.poster-box li{
+    float: left;
+    width: 1920px;/*      днЪБ      */
+    height: 600px;/*      днЪБ      */
+    background: url("../images/jianbian.png") no-repeat;
+    background-size: 100%;
+}
+.poster-box img{
+    width: 1920px;
+    height: 600px
+}
+.poster-btns{
+    position: absolute;
+    top: 530px;
+    left: 50%;;
+    width: 120px;
+    font-size: 0;
+    margin-left: -60px;
+    overflow: hidden;
+    /*background-color: rgba(0,0,0,0.2);*/
+    border-radius: 7px;
+}
+.poster-btns i {
+    display: inline-block;
+    width: 20px;
+    height: 10px;
+    margin: 10px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0px 2px 4px #aaa;
+}
+/*.poster-btns span {*/
+    /*display: block;*/
+    /*float: left;*/
+    /*width: 20px;*/
+    /*height: 10px;*/
+/*}*/
+.poster-control{
+    position: absolute;
+    left: 5%;
+    top: 250px;
+    width: 90%;
+    height: 0px;
+    margin: 0 auto;
+    opacity: 0.6;
+}
+.control-left{
+    float: left;
+    display: block;
+    width: 80px;
+    height: 100px;
+    background: url("../images/left.png") no-repeat;
+    background-size: 100%;
+}
+.control-right{
+    float: right;
+    display: block;
+    width: 80px;
+    height: 100px;
+    background-color: white;
+    background: url("../images/right.png") no-repeat;
+    background-size: 100%;
+}
+.vision{
+    background-color: white;
+}
+.vision-inner{
+    overflow: hidden;
+}
+.vision-img {
+    float: left;
+    width: 440px;
+    height: 440px;
+    margin: 30px;
+    margin-left: 60px;
+    vertical-align: middle;
+    background: url("../images/vision.png") no-repeat;
+    background-size: 440px;
+}
+.vision p{
+    float: left;
+    width: 590px;
+    margin: 150px 70px 100px 10px;
+}
+.repeat{
+    /*background-color: #ccfff2;*/
+    position: relative;
+    overflow: hidden;
+}
+.repeat ul{
+    position: relative;
+}
+.repeat li {
+    height: 500px;
+    overflow: hidden;
+    width: 100%;
+    background-color: #ccf2ff;
+}
+.repeat div[class*="repeat-img"] {
+    float: right;
+    width: 440px;
+    height: 440px;
+    margin: 30px;
+    margin-right: 60px;
+}
+.product .repeat-img1{ background:url("../images/product1.png") no-repeat; }
+.product .repeat-img2{ background:url("../images/product2.png") no-repeat; }
+.product .repeat-img3{ background:url("../images/product3.png") no-repeat; }
+
+.repeat-content {
+    float: left;
+    color: #333;
+    width: 590px;
+    padding-left: 70px;
+    padding-right: 10px;
+    padding-top: 150px;
+    word-wrap: break-word;
+}
+.repeat-btns{
+    position: absolute;
+    top: 420px;
+    left: 50%;;
+    width: 120px;
+    font-size: 0;
+    margin-left: -60px;
+    overflow: hidden;
+    /*background-color: rgba(0,0,0,0.2);*/
+    border-radius: 7px;
+}
+.repeat-btns i {
+    display: inline-block;
+    width: 20px;
+    height: 10px;
+    margin: 10px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0px 2px 4px #aaa;
+}
+.rdteam {
+    margin-top: 100px;
+}
+.rdteam h3{
+    position: relative;
+    width: 450px;
+    margin: 40px auto;
+    text-align: center;
+    font-size: 34px;
+    color: #333;
+}
+.rdteam h3:before{
+    content: "";
+    display: block;
+    position: absolute;
+    width: 120px;
+    border-bottom: 1px solid #cccccc;
+    left: 0;
+    top: 50%;
+}
+.rdteam h3:after{
+    content: "";
+    display: block;
+    position: absolute;
+    width: 120px;
+    border-bottom: 1px solid #cccccc;
+    top: 50%;
+    right: 0;
+}
+.rdteam div[class*="repeat-img"] {
+    float: left;
+    width: 740px;
+    height: 440px;
+    margin-right: 30px;
+    margin-left: 60px;
+}
+.rdteam .repeat-content {
+    float: right;
+    color: #333;
+    width: 290px;
+    padding-left: 10px;
+    padding-right: 70px;
+    padding-top: 150px;
+}
+.rdteam .repeat-img1 { background: url("../images/product1.png") no-repeat;background-size: 740px auto; }
+
+
+
+.article {
+    float: left;
+    height: 438px;
+    width: 338px;
+    padding: 10px;
+    margin: 20px 0 0 30px;
+    border: 1px solid #ccc;
+}
+.article:hover {
+    box-shadow: 5px 5px 5px #aaa;
+}
+.article img{
+    display: block;
+    width: 339px;
+    height: 339px;
+}
+.fp {
+    margin-top: 20px;
+    font-weight: bold;
+}
+.article p:last-child {
+    text-indent: 2em;
+}
+.article p {
+    color: #333;
+    text-decoration: none;
+}
+.news li {
+    float: left;
+    background-color: white;
+    width: 1200px;
+}
+.news {
+    margin-top: 60px;
+    margin-bottom: 150px;
+}
+.news .poster-control {
+    margin: -40px 0 0 -700px;
+    width: 1400px;
+    left: 50%;
+}

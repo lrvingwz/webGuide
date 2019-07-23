@@ -1,0 +1,44 @@
+.middle{
+    position: relative;
+    margin: 0 auto;
+    width: 100px;
+    height: 600px;
+    background-color: #99e5ff;
+    color: #333;
+}
+.poster{
+    position: absolute;
+    left: 50%;
+    margin-left: -960px;
+}
+.poster-content{
+    position: absolute;
+    left: 50%;
+    top: 0px;
+    width: 990px;
+    margin-left: -495px;
+    padding-top: 170px;
+}
+.poster-content h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 52px;
+}
+.poster-content p {
+    padding-top: 20px;
+    width: 300px;
+}
+.thetitle{
+    position: absolute;
+    left: 50%;
+    width: 400px;
+    margin-left: -200px;
+    font-size: 42px;
+    text-align: center;
+}
+.white{
+    background-color: white;
+}
+.mcolor{
+    background-color: #ccf2ff;
+}
