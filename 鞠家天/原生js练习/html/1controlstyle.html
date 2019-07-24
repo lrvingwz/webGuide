@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>控制div属性</title>
+    <style>
+        div{text-align: center}
+        .box{
+            width: 100px;
+            height: 100px;
+            background-color: black;
+            margin: 50px auto;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <input type="button" id="wid" value="变宽"/>
+    <input type="button" id="hei" value="变高"/>
+    <input type="button" id="col" value="变色"/>
+    <input type="button" id="visi" value="隐藏"/>
+    <input type="button" id="re" value="重置"/>
+</div>
+<div class="box" id="box"></div>
+<script>
+    var a=document.getElementById("wid");
+    var b=document.getElementById("hei");
+    var c=document.getElementById("col");
+    var d=document.getElementById("visi");
+    var e=document.getElementById("re");
+    var box=document.getElementById("box");
+    a.onclick= function () {
+        box.style.width="200px";
+    };
+    b.onclick= function () {
+        box.style.height="200px";
+    };
+    c.onclick= function () {
+        box.style.backgroundColor="red";
+    };
+    d.onclick= function () {
+        box.style.display="none";
+    };
+    e.onclick= function () {
+        box.style="";
+    };
+</script>
+</body>
+</html>
