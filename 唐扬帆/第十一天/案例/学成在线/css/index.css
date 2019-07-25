@@ -1,0 +1,161 @@
+body {
+	background-color: #f3f5f7;
+}
+header {
+	width: 1300px;
+	height: 100px;
+	margin: auto;
+	padding-top: 30px;
+	padding-right: 20px;
+}
+.logo {
+	width: 195px;
+	height: 42px;
+	float: left;
+}
+.logo a {
+	display: block;
+	width: 195px;
+	height: 42px;
+	background: url(../images/logo.png) ;
+	text-indent: -999px;
+	overflow: hidden;
+}
+nav {
+	height: 42px;
+	float: left;
+	margin-left: 30px;
+}
+nav li {
+	float: left;
+	height: 42px;
+	line-height: 42px;
+	margin-left: 25px;
+}
+nav li a {
+	display: block;
+	font-size: 18px;
+	height: 42px;
+	padding: 0  8px;
+}
+nav li a:hover {
+	border-bottom: 2px solid #00a4ff;
+}
+.search {
+	width: 410px;
+	height: 40px;
+	float: left;
+	margin-left: 150px;
+}
+.search input {
+	width: 361px;
+	height: 100%;
+	outline: none;
+	border: 1px solid #00a4ff;
+	padding-left: 10px;
+	float: left;
+}
+.search button {	
+	width: 49px;
+	height: 100%;
+	outline: none;
+	border: 0;
+	background: url(../images/fa-search.png);
+	float: left;
+}
+.personl {
+	float: right;
+	height: 40px;
+	line-height: 40px;
+}
+.personl dt, .personl dd {
+	float: left;
+}
+.personl dd s {
+	position: relative;
+	padding: 0 20px 0 30px;
+}
+.personl dd s::before {
+	content: "";
+	display: block;/* 因为伪元素默认的是行内元素*/
+	width: 6px;
+	height: 6px;
+	background-color: red;
+	border-radius: 50%;
+	position: absolute;
+	right: 25px;
+	top: 0;
+}
+.personl dd img {
+	border-radius: 50%;
+	margin-right: 10px;
+	transition: all 0.5s;
+}.personl dd img:hover {
+	transform: rotate(360deg);
+}
+.banner {
+	height: 420px;
+	background-color: #1c036c;
+}
+.inner {
+	height: 420px;
+	position: relative;
+}
+.subnav {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 190px;
+	height: 100%;
+	background: rgba(0,0,0,.3);
+	padding-top: 20px;
+	padding-left: 20px;
+}
+.subnav li {
+	height: 40px;
+	line-height: 40px;
+}
+.subnav li a{
+	font-size: 14;
+	color: #fff;
+	display: block;
+	overflow: hidden;
+}
+.subnav li a:hover {
+	color: #00b4ff;
+}
+.subnav li span {
+	float: right;
+	margin-right: 20px;
+}
+.cercle {
+	width: 166px;
+	height: 13px;
+	position: relative;
+	left: 50%;
+	margin-left: -105px;
+	bottom: 40px;
+}
+.cercle i {
+	display: inline-block;
+	width: 13px;
+	height: 13px;
+	border-radius: 6px;
+	background: rgba(255,255,255,.3);
+	margin: 0 5px;
+	cursor: pointer;
+	transition: all 0.4s;
+}
+.cercle i:hover {
+	width: 20px;
+	background-color: #fff;
+}
+.timebook {
+	width: 228px;
+	height: 300px;
+	position: absolute;
+	right: 0;
+	top: 50%;
+	transform: translate(0,-50%);
+	background-color: pink;
+}
