@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div{
+            width: 100px;
+            margin: 100px auto;
+            position: relative;
+        }
+        #list{
+            display: none;
+            position: absolute;
+            bottom: -100px;
+            width: 80px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            border: 2px solid blue;
+        }
+        #list li {
+            height: 30px;
+            margin: 0;
+            text-align: center;
+            line-height: 30px;
+        }
+        #close{
+            border-top: 1px solid blue;
+        }
+    </style>
+</head>
+<body>
+
+<div>
+    <input type="button" value="输入法" id="btn"/>
+    <ul id="list">
+        <li>手写</li>
+        <li>拼音</li>
+        <li id="close">关闭</li>
+    </ul>
+</div>
+<script>
+    var btn=document.getElementById("btn");
+    var list=document.getElementById("list");
+    var close=document.getElementById("close");
+    var items=list.getElementsByTagName("li");
+    var flag=false;
+    btn.onclick=f1;
+    function f1(){
+        if(flag){
+           flag=false;
+            list.style.display="none";
+        }else{
+            flag=true;
+            list.style.display="block";
+        }
+    }
+    close.onclick=f1;
+    for(var i=0;i<items.length;i++){
+        items[i].onmouseover= function () {
+            this.style.backgroundColor="skyblue";
+        };
+        items[i].onmouseout= function () {
+            this.style.backgroundColor="white";
+        };
+    }
+
+</script>
+</body>
+</html>

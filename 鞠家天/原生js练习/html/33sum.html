@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .box{
+            width: 600px;
+            height: 500px;
+            margin: 100px auto;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <input type="text" value="1 2" id="text"/><br/>
+    <input type="button" id="btn" value="求和"/>
+    <div id="box"></div>
+</div>
+<script>
+    var btn=document.getElementById("btn");
+    var text=document.getElementById("text");
+    var box=document.getElementById("box");
+    var a=text.value.split(" ");
+    btn.onclick = function () {
+        var sum=0;
+        for(var i=0;i<a.length;i++){
+            sum+=parseInt(a[i]);
+    }
+        box.innerHTML=sum;
+    };
+
+</script>
+</body>
+</html>

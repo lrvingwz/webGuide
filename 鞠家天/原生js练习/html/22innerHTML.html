@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>innerhtml</title>
+    <style>
+        div{
+            width: 600px;
+            height: 150px;
+            margin: 10px auto;
+            border: 3px solid gray;
+        }
+    </style>
+</head>
+<body>
+    <div id="box1"><a>sfsdf</a>信息1信息1信息1信息1信息1信息1信息1信息1信息1信息1信息1</div>
+    <div id="box2"><a>sfsdf</a>信息2信息2信息2信息2信息2信息2信息2信息2信息2信息2信息2</div>
+    <div id="box3"><a>sfsdf</a>信息3信息3信息3信息3信息3信息3信息3信息3信息3信息3信息3</div>
+    <script>
+        var boxs=document.getElementsByTagName("div");
+        for(var i=0;i<boxs.length;i++){
+            boxs[i].onclick= function () {
+              alert(this.innerHTML);
+            };
+        }
+    </script>
+</body>
+</html>
