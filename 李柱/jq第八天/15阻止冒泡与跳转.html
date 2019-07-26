@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <a href="http://www.baidu.com/">超链接</a>
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+    
+        $("a").click(function(e){
+            alert("hahah");
+            // 阻止页面跳珠
+            e.preventDefault();
+            e.stopPropagation();
+           return false;
+        });
+
+        $("body").click(function(){
+            alert("阿嘎嘎");
+        });
+    </script>
+</body>
+</html>
