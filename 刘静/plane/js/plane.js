@@ -258,6 +258,7 @@ function stop() {
 	startCon.style.display = "block";
 	gameCon.style.display = "none";
 	planes.style.display = "none";
+	suspendBoard.style.display = "none";
 	clearInterval(bgTimeId);//停止飞机移动
 	removeEventListener(document, "mousemove", planeMove);//停止飞机跟鼠标移动
 }
@@ -265,6 +266,7 @@ function stop() {
 var bgTimeId;
 function begin() {
 	startCon.style.display = "none";
+	suspendBoard.style.display = "none";
 	gameCon.style.display = "block";
 	planes.style.display = "block";
 	bgTimeId = setInterval(start, 20);//飞机继续移动
