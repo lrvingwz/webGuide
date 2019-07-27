@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    div {
+      height: 500px;
+      width: 500px;
+      background-color: pink;
+    }
+  </style>
+</head>
+<body>
+
+<input type="button" value="增加" id="btn">
+<div>
+  <p>111111</p>
+  <p>111111</p>
+  <p>111111</p>
+  <p>111111</p>
+</div>
+
+<script src="jquery-1.12.4.js"></script>
+<script>
+  $(function () {
+    
+    
+    
+    $("p").on("click", function () {
+      alert("呵呵");
+    });
+  
+
+    $("div").on("click", function () {
+      alert("啊哈哈哈");
+    });
+  
+    //给div里面的p执行 委托事件,在自己的事件之前执行
+    $("div").on("click", "p", function () {
+      alert("哇哇哇");
+    });
+    
+    
+    $("#btn").on("click", function () {
+      $("<p>我是新建的p元素</p>").appendTo("div");
+    });
+    
+    
+  });
+</script>
+
+</body>
+</html>
