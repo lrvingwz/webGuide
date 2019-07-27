@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>播放列表</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            overflow: hidden;
+            display: none;
+            width: 100%;
+            list-style: none;
+            background-color: #eee;
+        }
+        li{
+            height: 16px;
+            line-height: 16px;
+            padding: 10px;
+        }
+        a{
+            text-decoration: none;
+            color: #666666;
+        }
+        a:hover{
+            text-decoration: underline;
+        }
+        li:hover {
+            background-color: white;
+        }
+        .box {
+            width: 300px;
+            margin: 100px auto;
+            font-size: 16px;
+            border: 1px solid #ccc;
+        }
+        .btn{
+            width: 298px;
+            height: 28px;
+            line-height: 28px;
+            text-align: center;
+            background-color: #ccc;
+            margin: 1px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="btn" id="btn">播放列表</div>
+    <ul id="list">
+        <li><a href="#">十年-陈奕迅</a></li>
+        <li><a href="#">阴天快乐-陈奕迅</a></li>
+        <li><a href="#">爱情转移-陈奕迅</a></li>
+        <li><a href="#">单车-陈奕迅</a></li>
+        <li><a href="#">K歌之王-陈奕迅</a></li>
+    </ul>
+</div>
+<script>
+    var btn=document.getElementById("btn");
+    var list=document.getElementById("list");
+    var flag=false;
+    btn.onclick= function () {
+        if(!flag){
+            flag=true;
+            list.style.display="block";
+        }else{
+            flag=false;
+            list.style.display="none";
+        }
+    };
+</script>
+</body>
+</html>
