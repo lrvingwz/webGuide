@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>输入两个数字，比较大小</title>
+    <style>
+        .wrap{
+            width: 500px;
+            margin: 10px auto;
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <label>
+        <input type="text" />
+    </label>
+    <span><strong>vs</strong></span>
+    <label>
+        <input type="text" />
+    </label>
+    <button>The Max is ？</button>
+</div>
+<script>
+    var inps=document.getElementsByTagName("input");
+    var btn=document.getElementsByTagName("button")[0];
+
+    btn.onclick= function () {
+      var a=parseInt(inps[0].value);
+      var b=parseInt(inps[1].value);
+
+        if(a>=b){
+            btn.innerHTML="The Max is "+a;
+        }else{
+            btn.innerHTML="The Max is "+b;
+        }
+    };
+</script>
+</body>
+</html>

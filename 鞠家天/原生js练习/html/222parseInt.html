@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用parseInt解析数字，并求和</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <style>
+        .wrap{
+            width: 500px;
+            margin: 10px auto;
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <label>
+        <input type="text" />
+    </label>
+    <span class="add">+</span>
+    <label>
+        <input type="text" />
+    </label>
+    <span class="equal">=</span>
+    <span class="result">?</span>
+    <button>求和</button>
+</div>
+<script>
+    var inps=document.getElementsByTagName("input");
+    var result=document.getElementsByClassName("result")[0];
+    var btn=document.getElementsByTagName("button")[0];
+    btn.onclick= function () {
+      result.innerHTML=parseInt(inps[0].value)+parseInt(inps[1].value);
+    };
+</script>
+</body>
+</html>

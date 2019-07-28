@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自加按钮</title>
+    <style>
+        input{
+            display: block;
+            margin: 100px auto;
+        }
+    </style>
+</head>
+<body>
+<input id="btn" type="button" value="0"/>
+<script>
+    var btn=document.getElementById("btn");
+    btn.onclick= function () {
+        btn.value=parseInt(btn.value)+1;
+    };
+</script>
+</body>
+</html>

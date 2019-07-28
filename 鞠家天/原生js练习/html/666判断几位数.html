@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>判断数字是否为几位数</title>
+    <style>
+        .wrap{
+            width: 500px;
+            margin: 10px auto;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <label>
+        <input type="text" />
+    </label>
+    <button>判断几位数</button>
+</div>
+<script>
+    var inpt=document.getElementsByTagName("input")[0];
+    var btn=document.getElementsByTagName("button")[0];
+    inpt.onkeyup= function () {
+      var a=inpt.value;
+
+        if(a.length>=2){
+            while(isNaN(parseInt(a.charAt(a.length-1)))&& a.length!=0){
+                a=a.slice(0,a.length-1);
+                inpt.value=a;
+            }
+        }else{
+            if(isNaN(parseInt(a.charAt(0)))){
+                inpt.value="";
+            }
+        }
+        if(a.charAt(0)=="0"){
+            inpt.value="";
+        }
+    };
+    btn.onclick= function () {
+        var a=inpt.value;
+        if(a.length==0){
+            alert("请输入数字");
+        }else{
+            alert("这是"+ a.length+"位数");
+        }
+    };
+</script>
+</body>
+</html>
