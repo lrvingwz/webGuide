@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>计算函数参数的和</title>
+</head>
+<body>
+<script>
+    function f1(){
+        var sum=0;
+        for(var i=0;i<arguments.length;i++){
+            sum+=parseInt(arguments[i]);
+        }
+        alert(sum);
+        document.body.innerText=document.body.innerHTML;
+    }
+    f1(1,2,3,4,5,6,7,8,9,10);
+</script>
+</body>
+</html>

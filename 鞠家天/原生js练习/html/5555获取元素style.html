@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>css函数一设置/读取对象的属性</title>
+    <style>
+        .box{
+            width:400px;
+            height:200px;
+            background:#fef4eb;
+            border:1px solid #f60;
+            margin:0 auto;
+        }
+        input {
+            border: 0;
+            color: #fff;
+            cursor: pointer;
+            font-weight: 700;
+            background: #f60;
+            padding: 2px 4px;
+            margin: 10px 0 0 10px;
+        }
+    </style>
+    <script src="../js/common.js"></script>
+</head>
+<body>
+<div class="box">
+    <input type="button" value="Get Style" />
+    <input type="button" value="Set Style" />
+    <input type="button" value="Default Style" />
+</div>
+<script>
+    var box=cn$("box")[0];
+    var inps=tn$("input");
+    var json={
+      "width":getStyle(box,"width"),
+        "height":getStyle(box,"height"),
+        "border":getStyle(box,"border"),
+        "background":getStyle(box,"background"),
+        "margin":getStyle(box,"margin")
+    };
+    inps[0].onclick= function () {
+      var str="";
+        for(var key in json){
+          str+=(key+":"+json[key]+"     ");
+      }
+        alert(str);
+    };
+    inps[1].onclick=function(){
+        var obj={};
+      var name1=prompt("请输入一个你要修改的样式");
+        var name2=prompt("这个样式的值修改为？（带单位）");
+        box.style[name1]=name2;
+    };
+    inps[3].onclick=function(){
+      box.style="";
+    };
+</script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>星级评分系统</title>
+    <style>
+        .wrap{
+            width: 250px;
+            margin: 10px auto;
+        }
+        span{
+            font-size: 14px;
+        }
+        ul{
+            display: flex;
+            height: 20px;
+            line-height: 20px;
+            width: 150px;
+            list-style: none;
+        }
+        .star{
+            flex: 1;
+            background: url(../images/star.png)no-repeat;
+            cursor: pointer;
+            position: relative;
+        }
+        .current{
+            background-position:0 -28px;
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <span>点击星星就能打分</span>
+    <ul>
+        <li class="star">
+            <!--<div class="content">-->
+                <!--<h1></h1>-->
+            <!--</div>-->
+        </li>
+        <li class="star">
+            <!--<div class="content">-->
+                <!--<h1></h1>-->
+            <!--</div>-->
+        </li>
+        <li class="star">
+            <!--<div class="content">-->
+                <!--<h1></h1>-->
+            <!--</div>-->
+        </li>
+        <li class="star">
+            <!--<div class="content">-->
+                <!--<h1></h1>-->
+            <!--</div>-->
+        </li>
+        <li class="star">
+            <!--<div class="content">-->
+                <!--<h1></h1>-->
+            <!--</div>-->
+        </li>
+    </ul>
+    <div></div>
+</div>
+<script>
+    var lis=document.getElementsByTagName("li");
+    for(var i=0;i<lis.length;i++){
+        lis[i].setAttribute("index",i);
+        lis[i].onmouseover=f1;
+        lis[i].onmouseout=f2;
+    }
+    function f1(){
+        for(var j=0;j<parseInt(this.getAttribute("index"))+1;j++){
+            lis[j].className="star current";
+        }
+    }
+    function f2(){
+        for(var j=0;j<lis.length;j++){
+            lis[j].className="star";
+        }
+    }
+</script>
+</body>
+</html>
