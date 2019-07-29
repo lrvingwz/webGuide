@@ -1,0 +1,329 @@
+body {
+	background-color: #f3f5f7;
+}
+header {
+	width: 1300px;
+	height: 100px;
+	margin: auto;
+	padding-top: 30px;
+	padding-right: 20px;
+}
+.logo {
+	width: 195px;
+	height: 42px;
+	float: left;
+}
+.logo a {
+	display: block;
+	width: 195px;
+	height: 42px;
+	background: url(../images/logo.png) ;
+	text-indent: -999px;
+	overflow: hidden;
+}
+nav {
+	height: 42px;
+	float: left;
+	margin-left: 30px;
+}
+nav li {
+	float: left;
+	height: 42px;
+	line-height: 42px;
+	margin-left: 25px;
+}
+nav li a {
+	display: block;
+	font-size: 18px;
+	height: 42px;
+	padding: 0  8px;
+}
+nav li a:hover {
+	border-bottom: 2px solid #00a4ff;
+}
+.search {
+	width: 410px;
+	height: 40px;
+	float: left;
+	margin-left: 150px;
+}
+.search input {
+	width: 361px;
+	height: 100%;
+	outline: none;
+	border: 1px solid #00a4ff;
+	padding-left: 10px;
+	float: left;
+}
+.search button {	
+	width: 49px;
+	height: 100%;
+	outline: none;
+	border: 0;
+	background: url(../images/fa-search.png);
+	float: left;
+}
+.personl {
+	float: right;
+	height: 40px;
+	line-height: 40px;
+}
+.personl dt, .personl dd {
+	float: left;
+}
+.personl dd s {
+	position: relative;
+	padding: 0 20px 0 30px;
+}
+.personl dd s::before {
+	content: "";
+	display: block;/* 因为伪元素默认的是行内元素*/
+	width: 6px;
+	height: 6px;
+	background-color: red;
+	border-radius: 50%;
+	position: absolute;
+	right: 25px;
+	top: 0;
+}
+.personl dd img {
+	border-radius: 50%;
+	margin-right: 10px;
+	transition: all 0.5s;
+}.personl dd img:hover {
+	transform: rotate(360deg);
+}
+.banner {
+	height: 420px;
+	background-color: #1c036c;
+}
+.inner {
+	height: 420px;
+	position: relative;
+}
+.subnav {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 190px;
+	height: 100%;
+	background: rgba(0,0,0,.3);
+	padding-top: 20px;
+	padding-left: 20px;
+}
+.subnav li {
+	height: 40px;
+	line-height: 40px;
+}
+.subnav li a{
+	font-size: 14;
+	color: #fff;
+	display: block;
+	overflow: hidden;
+}
+.subnav li a:hover {
+	color: #00b4ff;
+}
+.subnav li span {
+	float: right;
+	margin-right: 20px;
+}
+.cercle {
+	width: 166px;
+	height: 13px;
+	position: relative;
+	left: 50%;
+	margin-left: -105px;
+	bottom: 40px;
+}
+.cercle i {
+	display: inline-block;
+	width: 13px;
+	height: 13px;
+	border-radius: 6px;
+	background: rgba(255,255,255,.3);
+	margin: 0 5px;
+	cursor: pointer;
+	transition: all 0.4s;
+}
+.cercle i:hover {
+	width: 20px;
+	background-color: #fff;
+}
+.timebook {
+	width: 228px;
+	height: 300px;
+	position: absolute;
+	right: 0;
+	top: 50%;
+	transform: translate(0,-50%);
+	background-color: #fff;
+}
+.timebook dt {
+	height: 50px;
+	background-color: #9bceea;
+	text-align: center;
+	line-height: 50px;
+	font-size: 18px;
+	font-weight: 700;
+	color: #fff;
+	font-family: 微软雅黑;
+}
+.timebook dd {
+		padding: 15px 18px 0;
+}
+.timebook dd li {
+	padding-top: 6px;
+	height: 60px;
+	background-color: #fff;
+	border-bottom: 1px solid #ccc;
+	cursor: pointer;
+}
+.timebook dd li h5 {
+	font-size: 16px;
+}
+.timebook dd li:hover {
+	color: #44bcff;
+}
+.timebook dd li:nth-child(3) {
+	border: 0;
+}
+.all {
+	height: 40px;
+	border: 1px solid #44bcff;
+	font-size: 16px;
+	display: block;
+	text-align: center;
+	line-height: 40px;
+}
+.all:hover {
+	background-color: #44bcff;
+	color: #fff;
+}
+.recommend {
+	margin-top: 10px;
+	height: 60px;
+	background-color: #fff;
+	line-height: 60px;
+	position: relative;
+	box-shadow: 1px 2px 2px rgba(0,0,0,.3);
+}
+.recommend strong {
+	margin: 0 20px;
+	font-size: 16px; 
+	color: #00a4ff;
+	cursor: pointer;
+}
+.recommend a {
+	margin: 0 20px; 
+	font-size: 16px;
+}
+.recommend em {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	margin-right: 20px;
+	font-size: 14px;
+	cursor: pointer;
+}
+.products {
+	margin-top: 30px;
+	position: relative;
+}
+.pro-hd {
+	height: 40px;
+	line-height: 40px;
+}
+.pro-hd h4 {
+	font-size: 18px;
+}
+.pro-hd a {
+	position: absolute;
+	right: 20px;
+	top: 0;
+	color: #bbb;
+}
+.pro-bd li {
+	width: 228px;
+	height: 270px;
+	background-color: skyblue;
+	float: left;
+	margin-right: 15px;
+	margin-bottom: 15px;
+	overflow: hidden;
+	transition: all 0.3s;
+	cursor: pointer;
+}
+.pro-bd li:nth-child(5n){
+	margin-right: 0;
+}
+.pro-bd li:hover {
+	box-shadow: 0px 1px 10px rgba(0,0,0,.3);
+	transform: translateY(-10px);
+}
+.pic img {
+	transition: all 0.3s;
+}
+.pic img:hover {
+	margin-left: -5px;
+}
+.pro-title {
+	display: block;
+	width: 185px;
+	margin: 20px auto;
+	font-size: 14px;
+}
+.pro-bd p {
+	width: 185px;
+	margin: auto;
+	color: #999;
+} 
+.pro-bd p span {
+	color: #ff7c2d;
+}
+footer {
+	height: 420px;	
+	margin-top: 20px;
+	padding-top: 30px;
+}
+.footer-l {
+	margin: 0 0 0 20px;
+	float: left;
+}
+.footer-l p {
+	margin: 25px 0 20px;
+	font-size: 12px;
+	color: #666;
+}
+.footer-l a {
+	display: block;
+	width: 120px;
+	height: 35px;
+	border: 1px solid #00a4ff;
+	text-align: center;
+	line-height: 35px;
+	color: #00a4ff;
+	font-size: 16px;
+}
+.footer-l a:hover {
+	background-color: #00a4ff;
+	color: #fff;
+}
+.footer-r {
+	float: right;
+	margin-right: 20px;
+} 
+.footer-r dl {
+	float: left;
+	margin-left: 140px;
+}
+.footer-r dt {
+	font-size: 14px;
+	height: 25px;
+}
+.footer-r dt a {
+	color: #7d7d7d;
+}
+.footer-r dd {
+	height: 20px;
+}

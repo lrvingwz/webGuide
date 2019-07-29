@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		section {
+			width: 80%;
+			height: 200px;
+			margin: 100px auto;
+			display: flex;
+			min-width: 800px; /*最小宽度为800*/
+			flex-direction: column;
+		}
+		section div {;
+			height: 100%;	
+			flex: 1;
+		}
+		section div:nth-child(1) {
+			background-color: pink;
+		}
+		section div:nth-child(2) {
+			background-color: purple;
+		}
+		section div:nth-child(3) {
+			background-color: blue;
+		}
+	</style>
+</head>
+<body>
+	<section>
+		<div>1</div>
+		<div>2</div>
+		<div>3</div>
+	</section>
+</body>
+</html>
