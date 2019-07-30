@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>跟随鼠标移动（大图展示）</title>
+    <style>
+        .wrap {
+            display: flex;
+            margin: 10px auto;
+            width: 800px;
+            justify-content: space-between;
+        }
+
+        .wrap > img {
+            flex-basis: 170px;
+            border: 1px solid #666666;
+        }
+
+        .big {
+            position: absolute;
+            display: none;
+        }
+
+        .wrap > .active {
+        !important;
+            border: 1px solid red;
+        }
+
+        .big > div {
+            background: #fff url(../images/loading.gif) 50% 50% no-repeat;
+        }
+    </style>
+    <script src="../js/common.js"></script>
+</head>
+<body>
+<div class="wrap">
+    <img src="../images/shirt_1.jpg"/>
+    <img src="../images/shirt_2.jpg"/>
+    <img src="../images/shirt_3.jpg"/>
+    <img src="../images/shirt_4.jpg"/>
+
+    <div class="big"><img src=""/>
+
+        <div></div>
+    </div>
+</div>
+<script>
+    var imgs = tn$("img");
+    var big = cn$("big")[0];
+    var bigImg = big.children[0];
+    var pos = big.parentNode;
+    for(var i=0;i<imgs.length;i++){
+        imgs[i].onmousemove = f1;
+        imgs[i].onmouseover = function () {
+            big.style.display = "block";
+            bigImg.src = this.src.slice(0, this.src.length - 4) + "_big.jpg";
+            this.className="active";
+        };
+        imgs[i].onmouseout = function () {
+            big.style.display = "none";
+            this.removeAttribute("class");
+        };
+        imgs[i].setAttribute("index",i);
+    }
+    function f1(event) {
+        if(this.getAttribute("index")<=1){
+            var event = event || window.event;
+            big.style.left = event.clientX + 20 + "px";
+            big.style.top = event.clientY + 20 + "px";
+        }else{
+            var event = event || window.event;
+            big.style.left = event.clientX - 20 - parseInt(getStyle(big,"width")) + "px";
+            big.style.top = event.clientY + 20 + "px";
+        }
+    }
+
+</script>
+</body>
+</html>

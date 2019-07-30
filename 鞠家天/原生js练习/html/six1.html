@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>1) 完美拖拽</title>
+    <style>
+        .wrap{
+            width: 300px;
+            height: 200px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin: -100px 0 0 -150px;
+            border: 2px solid black;
+        }
+        h1{
+            text-align: right;
+            height: 30px;
+            border-bottom: 2px solid black;
+            line-height: 30px;
+            font-size: 14px;
+        }
+        a{
+            cursor: pointer;
+        }
+        ul{
+            padding: 20px;
+            list-style: none;
+        }
+        li{
+            line-height: 30px;
+            font-size: 14px;
+        }
+    </style>
+    <script src="../js/common.js"></script>
+</head>
+<body>
+<div class="wrap">
+    <h1><a>点击可回放拖拽轨迹</a></h1>
+    <ul>
+        <li>Drag:false</li>
+        <li>offsetTop:</li>
+        <li>offsetLeft:</li>
+    </ul>
+</div>
+<script>
+    var wrap=cn$("wrap")[0];
+    var a=tn$("a")[0];
+    var lis=tn$("li");
+    var drag=false;
+    var arr=[];
+    wrap.onmousedown= function () {
+        drag=true;
+        lis[0].innerHTML="Drag:true";
+    };
+    document.onmouseup= function () {
+        drag=false;
+//        console.log(drag);
+        lis[0].innerHTML="Drag:false";
+    };
+    document.onmousemove= function (even) {
+        var e=even||window.event;
+        if(drag){
+            var x= e.clientX+150;
+            var y= e.clientY+100;
+            lis[1].innerHTML="offsetTop:"+(y-100);
+            lis[2].innerHTML="offsetLeft:"+(x-150);
+            wrap.style.left=x+"px";
+            wrap.style.top=y+"px";
+            arr.push([x,y]);
+        }else{
+            console.log(drag);
+            return false;
+        }
+    };
+    a.onclick= function (e) {
+        window.event? window.event.cancelBubble = true : e.stopPropagation();
+        clearInterval(timeId);
+      var timeId=setInterval(function () {
+          if(arr.length>0){
+              var arr2=arr.pop();
+              var x2= arr2[0];
+              var y2= arr2[1];
+              lis[1].innerHTML="offsetTop:"+(y2-100);
+              lis[2].innerHTML="offsetLeft:"+(x2-150);
+              wrap.style.left=x2+"px";
+              wrap.style.top=y2+"px";
+          }else{
+              clearInterval(timeId);
+          }
+      },20);
+    };
+</script>
+</body>
+</html>

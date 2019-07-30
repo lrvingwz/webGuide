@@ -304,3 +304,5 @@ function getScroll() {
         left: window.pageXOffset || document.body.scrollLeft || document.documentElement.scrollLeft||0
     };
 }
+
+

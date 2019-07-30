@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户按下键盘，显示keyCode</title>
+    <style>
+        p{
+            font-size: 50px;
+            font-weight: 700;
+            text-align: center;
+        }
+    </style>
+    <script src="../js/common.js"></script>
+</head>
+<body>
+<p>这里将显示你按下的KeyCode</p>
+<script>
+    var p=tn$("p")[0];
+    document.onkeydown= function (event) {
+        var event=event||window.event;
+        p.innerHTML=event.keyCode;
+    };
+</script>
+</body>
+</html>
