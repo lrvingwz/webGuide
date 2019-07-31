@@ -1,0 +1,89 @@
+@color1:rgb(255,127,0);
+.top-nav{
+  height: 40px;
+  font-size: 12px;
+  line-height: 40px;
+  color: #b0b0b0;
+  background-color: #333;
+  a:hover{
+    color: white;
+  }
+  .current{
+    display: inline-block;
+    position: relative;
+    vertical-align: top;
+    width: 100%;
+    height: 100%;
+    color: @color1;
+    background-color: white;
+  }
+}
+.w{
+  width: 1226px;
+  margin: 0 auto;
+}
+.top-list {
+  float: left;
+  li{
+    float: left;
+  }
+}
+.top-nav .sep {
+  color: #444;
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+  float: left;
+}
+.top-items{
+  float: left;
+}
+.appdl{
+  position: relative;
+  .QRcode{
+    width: 124px;
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    padding: 18px 0 14px;
+    background: rgb(255,255,255);
+    margin-left: -55px;
+    box-shadow: rgb(170,170,170) 0 1px 5px;
+    display: none;
+    em {  width:0;
+      height:0;
+      border-width:0 10px 10px;
+      border-style:solid;
+      border-color:transparent transparent #fff;
+      position:absolute;
+      top:-10px;
+      left:50px;
+    }
+    span {
+      display: block;
+      text-align: center;
+      font-size: 14px;
+      color:#333;
+      line-height: 1px;
+      margin-top: 14px;
+    }
+  }
+
+}
+.cart{
+  float: right;
+  width: 120px;
+  margin-left: 15px;
+  text-align: center;
+  background-color: #444;
+  i{
+    //content: "\e93a";
+    font-family: 'icomoon';
+    font-size: 16px;
+    font-style: normal;
+    vertical-align: middle;
+    line-height: 16px;
+  }
+}
+.top-item-r{
+  float: right;
+}
