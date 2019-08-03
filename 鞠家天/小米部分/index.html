@@ -51,11 +51,11 @@
                 <em></em>
                 <img src="images/QRcode.jpg" alt="小米商城" width="90" height="90" style="display: block;margin: 0 auto;"/>
                 <span>小米商城</span>
-            </div>
+            </div>   
         </span>
         <span class="sep">|</span>
         <span class="top-items" id="select-region"><a href="javascript:void(0);">Sekect Region</a></span>
-        <div class="cart"><a href="#"><i></i> 购物车(<span>0</span>)</a></div>
+        <div class="cart"><a href="#"><i></i> 购物车(<span>0</span>)</a><div class="cart-content">购物车中还没有商品，赶紧选购吧！</div></div>
         <div class="top-item-r">
             <a class="top-items" id="login" href="javascript:void(0);">登陆</a>
             <span class="sep">|</span>
@@ -63,6 +63,62 @@
             <span class="sep">|</span>
             <a class="top-items" id="noyify" href="javascript:void(0);">消息通知</a>
         </div>
+    </div>
+</div>
+<div class="header">
+    <div class="w">
+        <div class="logo"><a href="#">小米官网</a></div>
+        <ul class="nav-list">
+            <li><a href="#">小米手机</a></li>
+            <li><a href="#">Redmi 红米</a></li>
+            <li><a href="#">电视</a></li>
+            <li><a href="#">笔记本</a></li>
+            <li><a href="#">家电</a></li>
+            <li><a href="#">路由器</a></li>
+            <li><a href="#">智能硬件</a></li>
+            <li><a href="#">服务</a></li>
+            <li><a href="#">社区</a></li>
+        </ul>
+        <div class="search">
+            <input type="text" id="search-con"/>
+            <button id="search-btn"></button>
+            <a href="#" class="speedy1">小米9</a>
+            <a href="#" class="speedy2">小米9 SE</a>
+            <ul class="text-options"></ul>
+        </div>
+        <div></div>
+    </div>
+</div>
+
+
+<div class="cover" id="cover"></div>
+<div class="sr" id="sr">
+    <div class="popup-head">
+        <div class="popup-title">Select Region</div>
+        <i class="popup-close">X</i>
+    </div>
+    <div class="popup-content">
+        <h2>Welcome to Mi.com</h2>
+        <h3>Please select your country or region</h3>
+        <ul class="region"></ul>
+    </div>
+</div>
+<div class="agreement" id="agreement">
+    <div class="popup-head">
+        <div class="popup-title">协议声明</div>
+        <i class="popup-close">X</i>
+    </div>
+    <div class="popup-body">
+        <div class="warnning">
+            <span>《小米商城用户协议》</span>、<span>《账号协议》</span>、<span>《隐私政策》</span>请您仔细阅读以上协议，其中又对您权力义务的特别约定等重要条款，同意后方可使用本软件
+        </div>
+        <div class="agree-con">
+            <h2></h2>
+        </div>
+    </div>
+    <div class="popup-ft">
+        <button id="not-agree">不同意</button>
+        <button id="agree" class="agree">同意</button>
     </div>
 </div>
 </body>
