@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		//1-100之间的累加值，但碰到个数为3则停止累加
+		i=1;
+		sum=0;
+		while(i<=100&&i!=3){
+			sum+=i++;
+		}
+		console.log(sum);
+		//求1-100之间不能被7整除的和（用comtinue）
+		var sum1=0
+		for(var i=1;i<=100;i++){
+			if(i%7==0){
+				continue;
+			}
+			sum1+=i;
+		}
+		console.log(sum1);
+		//求奇数200-300之间所有奇数的和（用continue）
+		var sum2=0
+		for(var i=200;i<=300;i++){
+			if(i%2!=0){
+				sum2+=i;
+			}
+		}
+		console.log(sum2);
+		//求两个数的最大值
+			var num1=10;
+			var num2=20;
+			num3=30;
+			console.log(num1>num2?num1:num2);
+		//求三个数的的最大值
+			if(num1<num2){
+				num1=num2;
+			}
+			if(num1<num3){
+				num1=num3;
+			}
+			console.log(num1);
+		//判断一个数是否为素数
+		var num=parseInt(prompt("请输入一个数"));
+		for(var i=2;i<num;i++){
+			if(num%i==0){
+				console.log("这个数不是素数");
+				break;
+			}
+		}
+		if(num==i){
+				console.log("这个数是素数");
+		}
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
