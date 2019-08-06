@@ -21,6 +21,22 @@
     };
 </script>
 <script src="js/less.min.js"></script>
+<style>
+    .rotator .changel{
+        background: transparent url("images/icon-slides.png") no-repeat;
+        background-position: -84px;
+    }
+    .rotator .changel:hover{
+        background-position: 0;
+    }
+    .rotator .changer{
+        background: transparent url("images/icon-slides.png") no-repeat;
+        background-position: -125px;
+    }
+    .rotator .changer:hover{
+        background-position: -42px;
+    }
+</style>
 <body>
 <div class="top-nav">
     <div class="w">
@@ -115,6 +131,15 @@
         <div class="rotator">
             <ul class="rotator-nav">
                 <li><a href="#"><span>手机 电话卡</span><i>></i></a></li>
+                <li><a href="#"><span>手机 电话卡</span><i>></i></a></li>
+                <li><a href="#"><span>手机 电话卡</span><i>></i></a></li>
+                <li><a href="#"><span>手机 电话卡</span><i>></i></a></li>
+                <li><a href="#"><span>手机 电话卡</span><i>></i></a></li>
+                <li><a href="#"><span>手机 电话卡</span><i>></i></a></li>
+                <li><a href="#"><span>手机 电话卡</span><i>></i></a></li>
+                <li><a href="#"><span>手机 电话卡</span><i>></i></a></li>
+                <li><a href="#"><span>手机 电话卡</span><i>></i></a></li>
+                <li><a href="#"><span>手机 电话卡</span><i>></i></a></li>
             </ul>
             <div class="rotater-navlist"><ul></ul></div>
             <a href="#" class="rotator-imgs"><img src="images/rotator-imgs-0.jpg" alt=""/></a>
@@ -122,12 +147,24 @@
             <a href="#" class="rotator-imgs"><img src="images/rotator-imgs-0.jpg" alt=""/></a>
             <a href="#" class="rotator-imgs"><img src="images/rotator-imgs-0.jpg" alt=""/></a>
             <a href="#" class="rotator-imgs"><img src="images/rotator-imgs-0.jpg" alt=""/></a>
-            <a href="#" class="change" id="changeleft"><</a>
-            <a href="#" class="change" id="changeright">></a>
+            <a href="#" class="changel" id="changeleft"></a>
+            <a href="#" class="changer" id="changeright"></a>
+            <div class="rotator-touch-btns">
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+            </div>
         </div>
     </div>
 </div>
-
+<div class="recommend">
+    <div class="recommend-nav"></div>
+    <div class="recommend-item"><img src="images/recommend-item0.jpg" alt=""/></div>
+    <div class="recommend-item"><img src="images/recommend-item1.jpg" alt=""/></div>
+    <div class="recommend-item"><img src="images/recommend-item2.jpg" alt=""/></div>
+</div>
 <div class="cover" id="cover"></div>
 <div class="sr" id="sr">
     <div class="popup-head">
