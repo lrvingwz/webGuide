@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		//求两个数的和
+		function consoleSum(){
+			var num1=10;
+			var num2=20;
+			sum=num1+num2;
+			console.log(sum);
+		}
+		consoleSum();
+		//求三个数的和
+		function consoleSum2(){
+			var num1=10;
+			var num2=20;
+			var num3=30;
+			sum=num1+num2+num3;
+			console.log(sum);
+		}
+		consoleSum2();
+		//求两个数的最大值
+		function consoleMix(){
+			var num1=10;
+			var num2=20;
+			console.log(num1>num2?num1:num2);
+		}
+		consoleMix();
+		//求三个数的的最大值
+			function consoleMix2(){
+			var num1=10, num2=20, num3=30;
+			if(num1<num2){
+				num1=num2;
+			}
+			if(num1<num3){
+				num1=num3;
+			}
+			console.log(num1);
+		}
+		consoleMix2();
+		//求1-100的和
+		function everySum(){
+			var sum=0;
+			for(var i=1;i<=100;i++){
+				sum+=i;
+			}
+			console.log(sum);
+		}
+		everySum();
+		//求1-100的偶数和
+		function everyEvenSum(){
+			var sum=0;
+			for(var i=1;i<=100;i++){
+				if(i%2==0){
+					sum+=i;
+				}
+			}
+			console.log(sum);
+		}
+		everyEvenSum();
+		//求一个数组的和
+		function consoleArraySum(){
+			var sum=0;
+			var arr=[10,20,30,40,50];
+			for(var i=0;i<arr.length;i++){
+				sum+=arr[i];
+			}
+			console.log(sum);
+		}
+		consoleArraySum();
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

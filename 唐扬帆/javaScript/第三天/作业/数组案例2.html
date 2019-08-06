@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		//案例9：求成绩的总分，平均值，最高分，最低分
+		var cont =parseInt(prompt("请输入班级的人数"));//输入班级的人数
+		var scores = [];//定义一个用来存储分数的空数组
+		var sum=0;
+		for(var i=0;i<cont;i++){
+			scores[scores.length]=parseInt(prompt("第"+(i+1)+"个同学的成绩"));
+			//sum+=scores[scores.length];
+		}
+		console.log("成绩为别是"+scores);
+		//9.1 求总分与平均值
+		for(var i=0;i<scores.length;i++){
+			sum+=scores[i];
+		}
+		console.log("总成绩为"+sum);
+		console.log("平均值为"+sum/scores.length);
+		//9.2 最高分与最低分
+		var max=scores[0], min=scores[0];
+		for(var i=0;i<scores.length;i++){
+			if(max<scores[i]){
+				max=scores[i];
+			}
+			if(min>scores[i]){
+				min=sScores[i];
+			}
+		}
+		console.log("最高分为"+max);
+		console.log("最低分为"+min);		
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
