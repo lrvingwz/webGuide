@@ -49,7 +49,9 @@
     margin-left: -55px;
     box-shadow: rgb(170,170,170) 0 1px 5px;
     display: none;
-    em {  width:0;
+    z-index: 1000;
+    em {
+      width:0;
       height:0;
       border-width:0 10px 10px;
       border-style:solid;
@@ -57,6 +59,11 @@
       position:absolute;
       top:-10px;
       left:50px;
+    }
+    img{
+      display: block;
+      width: 90px;
+      height: auto;
     }
     span {
       display: block;
@@ -263,7 +270,7 @@
       display: block;
       padding: 26px 10px 38px;
     }
-    :hover a{
+    :hover{
       color: @color1;
     }
   }
@@ -440,10 +447,12 @@
         i{
           display: block;
           float: right;
-          font-size: 12px;
+          font-size: 24px;
           font-weight: bold;
-          margin-right: 24px;
+          font-style: normal;
+          margin-right: 20px;
           font-family: "icomoon";
+          color: #d0d0d0;
         }
       }
     }
@@ -537,5 +546,72 @@
   i:hover {
     border-color:rgba(0,0,0,0.4);
     background-color: rgba(255,255,255,0.8);
+  }
+}
+.recommend{
+  margin-top: 14px;
+  overflow: hidden;
+  .recommend-nav{
+    float: left;
+    padding: 10px 4px;
+    width: 225px;
+    height: 150px;
+    overflow: hidden;
+    background-color: #5e564f;
+    color: #e1e0de;
+    a{
+      position: relative;
+      display: block;
+      float: left;
+      width: 75px;
+      height: 75px;
+      text-align: center;
+      color: #d8d3d0;
+      i{
+        display: block;
+        width: 25px;
+        height: 25px;
+        margin: 11px auto 7px;
+        overflow: hidden;
+      }
+    }
+    a:nth-child(1)::before,a:nth-child(2)::before{
+      content: "";
+      position: absolute;
+      right: 0;
+      top: 0;
+      display: block;
+      width: 1px;
+      height: 70px;
+      background-color: #655d56;
+    }
+    a:nth-child(1)::after,a:nth-child(2)::after,a:nth-child(3)::after{
+      content: "";
+      position: absolute;
+      right: 5px;
+      bottom: 0;
+      display: block;
+      width: 65px;
+      height: 1px;
+      background-color: #655d56;
+    }
+    a:nth-child(4)::before,a:nth-child(5)::before{
+      content: "";
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      display: block;
+      width: 1px;
+      height: 70px;
+      background-color: #655d56;
+    }
+  }
+  .recommend-item{
+    float: left;
+    margin-left: 14px;
+    img{
+      width: 316px;
+      height: 170px;
+    }
   }
 }

@@ -36,6 +36,26 @@
     .rotator .changer:hover{
         background-position: -42px;
     }
+    .recommend-icon1{
+         background: url("images/recommend-icon.png") no-repeat 0 0;
+     }
+    .recommend-icon2{
+        background: url("images/recommend-icon.png") no-repeat -25px 0;
+    }
+    .recommend-icon3{
+        background: url("images/recommend-icon.png") no-repeat -50px 0;
+    }
+    .recommend-icon4{
+        background: url("images/recommend-icon.png") no-repeat -75px 0;
+    }
+    .recommend-icon5{
+        background: url("images/recommend-icon.png") no-repeat -100px 0;
+    }
+    .recommend-icon6{
+        background: url("images/recommend-icon.png") no-repeat -125px 0;
+
+    }
+
 </style>
 <body>
 <div class="top-nav">
@@ -65,7 +85,7 @@
         <span class="top-items appdl"><a href="#">下载APP</a>
             <div class="QRcode">
                 <em></em>
-                <img src="images/QRcode.jpg" alt="小米商城" width="90" height="90" style="display: block;margin: 0 auto;"/>
+                <img src="images/QRcode.png" alt="小米商城" width="90" height="90" style="display: block;margin: 0 auto;"/>
                 <span>小米商城</span>
             </div>   
         </span>
@@ -130,16 +150,16 @@
     <div class="w">
         <div class="rotator">
             <ul class="rotator-nav">
-                <li><a href="#"><span>手机 电话卡</span><i>></i></a></li>
-                <li><a href="#"><span>手机 电话卡</span><i>></i></a></li>
-                <li><a href="#"><span>手机 电话卡</span><i>></i></a></li>
-                <li><a href="#"><span>手机 电话卡</span><i>></i></a></li>
-                <li><a href="#"><span>手机 电话卡</span><i>></i></a></li>
-                <li><a href="#"><span>手机 电话卡</span><i>></i></a></li>
-                <li><a href="#"><span>手机 电话卡</span><i>></i></a></li>
-                <li><a href="#"><span>手机 电话卡</span><i>></i></a></li>
-                <li><a href="#"><span>手机 电话卡</span><i>></i></a></li>
-                <li><a href="#"><span>手机 电话卡</span><i>></i></a></li>
+                <li><a href="#"><span>手机 电话卡</span><i></i></a></li>
+                <li><a href="#"><span>手机 电话卡</span><i></i></a></li>
+                <li><a href="#"><span>手机 电话卡</span><i></i></a></li>
+                <li><a href="#"><span>手机 电话卡</span><i></i></a></li>
+                <li><a href="#"><span>手机 电话卡</span><i></i></a></li>
+                <li><a href="#"><span>手机 电话卡</span><i></i></a></li>
+                <li><a href="#"><span>手机 电话卡</span><i></i></a></li>
+                <li><a href="#"><span>手机 电话卡</span><i></i></a></li>
+                <li><a href="#"><span>手机 电话卡</span><i></i></a></li>
+                <li><a href="#"><span>手机 电话卡</span><i></i></a></li>
             </ul>
             <div class="rotater-navlist"><ul></ul></div>
             <a href="#" class="rotator-imgs"><img src="images/rotator-imgs-0.jpg" alt=""/></a>
@@ -159,11 +179,18 @@
         </div>
     </div>
 </div>
-<div class="recommend">
-    <div class="recommend-nav"></div>
-    <div class="recommend-item"><img src="images/recommend-item0.jpg" alt=""/></div>
-    <div class="recommend-item"><img src="images/recommend-item1.jpg" alt=""/></div>
-    <div class="recommend-item"><img src="images/recommend-item2.jpg" alt=""/></div>
+<div class="recommend w">
+    <div class="recommend-nav">
+        <a href="#"><i class="recommend-icon1"></i><p>小米秒杀</p></a>
+        <a href="#"><i class="recommend-icon2"></i><p>企业团购</p></a>
+        <a href="#"><i class="recommend-icon3"></i><p>F码通道</p></a>
+        <a href="#"><i class="recommend-icon4"></i><p>米粉卡</p></a>
+        <a href="#"><i class="recommend-icon5"></i><p>以旧换新</p></a>
+        <a href="#"><i class="recommend-icon6"></i><p>话费充值</p></a>
+    </div>
+    <div class="recommend-item"><a href="#"><img src="images/recommend-item0.jpg" alt=""/></a></div>
+    <div class="recommend-item"><a href="#"><img src="images/recommend-item1.jpg" alt=""/></a></div>
+    <div class="recommend-item"><a href="#"><img src="images/recommend-item2.jpg" alt=""/></a></div>
 </div>
 <div class="cover" id="cover"></div>
 <div class="sr" id="sr">
@@ -195,5 +222,7 @@
         <button id="agree" class="agree">同意</button>
     </div>
 </div>
+<script src="js/common.js"></script>
+<script src="js/base.js"></script>
 </body>
 </html>
