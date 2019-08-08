@@ -34,6 +34,9 @@
   margin-right: 0.5em;
   float: left;
 }
+.top-nav .w{
+  position: relative;
+}
 .top-items{
   float: left;
 }
@@ -70,7 +73,7 @@
       text-align: center;
       font-size: 14px;
       color:#333;
-      line-height: 1px;
+      line-height: 14px;
       margin-top: 14px;
     }
   }
@@ -83,6 +86,7 @@
   margin-left: 15px;
   text-align: center;
   background-color: #444;
+  z-index: 11;
   i{
     //content: "\e93a";
     font-family: 'icomoon';
@@ -91,27 +95,33 @@
     vertical-align: middle;
     line-height: 16px;
   }
-  .cart-content{
-    position: absolute;
-    top: 40px;
-    height: 0;
-    overflow: hidden;
-    text-align: center;
-    line-height: 100px;
-    box-shadow: rgb(170,170,170) 0 1px 5px;
-    background-color: white;
-  }
+}
+.cart-content{
+  position: absolute;
+  top: 40px;
+  right: 0;
+  width: 316px;
+  height: 0;
+  overflow: hidden;
+  text-align: center;
+  line-height: 100px;
+  box-shadow: rgb(170,170,170) 0 1px 5px;
+  background-color: white;
+  z-index: 10;
 }
 .top-item-r{
   float: right;
 }
 .cover{
   display: none;
-  position: absolute;
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
+  z-index: 9998;
   background-color: rgb(0,0,0);
-  opacity: 0.4;
+  opacity: 0;
 }
 .sr{
   position: fixed;
@@ -122,6 +132,7 @@
   margin-left: -440px;
   background-color: white;
   opacity: 0;
+  z-index: 9999;
 }
 .popup-head{
   padding:14px 20px;
@@ -141,8 +152,9 @@
   float: right;
   width: 30px;
   height: 30px;
+  font-family: "icomoon";
   font-style: normal;
-  font-size: 24px;
+  font-size: 14px;
   text-align: center;
   line-height: 30px;
   margin: 0px;
@@ -161,6 +173,8 @@
   }
   h3{
     font-size: 18px;
+    font-weight: normal;
+    color: #424242;
     margin: 0;
   }
 }
@@ -175,13 +189,14 @@
     line-height: 40px;
     background-color: #eee;
     a{
-      color: #333;
+      display: block;
+      width: 100%;
+      height: 100%;
+      color: #757575;
     }
     :hover{
       background-color: @color1;
-      a{
-        color: #fff;
-      }
+      color: #fff;
     }
   }
 }
@@ -194,6 +209,7 @@
   background-color: white;
   outline: none;
   opacity: 0;
+  z-index: 9999;
 }
 .popup-body{
   padding: 20px;
@@ -207,10 +223,39 @@
   }
   .agree-con{
     max-height: 300px;
+    text-align: right;
     overflow: auto;
-    font-size: 14px;
-    line-height: 24px;
-    text-align: left;
+    .agree-con-box{
+      font-size: 14px;
+      line-height: 18px;
+      text-align: left;
+      color: #000;
+      .time{
+        text-align: right;
+        font-size: 20px;
+      }
+      p{
+        text-indent: 2em;
+        margin: 18px 0;
+      }
+      h3,h4{
+        font-size: 22px;
+      }
+      .fb{
+        font-weight: bold;
+      }
+    }
+    .downagree{
+      display: inline-block;
+      width: 140px;
+      height: 40px;
+      border: 1px solid #d0d0d0;
+      color: #e0e0e0;
+      font-style: normal;
+      font-size: 16px;
+      line-height: 40px;
+      text-align: center;
+    }
   }
 }
 .popup-ft{
