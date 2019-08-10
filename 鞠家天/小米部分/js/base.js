@@ -130,8 +130,272 @@ var lexicon=["小米","小米9","小米9 SE",
     "Redmi K20 pro","Redmi K20","Redmi Note 7 Pro",
     "Redmi note 7","小米电视机4c","电视32英寸","笔记本pro",
     "小爱音箱","净水器"];
-//导航栏菜单部分变量
+//大菜单部分变量
+var rotator=cn$("rotator")[0];
+var rotatorNav=cn$("rotator-nav")[0];
+var rotatorLis=rotatorNav.getElementsByTagName("li");
+var rotatorNavList=cn$("rotator-navlist")[0];
+var rotatorItems=[
+    [
+        {"img":"sj-micc9.png","href":"#","name":"小米CC9"},
+        {"img":"sj-micc.png","href":"#","name":"小米CC"},
+        {"img":"sj-micc9e.png","href":"#","name":"小米CC9e"},
+        {"img":"sj-mi9.png","href":"#","name":"小米9"},
+        {"img":"sj-mi9se.png","href":"#","name":"小米9 SE"},
+        {"img":"sj-mimix3.png","href":"#","name":"小米 MIX3"},
+        {"img":"sj-mi8qc.png","href":"#","name":"小米8 青春版"},
+        {"img":"sj-mi8pmzw.png","href":"#","name":"小米8 屏幕指纹版"},
+        {"img":"sj-mimix2s.png","href":"#","name":"小米MIX 2s"},
+        {"img":"sj-mimax3.png","href":"#","name":"小米Max 3"},
+        {"img":"sj-hsyxsj2.png","href":"#","name":"黑鲨游戏手机 2"},
+        {"img":"sj-redmik20pro.png","href":"#","name":"Redmi K20 Pro"},
+        {"img":"sj-micc9.png","href":"#","name":"小米CC9"},
+        {"img":"sj-micc.png","href":"#","name":"小米CC"},
+        {"img":"sj-micc9e.png","href":"#","name":"小米CC9e"},
+        {"img":"sj-mi9.png","href":"#","name":"小米9"},
+        {"img":"sj-mi9se.png","href":"#","name":"小米9 SE"},
+        {"img":"sj-mimix3.png","href":"#","name":"小米 MIX3"},
+        {"img":"sj-mi8qc.png","href":"#","name":"小米8 青春版"},
+        {"img":"sj-mi8pmzw.png","href":"#","name":"小米8 屏幕指纹版"},
+        {"img":"sj-mimix2s.png","href":"#","name":"小米MIX 2s"}
+    ],
+    [
+        {"img":"sj-micc9.png","href":"#","name":"小米CC9"},
+        {"img":"sj-micc.png","href":"#","name":"小米CC"},
+        {"img":"sj-micc9e.png","href":"#","name":"小米CC9e"},
+        {"img":"sj-mi9.png","href":"#","name":"小米9"},
+        {"img":"sj-mi9se.png","href":"#","name":"小米9 SE"},
+        {"img":"sj-mimix3.png","href":"#","name":"小米 MIX3"},
+        {"img":"sj-mi8qc.png","href":"#","name":"小米8 青春版"},
+        {"img":"sj-mi8pmzw.png","href":"#","name":"小米8 屏幕指纹版"},
+        {"img":"sj-mimix2s.png","href":"#","name":"小米MIX 2s"},
+        {"img":"sj-mimax3.png","href":"#","name":"小米Max 3"},
+        {"img":"sj-hsyxsj2.png","href":"#","name":"黑鲨游戏手机 2"},
+        {"img":"sj-redmik20pro.png","href":"#","name":"Redmi K20 Pro"},
+        {"img":"sj-micc9.png","href":"#","name":"小米CC9"},
+        {"img":"sj-micc.png","href":"#","name":"小米CC"},
+        {"img":"sj-micc9e.png","href":"#","name":"小米CC9e"},
+        {"img":"sj-mi9.png","href":"#","name":"小米9"},
+        {"img":"sj-mi9se.png","href":"#","name":"小米9 SE"},
+        {"img":"sj-mimix3.png","href":"#","name":"小米 MIX3"},
+        {"img":"sj-mi8qc.png","href":"#","name":"小米8 青春版"},
+        {"img":"sj-mi8pmzw.png","href":"#","name":"小米8 屏幕指纹版"},
+        {"img":"sj-mimix2s.png","href":"#","name":"小米MIX 2s"}
+    ],
+    [
+        {"img":"sj-micc9.png","href":"#","name":"小米CC9"},
+        {"img":"sj-micc.png","href":"#","name":"小米CC"},
+        {"img":"sj-micc9e.png","href":"#","name":"小米CC9e"},
+        {"img":"sj-mi9.png","href":"#","name":"小米9"},
+        {"img":"sj-mi9se.png","href":"#","name":"小米9 SE"},
+        {"img":"sj-mimix3.png","href":"#","name":"小米 MIX3"},
+        {"img":"sj-mi8qc.png","href":"#","name":"小米8 青春版"},
+        {"img":"sj-mi8pmzw.png","href":"#","name":"小米8 屏幕指纹版"},
+        {"img":"sj-mimix2s.png","href":"#","name":"小米MIX 2s"},
+        {"img":"sj-mimax3.png","href":"#","name":"小米Max 3"},
+        {"img":"sj-hsyxsj2.png","href":"#","name":"黑鲨游戏手机 2"},
+        {"img":"sj-redmik20pro.png","href":"#","name":"Redmi K20 Pro"},
+        {"img":"sj-micc9.png","href":"#","name":"小米CC9"},
+        {"img":"sj-micc.png","href":"#","name":"小米CC"},
+        {"img":"sj-micc9e.png","href":"#","name":"小米CC9e"},
+        {"img":"sj-mi9.png","href":"#","name":"小米9"},
+        {"img":"sj-mi9se.png","href":"#","name":"小米9 SE"},
+        {"img":"sj-mimix3.png","href":"#","name":"小米 MIX3"},
+        {"img":"sj-mi8qc.png","href":"#","name":"小米8 青春版"},
+        {"img":"sj-mi8pmzw.png","href":"#","name":"小米8 屏幕指纹版"},
+        {"img":"sj-mimix2s.png","href":"#","name":"小米MIX 2s"}
+    ],
+    [
+        {"img":"sj-micc9.png","href":"#","name":"小米CC9"},
+        {"img":"sj-micc.png","href":"#","name":"小米CC"},
+        {"img":"sj-micc9e.png","href":"#","name":"小米CC9e"},
+        {"img":"sj-mi9.png","href":"#","name":"小米9"},
+        {"img":"sj-mi9se.png","href":"#","name":"小米9 SE"},
+        {"img":"sj-mimix3.png","href":"#","name":"小米 MIX3"},
+        {"img":"sj-mi8qc.png","href":"#","name":"小米8 青春版"},
+        {"img":"sj-mi8pmzw.png","href":"#","name":"小米8 屏幕指纹版"},
+        {"img":"sj-mimix2s.png","href":"#","name":"小米MIX 2s"},
+        {"img":"sj-mimax3.png","href":"#","name":"小米Max 3"},
+        {"img":"sj-hsyxsj2.png","href":"#","name":"黑鲨游戏手机 2"},
+        {"img":"sj-redmik20pro.png","href":"#","name":"Redmi K20 Pro"},
+        {"img":"sj-micc9.png","href":"#","name":"小米CC9"}
+    ],
+    [
+        {"img":"sj-micc9.png","href":"#","name":"小米CC9"},
+        {"img":"sj-micc.png","href":"#","name":"小米CC"},
+        {"img":"sj-micc9e.png","href":"#","name":"小米CC9e"},
+        {"img":"sj-mi9.png","href":"#","name":"小米9"},
+        {"img":"sj-mi9se.png","href":"#","name":"小米9 SE"},
+        {"img":"sj-mimix3.png","href":"#","name":"小米 MIX3"},
+        {"img":"sj-mi8qc.png","href":"#","name":"小米8 青春版"},
+        {"img":"sj-mi8pmzw.png","href":"#","name":"小米8 屏幕指纹版"},
+        {"img":"sj-mimix2s.png","href":"#","name":"小米MIX 2s"},
+        {"img":"sj-mimax3.png","href":"#","name":"小米Max 3"},
+        {"img":"sj-hsyxsj2.png","href":"#","name":"黑鲨游戏手机 2"},
+        {"img":"sj-redmik20pro.png","href":"#","name":"Redmi K20 Pro"},
+        {"img":"sj-micc9.png","href":"#","name":"小米CC9"},
+        {"img":"sj-micc.png","href":"#","name":"小米CC"},
+        {"img":"sj-micc9e.png","href":"#","name":"小米CC9e"},
+        {"img":"sj-mi9.png","href":"#","name":"小米9"},
+        {"img":"sj-mi9se.png","href":"#","name":"小米9 SE"},
+        {"img":"sj-mimix3.png","href":"#","name":"小米 MIX3"},
+        {"img":"sj-mi8qc.png","href":"#","name":"小米8 青春版"}
+    ],
+    [
+        {"img":"sj-micc9.png","href":"#","name":"小米CC9"},
+        {"img":"sj-micc.png","href":"#","name":"小米CC"},
+        {"img":"sj-micc9e.png","href":"#","name":"小米CC9e"},
+        {"img":"sj-mi9.png","href":"#","name":"小米9"},
+        {"img":"sj-mi9se.png","href":"#","name":"小米9 SE"},
+        {"img":"sj-mimix3.png","href":"#","name":"小米 MIX3"},
+        {"img":"sj-mi8qc.png","href":"#","name":"小米8 青春版"},
+        {"img":"sj-mi8pmzw.png","href":"#","name":"小米8 屏幕指纹版"},
+        {"img":"sj-mimix2s.png","href":"#","name":"小米MIX 2s"},
+        {"img":"sj-mimax3.png","href":"#","name":"小米Max 3"},
+        {"img":"sj-hsyxsj2.png","href":"#","name":"黑鲨游戏手机 2"},
+        {"img":"sj-redmik20pro.png","href":"#","name":"Redmi K20 Pro"},
+        {"img":"sj-micc9.png","href":"#","name":"小米CC9"},
+        {"img":"sj-micc.png","href":"#","name":"小米CC"}
+    ],
+    [
+        {"img":"sj-micc9.png","href":"#","name":"小米CC9"},
+        {"img":"sj-micc.png","href":"#","name":"小米CC"},
+        {"img":"sj-micc9e.png","href":"#","name":"小米CC9e"},
+        {"img":"sj-mi9.png","href":"#","name":"小米9"},
+        {"img":"sj-mi9se.png","href":"#","name":"小米9 SE"},
+        {"img":"sj-mimix3.png","href":"#","name":"小米 MIX3"},
+        {"img":"sj-mi8qc.png","href":"#","name":"小米8 青春版"},
+        {"img":"sj-mi8pmzw.png","href":"#","name":"小米8 屏幕指纹版"},
+        {"img":"sj-mimix2s.png","href":"#","name":"小米MIX 2s"},
+        {"img":"sj-mimax3.png","href":"#","name":"小米Max 3"},
+        {"img":"sj-hsyxsj2.png","href":"#","name":"黑鲨游戏手机 2"},
+        {"img":"sj-redmik20pro.png","href":"#","name":"Redmi K20 Pro"}
+    ],
+    [
+        {"img":"sj-micc9.png","href":"#","name":"小米CC9"},
+        {"img":"sj-micc.png","href":"#","name":"小米CC"},
+        {"img":"sj-micc9e.png","href":"#","name":"小米CC9e"},
+        {"img":"sj-mi9.png","href":"#","name":"小米9"},
+        {"img":"sj-mi9se.png","href":"#","name":"小米9 SE"},
+        {"img":"sj-mimix3.png","href":"#","name":"小米 MIX3"},
+        {"img":"sj-mi8qc.png","href":"#","name":"小米8 青春版"},
+        {"img":"sj-mi8pmzw.png","href":"#","name":"小米8 屏幕指纹版"},
+        {"img":"sj-mimix2s.png","href":"#","name":"小米MIX 2s"},
+        {"img":"sj-mimax3.png","href":"#","name":"小米Max 3"},
+        {"img":"sj-hsyxsj2.png","href":"#","name":"黑鲨游戏手机 2"}
+    ],
+    [
+        {"img":"sj-micc9.png","href":"#","name":"小米CC9"},
+        {"img":"sj-micc.png","href":"#","name":"小米CC"},
+        {"img":"sj-micc9e.png","href":"#","name":"小米CC9e"},
+        {"img":"sj-mi9.png","href":"#","name":"小米9"},
+        {"img":"sj-mi9se.png","href":"#","name":"小米9 SE"},
+        {"img":"sj-mimix3.png","href":"#","name":"小米 MIX3"},
+        {"img":"sj-mi8qc.png","href":"#","name":"小米8 青春版"},
+        {"img":"sj-mi8pmzw.png","href":"#","name":"小米8 屏幕指纹版"},
+        {"img":"sj-mimix2s.png","href":"#","name":"小米MIX 2s"},
+        {"img":"sj-mimax3.png","href":"#","name":"小米Max 3"},
+        {"img":"sj-hsyxsj2.png","href":"#","name":"黑鲨游戏手机 2"},
+        {"img":"sj-redmik20pro.png","href":"#","name":"Redmi K20 Pro"},
+        {"img":"sj-micc9.png","href":"#","name":"小米CC9"},
+        {"img":"sj-micc.png","href":"#","name":"小米CC"},
+        {"img":"sj-micc9e.png","href":"#","name":"小米CC9e"},
+        {"img":"sj-mi9.png","href":"#","name":"小米9"}
+    ],
+    [
+        {"img":"sj-micc9.png","href":"#","name":"小米CC9"},
+        {"img":"sj-micc.png","href":"#","name":"小米CC"},
+        {"img":"sj-micc9e.png","href":"#","name":"小米CC9e"},
+        {"img":"sj-mi9.png","href":"#","name":"小米9"},
+        {"img":"sj-mi9se.png","href":"#","name":"小米9 SE"},
+        {"img":"sj-mimix3.png","href":"#","name":"小米 MIX3"},
+        {"img":"sj-mi8qc.png","href":"#","name":"小米8 青春版"},
+        {"img":"sj-mi8pmzw.png","href":"#","name":"小米8 屏幕指纹版"},
+        {"img":"sj-mimix2s.png","href":"#","name":"小米MIX 2s"},
+        {"img":"sj-mimax3.png","href":"#","name":"小米Max 3"},
+        {"img":"sj-hsyxsj2.png","href":"#","name":"黑鲨游戏手机 2"},
+        {"img":"sj-redmik20pro.png","href":"#","name":"Redmi K20 Pro"},
+        {"img":"sj-micc9.png","href":"#","name":"小米CC9"},
+        {"img":"sj-micc.png","href":"#","name":"小米CC"},
+        {"img":"sj-micc9e.png","href":"#","name":"小米CC9e"},
+        {"img":"sj-mi9.png","href":"#","name":"小米9"},
+        {"img":"sj-mi9se.png","href":"#","name":"小米9 SE"},
+        {"img":"sj-mimix3.png","href":"#","name":"小米 MIX3"},
+        {"img":"sj-mi8qc.png","href":"#","name":"小米8 青春版"},
+        {"img":"sj-mi8pmzw.png","href":"#","name":"小米8 屏幕指纹版"},
+        {"img":"sj-mimix2s.png","href":"#","name":"小米MIX 2s"}
+    ]
+];
+//轮播图变量
+var rotatorImgs=cn$("rotator-imgs");
+var changeLeft=my$("changeleft");
+var changeRight=my$("changeright");
+var rotatorBtns=rotator.getElementsByClassName("rotator-touch-btns")[0].children;
+var itsInner=false;
+var num=0;
+for(var i=0;i<rotatorImgs.length;i++){
+    rotatorBtns[i].setAttribute("index",i);
+    rotatorImgs[i].style.zIndex=rotatorImgs.length-i;
+    addEventListener(rotatorBtns[i],"click",clickBtns);
+}
+window.onload=function rotatorImgAction(){
+    var timeId2=setInterval(changeImg,3000);
+};
+function changeImg(){
+    rotator.style.background="url("+rotatorImgs.getElementsByTagName("img")["src"]+") no-repeat";
+    rotator.style.backgroundSize="100% auto";
+    for(var j=0;j<rotatorImgs.length;j++){
+        var mm=parseInt(rotatorImgs[j].style.zIndex);
+        if(mm==5){
+            var k=j;
+        }
+    }
+    rotatorImgs[num].style.index=5;
+    animate1(rotatorImgs[k],{"opacity":0}, function () {
+        rotatorImgs[k].style.zIndex=1;
+        k=((k+1)==rotatorImgs.length)?0:(k+1);
+        lightTheBtns(k);
+    });
+}
+function lightTheBtns(k){
+    for(var l=0;l<rotatorBtns.length;l++){
+        rotatorBtns[l].style.borderColor="rgba(255,255,255,0.2)";
+        rotatorBtns[l].style.backgroundColor="rgba(0,0,0,0.4)";
+    }
+    rotatorBtns[k].style.borderColor="rgba(0,0,0,0.4)";
+    rotatorBtns[k].style.backgroundColor="rgba(255,255,255,0.8)";
+}
+function clickBtns(){
+    var num=this.getAttribute("index");
+    rotator.style.backgroundImage="url("+rotatorImgs[num].getElementsByTagName("img")[0].src+")";
+    for(var j=0;j<rotatorImgs.length;j++){
+        if(rotatorImgs[j].style.zIndex==5){
+            animate1(rotatorImgs[j],{"opacity":0});
+        }else{
+            rotatorImgs[j].style.opacity=0;
+        }
+    }
+    var n=0;
+    while(n<5){
+        if(num!=0){
+            if(num+n<=4){
+                rotatorImgs[num+n].style.index=5-n;
+                rotatorImgs[num+n].style.opacity=1;
+                n++;
+            }else{
+                rotatorImgs[num+n-5].style.index=5-n;
+                rotatorImgs[num+n-5].style.opacity=1;
+                n++;
+            }
+        }else{
+            rotatorImgs[n].style.index=5-n;
+            rotatorImgs[n].style.opacity=1;
+            n++;
+        }
 
+    }
+
+}
 //显示二维码
 addEventListener(appdl,"mouseover",visibleQRcode);
 addEventListener(appdl,"mouseout",unvisibleQRcode);
@@ -216,7 +480,6 @@ addEventListener(cartContent,"mouseout", function () {
     });
 });
 //推荐栏项目创建与显示
-
 for(var i=0;i<hNavlis.length;i++){
     hNavlis[i].setAttribute("index",i);
     addEventListener(hNavlis[i],"mouseover",hNavlisMouseOver);
@@ -313,7 +576,35 @@ function searchAction(){
         searchList.style.display="none";
     }
 }
-
+//大菜单
+addEventListener(rotator,"mouseout",mouseoutRotator);
+for(var i=0;i<rotatorLis.length;i++){
+    rotatorLis[i].setAttribute("index",i);
+    addEventListener(rotatorLis[i],"mouseover",mouseoverRNL);
+}
+function mouseoverRNL(){
+    rotatorNavList.style.display="block";
+    createLis(this.getAttribute("index"));
+}
+function mouseoutRotator(){
+    rotatorNavList.style.display="none";
+}
+function createLis(mm){
+    rotatorNavList.innerHTML="";
+    for(var j=0;j<rotatorItems[mm].length;j++){
+        var itemObj=rotatorItems[mm][j];
+        var newLi=document.createElement("li");
+        var newA=document.createElement("a");
+        newA.href=itemObj["href"];
+        newA.innerHTML="<img src='images/"+itemObj["img"]+"'/>"+itemObj["name"];
+        newLi.appendChild(newA);
+        if(j%6==0){
+            var newUl=document.createElement("ul");
+            rotatorNavList.appendChild(newUl);
+        }
+        newUl.appendChild(newLi);
+    }
+}
 
 function animate1(element, json, fn) {
     clearInterval(element.timeId);

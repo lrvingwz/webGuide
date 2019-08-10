@@ -507,24 +507,28 @@
       }
     }
   }
-  .rotater-navlist{
+  .rotator-navlist{
     display: none;
     position: absolute;
     left: 234px;
     top: 0;
     height: 458px;
-    max-width: 991px;
-    padding-right: -1px;
+    max-width: 992px;
+    padding-right: -5px;
+    white-space:nowrap;
     box-shadow: 0 8px 16px rgba(0,0,0,0.18);
     border: 1px solid #e0e0e0;
     border-left-width: 0;
     background-color: #fff;
     overflow: hidden;
     z-index: 20;
+    font-size: 0;
     ul{
+      font-size: 14px;
       width: 248px;
-      float: left;
+      display: inline-block;
       padding-top:2px;
+      vertical-align: top;
       li{
         height: 76px;
         a{
@@ -553,7 +557,7 @@
   img{
   width: 1226px;
   height: 460px;
-}
+  }
 }
 .changel{
   display: block;
@@ -562,7 +566,7 @@
   left: 234px;
   width: 41px;
   height: 69px;
-  z-index: 999;
+  z-index: 19;
   margin-top: -35px;
 }
 .changer{
@@ -572,7 +576,7 @@
   right: 0;
   width: 41px;
   height: 69px;
-  z-index: 999;
+  z-index: 19;
   margin-top: -35px;
 }
 .rotator-touch-btns{
@@ -581,6 +585,7 @@
   height: 20px;
   right: 30px;
   bottom: 20px;
+  z-index: 10;
   i{
     display: block;
     float: left;
