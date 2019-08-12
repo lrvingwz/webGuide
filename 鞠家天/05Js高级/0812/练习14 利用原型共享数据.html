@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>乁( ˙ ω˙乁)</title>
+    <script src="../js/common.js"></script>
+</head>
+<body>
+<script>
+    function PersonFamily(name,sex,height){
+        this.name=name;
+        this.sex=sex;
+        this.height=height;
+    }
+    PersonFamily.prototype.familyName="小家";
+    PersonFamily.prototype.favoriteFood="香菇";
+    PersonFamily.prototype.eyesColor="蓝色";
+    var xiaoMing=new PersonFamily("小明","男",180);
+    var xiaoHong=new PersonFamily("小红","女",165);
+    var xiaoFang=new PersonFamily("小芳","女",120);
+    console.log(xiaoMing.familyName);
+    console.log(xiaoHong.favoriteFood);
+    console.log(xiaoFang.eyesColor);
+    console.dir(PersonFamily);
+</script>
+</body>
+</html>
