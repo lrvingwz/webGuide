@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+	//字面量的方式创建对象
+	var obj={};
+	//添加属性
+	obj.name="小白";
+	obj.age=10;
+	//添加方法
+	obj.sayHi=function(){
+		console.log("我是:"+this.name);
+	};
+	obj.sayHi();
+	//优化后
+	var obj2={
+		name:"小明",
+		age:20,
+		sayHi:function(){
+			console.log("我是"+this.name);
+		},
+		eat:function(){
+			console.log("吃了");
+		}
+	}
+	obj2.sayHi()
+	obj2.eat();
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
