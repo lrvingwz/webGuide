@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		//用户输入年  月  日 求出是这个年的多少天
+		function getYear(year,month,day){
+			var days=day;
+			if(month==1){
+				return days;
+			}
+			var months=[31,28,31,30,31,30,31,31,30,31,30,31];
+			for(var i=0;i<month-1;i++){
+				days+=months[i];
+			}
+			if(year%4==0&&year%100!=0||year%400==0&&month>2){
+				days++;
+			}
+			return days;
+		}
+		console.log(getYear(2001,3,2));
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>乁( ˙ ω˙乁)</title>
+    <style>
+        .box{
+            width: 800px;
+            height: 600px;
+            background-color: antiquewhite;
+            position: relative;
+        }
+    </style>
+    <script src="../js/common.js"></script>
+</head>
+<body>
+<div class="box"></div>
+<script>
+    (function (w){
+        function Random(){
+        }
+        Random.prototype.getRandom= function (min,max) {
+            return Math.floor(Math.random()*(max-min)+min);
+        };
+        w.Random=new Random();
+    })(window);
+
+    (function(window){
+        var map=document.querySelector(".box");
+        function Food(width,height,color){
+            this.width=width||20;
+            this.height=height||20;
+            this.color=color;
+            this.element=document.createElement("div");
+            this.x=0;
+            this.y=0;
+        }
+        Food.prototype.visibleFood= function (map) {
+            var div=this.element;
+            div.style.width=this.width+"px";
+            div.style.height=this.height+"px";
+            div.style.backgroundColor=this.color;
+            div.style.position="absolute";
+            map.appendChild(div);
+            this.render(map);
+        };
+        Food.prototype.render=function(map){
+//            this.element.style.left=Random.getRandom(map.offsetWidth/this.width,0);
+//            this.element.style.top=Random.getRandom(map.offsetHeight/this.height,0);
+            var x=Random.getRandom(0,map.offsetWidth/this.width)*this.width;
+            var y=Random.getRandom(0,map.offsetHeight/this.height)*this.height;
+            this.x=x;
+            this.y=y;
+            var div=this.element;
+            div.style.left=this.x+"px";
+            div.style.top=this.y+"px";
+        };
+        var squre=new Food(20,20,"orange");
+        squre.visibleFood(map);
+    })(window);
+
+</script>
+</body>
+</html>

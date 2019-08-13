@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+	function Person(name,age){
+		this.name=name;
+		this.age=age;
+		this.play=function(){
+			console.log("playgame");
+		};
+	}
+	var obj=new Person("luck",20);
+	//obj.name="luckDog";
+	obj["name"]="luckDog";
+
+	//obj.play();
+	obj["play"]();
+	console.log(obj.name);
+	console.log(obj.age);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

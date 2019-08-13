@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>乁( ˙ ω˙乁)</title>
+    <style>
+        div{
+            width: 200px;
+            height: 300px;
+            background-color: black;
+        }
+    </style>
+    <script src="../js/common.js"></script>
+</head>
+<body>
+<input type="button" id="btn" value="点击改变样式"/>
+<div id="box"></div>
+<script>
+    function ChangeStyle(trigger,receiver,json){
+        this.json=json;
+        this.trigger=trigger;
+        this.receiver=receiver;
+    }
+    ChangeStyle.prototype.f1= function () {
+        var that=this;
+        this.trigger.onclick= function () {
+            for(var key in that.json){
+                that.receiver.style[key]=that.json[key];
+            }
+        };
+    };
+    var json={
+        "width":"500px",
+        "height":"500px",
+        "backgroundColor":"blue",
+        "opacity":"0.2"
+    };
+    var cs=new ChangeStyle(my$("btn"),my$("box"),json);
+    cs.f1();
+</script>
+</body>
+</html>

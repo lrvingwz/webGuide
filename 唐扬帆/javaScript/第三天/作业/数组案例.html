@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+	//求数组的最大值 最小值  总和  平均值
+	var arr=[10,20,30,40,50];
+	var sum=0;
+	var max=arr[0];
+	var min=arr[0];
+	for(var i=0;i<arr.length;i++){
+		sum+=arr[i];
+		if(max<arr[i]){
+			max=arr[i];
+		}
+		if(min>arr[i]){
+			min=arr[i];
+		}
+	}
+	console.log("和为"+sum);
+	console.log("平均值为"+sum/arr.length);
+	console.log("最大值为"+max);
+	console.log("最小值为"+min);
+	//把数组用“|”连接起来
+	var names=["张三","李四","王二","王五"];
+	var str="";
+	for(var i=0;i<names.length-1;i++){
+		str+=names[i]+"|";
+	}
+	console.log(str+names[names.length-1]);
+	//去掉数组中重复的0
+		var arr1=[10,0,0,20,0,30,0,40];
+		var newArr=[];
+		for(var i=0;i<arr1.length;i++){
+			if(arr1[i]!=0){
+				newArr[newArr.length]=arr1[i];
+			}
+		}
+		console.log(newArr);
+		//反转数组
+		for(var i=0;i<=arr.length/2;i++){
+			var temp=arr[i];
+			arr[i]=arr[arr.length-1-i];
+			arr[arr.length-1-i]=temp;
+		}
+		console.log(arr);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

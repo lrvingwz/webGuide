@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+	//求一组数字的和
+	function getArraySum(array){
+		var sum=0;
+		for(var i=0;i<array.length;i++){
+			sum+=array[i];
+		}
+		return sum;
+	}
+	var arr2=[1,2,3,4,5,6,];
+	console.log(getArraySum(arr2));
+	//求一个数组中的最大值 最小值 和
+	function getArrayMaxAndMinAndSum(array){
+		var max=array[0];
+		var min=array[0];
+		var sum=0;
+		for(var i=0;i<array.length;i++){
+			sum+=array[i];
+			if(max<array[i]){
+				max=array[i];
+			}
+			if(min>array[i]){
+				min=array[i];
+			}
+		}
+		var arr=[max,min,sum];
+		return arr;
+	}
+	var resuleArray=getArrayMaxAndMinAndSum([1,2,3,4,5,6,7]);
+	console.log("最大值"+resuleArray[0]);
+	console.log("最小值"+resuleArray[1]);
+	console.log("和"+resuleArray[2]);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+	function f1(fn){
+		fn(); 
+	}
+	//fn(); 
+	function f2() {
+		console.log("哈哈");	
+	} 
+	f1(f2);
+	function f5(fn){
+		fn; 
+	}
+	//fn(); 
+	function f6() {
+		console.log("xixi");	
+	} 
+	f5(f6());
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

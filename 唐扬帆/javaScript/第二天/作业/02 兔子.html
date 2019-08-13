@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		var sum=1, sum1, t=1, sum2=0;
+	for(var i=3;i<=12;i++){ //从第三个月开始计算
+		sum1=t;
+		t=sum;
+		sum=sum+sum1;  //sum为每月生了多少兔子
+		sum2=sum+sum2; //sum2为月份兔子之和
+	}
+	console.log(sum2+3);//因为我是从第三个月开始计算，sum2为之后10个月之和，+3为前两个月与本身一对兔子之和
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

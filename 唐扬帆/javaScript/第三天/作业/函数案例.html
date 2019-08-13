@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+	//求两个数字的和
+	function getSum(x,y){
+		return x+y;
+	}
+	console.log(getSum(10,20));
+	//求1-n数字之间的和
+	function getEverySum(n){
+		var sum=0;
+		for(var i=1;i<=n;i++){
+			sum+=i;
+		}
+		return sum;
+	}
+	console.log(getEverySum(10));
+	//求m-n数字之间的和
+	function getEverySum2(m,n){
+		var sum=0;
+		for(var i=m;i<=n;i++){
+			sum+=i;
+		}
+		return sum;
+	}
+	console.log(getEverySum2(1,10));
+	//圆的面积
+	function getS(r){
+		return Math.PI*r*r;
+	}
+	console.log(getS(10));
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

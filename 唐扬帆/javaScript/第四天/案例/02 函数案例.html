@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+	//两个数中的最大值
+	function getMax(num1,num2){
+		return num1>num2? num1:num2;
+	}
+	var num1=10, num2=20, num3=30;//这里面的num1不是函数中的num1只是名字一样，值一样，它们是两个变量
+	console.log(getMax(num1,num2));
+	//三个数中的最大值
+	function getThreeMax(num1,num2,num3){
+		if(num1<num2){
+			num1=num2;
+		}
+		if(num1<num3){
+			num1=num3;
+		}
+		return num1;
+	}
+	console.log(getThreeMax(num1,num2,num3));
+	//判断一个数是否为素数
+	function isPrimeNumber(num){
+		for(var i=2;i<num;i++){
+			if(num%i==0){
+				return false;
+			}
+		}
+		return true;
+	}
+	var num=parseInt(prompt("请输入一个数"));
+	var result=isPrimeNumber(num);
+	if(result){
+		console.log("这个数是素数");
+	}else {
+		console.log("这个数不是素数");
+	}
+	</script>
+</head>
+<body>
+</body>
+</html>
