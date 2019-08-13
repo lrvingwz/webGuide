@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		function Person(name,age) {
+			this.name=name;
+			this.age=age;
+			this.sayHi=function(){
+				console.log("我是"+this.name+"年龄是"+this.age);
+			};
+		}
+		var obj=new Person("小红",19);
+		obj.sayHi();
+		var obj1=new Person("小王",17);
+		obj1.sayHi();
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
