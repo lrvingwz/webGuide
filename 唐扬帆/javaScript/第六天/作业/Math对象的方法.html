@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+	//随机输出一种颜色
+	function getColor(){
+		var str="#"
+		var arr=["1","2","3","4","5","6","7","8","9","a","b","c","d","e","f"]
+	for(var i=0;i<6;i++){
+		var num=parseInt(Math.random()*16);
+		str+=arr[num];
+		}
+		return str;
+	}
+	console.log(getColor());
+
+	console.log(Math.abs('-1'));//  1  Math.abs(值)---绝对值
+
+	console.log(Math.ceil(12.2));//  13  向上取整
+
+	console.log(Math.floor(12.2));//   12  向下取整
+
+	console.log(Math.fround(12));//  12
+	console.log(Math.fround(12.1));// 12.000.. 转换成离它最近的单精度数字
+
+	console.log(Math.max(1,2,3,4,8,2,8,6,));// 8  一组数字中取最大值
+
+	console.log(Math.min(1,2,3,4,8,2,8,6,));// 1  一组数字中取最小值
+
+	console.log(Math.pow(2,3));// 8  a的b次幂
+
+	console.log(Math.sqrt(36));//  6   开方
+
+	console.log(Math.random()*n);//  0-n之间取随机数不包含n
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

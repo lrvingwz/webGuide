@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+	//工资的数组[1500, 1200, 2000, 2100, 1800],把工资超过2000的删除
+	//.filter(函数)---返回的是数组中每一个元素都符合条件的元素，组成了一个新的数组
+	var arr=[1500,1200,2000,2100,1800];
+	var newArr=arr.filter(function(ele){// a为每个元素
+		return ele<2000;
+	})
+	console.log(newArr);
+
+	//编写一个方法去掉一个数组的重复元素
+	var arr1=[10,0,20,0,30,0,40,0,50];
+		var newArr1=arr1.filter(function(ele){
+			return ele!=0;//去掉0这个重复的元素
+		});
+		console.log(newArr1);
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+	//格式化后的日期和时间封装成一个函数
+	function getDate(dt){
+		var year=dt.getFullYear();
+		var month=dt.getMonth()+1;
+		var day=dt.getDate();
+		var hour=dt.getHours();
+		var minute=dt.getMinutes();
+		var second=dt.getSeconds();
+		month=month<10? "0"+month:month;
+		day=day<10? "0"+day:day;
+		hour=hour<10? "0"+hour:hour;
+		minute=minute<10? "0"+minute:minute;
+		second=second<10? "0"+second:second;
+		return year+"年"+month+"月"+day+"号"+hour+"时"+minute+"分"+second+"秒";
+	}
+	var dt=new Date();
+	console.log(getDate(dt));
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
