@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>乁( ˙ ω˙乁)</title>
+</head>
+<body>
+<script>
+    function f3(){
+        var num=10;
+        num++;
+        return num;
+    }
+    console.log(f3());
+    console.log(f3());
+    console.log(f3());
+    function f1(){
+        var num=10;
+        return function f2(){
+            num++;
+            console.log(num);
+        }
+    }
+    var ff=f1();
+    ff();
+    ff();
+    ff();
+</script>
+</body>
+</html>
