@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        body {
+            background: #ccc;
+        }
+
+        label {
+            width: 40px;
+            display: inline-block;
+        }
+
+        span {
+            color: red;
+        }
+
+        .container {
+            margin: 100px auto;
+            width: 400px;
+            padding: 50px;
+            line-height: 40px;
+            border: 1px solid #999;
+            background: #efefef;
+        }
+
+        span {
+            margin-left: 30px;
+            font-size: 12px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+<div class="container" id="dv">
+    <label for="qq">Q Q</label><input type="text" id="qq"><span></span><br/>
+    <label>手机</label><input type="text" id="phone"><span></span><br/>
+    <label>邮箱</label><input type="text" id="e-mail"><span></span><br/>
+    <label>座机</label><input type="text" id="telephone"><span></span><br/>
+    <label>姓名</label><input type="text" id="fullName"><span></span><br/>
+</div>
+<script src="../js/common.js"></script>
+<script>
+    var qq=my$("qq");
+    var phone=my$("phone");
+    var email=my$("e-mail");
+    var telephone=my$("telephone");
+    var fullName=my$("fullName");
+
+    function effector(ele,n){
+        ele.onblur=function(){
+            if(n.test(ele.value)){
+                ele.nextSibling.style.color="green";
+                ele.nextSibling.innerHTML="*输入正确*";
+            }else{
+                ele.nextSibling.style.color="red";
+                ele.nextSibling.innerHTML="*输入错误*";
+            }
+        };
+
+    }
+    effector(qq,/^[1-9][0-9]{4,9}$/);
+    effector(telephone,/^[0-9]{3,4}[-][0-9]{8}$/);
+    effector(email,/^[0-9a-zA-Z_.-]+@[0-9a-zA-Z_-]+([.][a-zA-Z]+){1,2}$/);
+    effector(phone,/^[1][0-9]{10}$/);
+    effector(fullName,/^[\u4e00-\u9fa5]{2,6}$/);
+</script>
+
+</body>
+</html>

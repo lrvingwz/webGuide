@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>乁( ˙ ω˙乁)</title>
+    <style>
+        div{
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+<input type="text" id="txt"/><br/>
+<div>
+    <span id="warning"></span>
+</div>
+<script>
+    function my$(str){
+        return document.getElementById(str);
+    }
+
+
+    var email=my$("txt");
+    var warn=my$("warning");
+    email.onblur=effector;
+
+    function  effector(){
+        var rule=/^[0-9a-zA-Z_.-]+@[0-9a-zA-Z_-]+([.][a-zA-Z]){1,2}$/;
+        if(rule.test(this.value)){
+            warn.style.color="yellowgreen";
+            warn.innerHTML="输入正确";
+        }else{
+            warn.style.color="red";
+            warn.innerHTML="输入错误";
+        }
+    }
+
+
+</script>
+</body>
+</html>
