@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>乁( ˙ ω˙乁)</title>
+    <style>
+        .map{
+            width: 320px;
+            height: 568px;
+            position: relative;
+            overflow: hidden;
+            margin: auto;
+        }
+        .bg{
+            position: absolute;
+            bottom: -568px;
+            left: 0;
+            width: 320px;
+            height: 1136px;
+            background: url("image/background_1.png") repeat-y;
+        }
+    </style>
+
+    <script src="js/common.js"></script>
+</head>
+<body>
+<div id="map" class="map">
+</div>
+<script>
+    //子弹
+    (function () {
+        function Bullet(width,height,backGround){
+            this.width=width;
+            this.height=height;
+            this.background=backGround;
+        }
+        window.Bullet=Bullet;
+    }());
+    //敌方飞机
+    (function () {
+
+    }());
+    //我方飞机
+    (function () {
+        function Plane(width,height,backGround,death,map){
+            this.width=width;
+            this.height=height;
+            this.background=backGround;
+            this.map=map;
+            this.deathGIF=death;
+        }
+        Plane.prototype.init= function () {
+          var div=document.createElement("div");
+            div.style.position="absolute";
+            div.style.left=(this.map.offsetWidth-this.width)/2+"px";
+            div.style.top=this.map.offsetHeight-this.height+"px";
+            div.style.width=this.width+"px";
+            div.style.height=this.height+"px";
+            div.style.background=this.background;
+            div.style.zIndex=10;
+            this.map.appendChild(div);
+            this.element=div;
+        };
+        Plane.prototype.remove= function () {
+          this.map.removeChild(this.element);
+          this.element="";
+        };
+        //射击行为
+        Plane.prototype.shoot= function () {
+//            var bullets=[];
+            var that=this;
+            this.shootTId=setInterval(function(){
+                var a=new Bullet(6,14,"url('image/bullet1.png') no-repeat");
+                var div=document.createElement("div");
+                div.style.position="absolute";
+                div.style.left=parseInt(this.element.style.left)+this.width/2- a.width/2+"px";
+                div.style.top=parseInt(this.element.style.top)- a.height+"px";
+                div.style.width= a.width+"px";
+                div.style.height= a.height+"px";
+                div.style.background= a.background;
+                this.map.appendChild(div);
+                a.element=div;
+                uniformChangeB(a.element,"top",0,10, a.height);
+                bullets.push(a);
+            }.bind(this),100);
+            function uniformChangeB(ele,attr,target,speed,astep,foe){
+                var t=parseInt(ele.style.top);
+                var l=parseInt(ele.style.left);
+                var T=parseInt(foe.style.top);
+                var L=parseInt(foe.style.left);
+                var w=ele.offsetWidth;
+                var h=ele.offsetHeight;
+                var W=foe.offsetWidth;
+                var H=foe.offsetHeight;
+                if(t<T+H&&t>T-h)
+
+
+
+
+                clearInterval(ele.timeId);
+                ele.timeId=setInterval(function(){
+                    var current=parseInt(getStyle(ele,attr));
+                    var step=astep;
+                    step=(target-current)>0?step:-step;
+                    if(Math.abs(target-current)<=Math.abs(step)){
+                        current=target;
+                    }else{
+                        current+=step;
+                    }
+                    ele.style[attr]=current+"px";
+                    if(current==target){
+                        clearInterval(ele.timeId);
+                        ele.parentNode.removeChild(ele);
+
+                    }
+                },speed);
+            }
+        };
+        Plane.prototype.move= function () {
+          document.onmousemove=document.onmousemove==null?function (event) {
+              var e = event || window.event;
+              var scrollX = document.documentElement.scrollLeft || document.body.scrollLeft;
+              var scrollY = document.documentElement.scrollTop || document.body.scrollTop;
+              var x = e.pageX || e.clientX + scrollX;
+              var y = e.pageY || e.clientY + scrollY;
+              var a=x-getElementPageLeft(this.map)-this.width/2;
+              var b=y-getElementPageTop(this.map)-this.height/2;
+              var aMax=this.map.offsetWidth-(this.width+6)/2;
+              var aMin=-(this.width-6)/2;
+              var bMax=this.map.offsetHeight-this.height/2;
+              var bMin=-this.height/2;
+              if(a<aMin){
+                  this.element.style.left=aMin+"px";
+              }else if(a>aMax){
+                  this.element.style.left=aMax+"px";
+              }else{
+                  this.element.style.left=a+"px";
+              }
+              if(b<bMin){
+                  this.element.style.top=bMin+"px";
+              }else if(b>bMax){
+                  this.element.style.top=bMax+"px";
+              }else{
+                  this.element.style.top=b+"px";
+              }
+          }.bind(this):null;
+        };
+        Plane.prototype.death= function () {
+          clearInterval(this.shootTId);
+            this.move();
+            this.element.style.backgroundImage="url(image/"+this.deathGIF+".gif)";
+        };
+        window.Plane=Plane;
+    }());
+    //背景
+    (function () {
+        function Bg(backGround,map){
+            this.width=map.offsetWidth;
+            this.height=map.offsetHeight*2;
+            this.backGround=backGround;
+            this.map=map;
+        }
+        Bg.prototype.init= function () {
+            var div=document.createElement("div");
+            div.style.position="absolute";
+            div.style.left=0;
+            div.style.bottom=-this.height/2+"px";
+            div.style.width=this.width+"px";
+            div.style.height=this.height+"px";
+            div.style.background=this.backGround;
+            div.style.zIndex=0;
+            this.map.appendChild(div);
+            this.element=div;
+        };
+        Bg.prototype.move= function () {
+            this.timeId=setInterval(function () {
+                var bgB=parseInt(this.element.style.bottom);
+                bgB++;
+                this.element.style.bottom=bgB+"px";
+                if(bgB==0){
+                    bgB=-this.height/2;
+                }
+            }.bind(this),40);
+        };
+        Bg.prototype.stop= function () {
+          clearInterval(this.timeId);
+          this.element.style.bottom=-this.height/2+"px";
+        };
+        window.Bg=Bg;
+    }());
+//    var bg=new Bg("url('image/background_1.png') repeat-y",my$("map"));
+//    bg.init();
+//    bg.move();
+//    bg.stop();
+    var plane=new Plane(66,80,"url('image/my.gif') no-repeat","bz",my$("map"));
+    plane.init();
+    plane.move();
+    plane.shoot();
+
+    // 获取元素在页面上的绝对位置
+    function getElementPageLeft(element){
+        var actualLeft=element.offsetLeft;
+        var parent=element.offsetParent;
+        while(parent!=null){
+            actualLeft+=parent.offsetLeft+(parent.offsetWidth-parent.clientWidth)/2;
+            parent=parent.offsetParent;
+        }
+        return actualLeft;
+    }
+
+    function getElementPageTop(element){
+        var actualTop=element.offsetTop;
+        var parent=element.offsetParent;
+        while(parent!=null){
+            actualTop+=parent.offsetTop+(parent.offsetHeight-parent.clientHeight)/2;
+            parent=parent.offsetParent;
+        }
+        return actualTop;
+    }
+
+    //单一属性值变化
+    function uniformChange(ele,attr,target,speed,astep){
+        clearInterval(ele.timeId);
+        ele.timeId=setInterval(function(){
+            var current=parseInt(getStyle(ele,attr));
+            var step=astep;
+            step=(target-current)>0?step:-step;
+            if(Math.abs(target-current)<=Math.abs(step)){
+                current=target;
+            }else{
+                current+=step;
+            }
+            ele.style[attr]=current+"px";
+            if(current==target){
+                clearInterval(ele.timeId);
+                ele.parentNode.removeChild(ele);
+            }
+        },speed);
+    }
+</script>
+</body>
+</html>
