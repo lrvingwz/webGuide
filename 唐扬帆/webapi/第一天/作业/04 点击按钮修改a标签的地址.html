@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="button" value="修改" id="btn">
+	<a id="ak" href="https://www.hao123.com">hao123</a>
+	<script src="common.js"></script>
+	<script>
+	//根据id获取按钮，为按钮注册点击事件，添加事件处理函数
+		my$("btn").onclick=function(){
+			//根据id获取a标签，设置href的属性
+			my$("ak").href="https://www.baidu.com";
+			//根据id获取a标签，设置热点文字
+			my$("ak").innerText="百度";
+		};
+	</script>
+</body>
+</html>

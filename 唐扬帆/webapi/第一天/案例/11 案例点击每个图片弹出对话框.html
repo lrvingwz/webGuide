@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<img src="images/1.jpg" alt="">
+	<img src="images/2.jpg" alt="">
+	<img src="images/3.jpg" alt="">
+	<script>
+		//根据标签的名字获取图片标签，分别注册点击事件
+		var imgObjs=document.getElementsByTagName("img");
+		for(var i=0;i<imgObjs.length;i++){
+			//添加事件处理函数
+			imgObjs[i].onclick=function(){
+				alert("被点了");
+				this.width="300";
+			};
+		}
+	</script>
+</body>
+</html>

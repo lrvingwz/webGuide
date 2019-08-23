@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+	//点击操作：-----事件：就是一件事，有触发响应和事件源
+	//按钮被点击，弹出对话框
+	//按钮--->事件源
+	//点击--->时间名字
+	//被点--->触发了
+	//弹框--->响应了
+	</script>
+</head>
+<body>
+	<!-- 最终结果：JS域和html分离 -->
+
+	<!-- 版本一：html中嵌入了JS的代码，不方便后期的维护-->
+	<!-- html代码，点击按钮弹出对话框，对话框：alert（）===>JS的代码 -->
+	<input type="button" value="版本一" onclick="alert('被点击了')">
+
+	<!-- 版本二: JS代码很多，但是没有分离惠特米勒和JS-->
+	<script>
+	function f1(){
+		alert("这是一个文本");
+	}
+	</script>
+	<input type="button" value="版本二" onclick="f1()">
+
+	<!-- 版本三开始分离JS和html -->
+	<!-- id属性中存储的值是唯一的 -->
+	<!-- 从文档中找到id值为btn的这个元素 -->
+	<input type="button" value="版本三" id="btn">
+	<script>
+	function f2(){
+		alert("分离html和JS代码");
+	}
+	function f2(){
+		alert("虽然代码分离了，但是会层叠掉前面的代码");
+	}
+	//document，getElementById("id属性的值");===>返回的是一个元素对象
+	//根据id获取这个元素
+	var btnObj=document.getElementById("btn");
+	//为按钮注册点击事件
+	btnObj.onclick=f2;//f2不加括号
+	</script>
+
+	<!-- 最终的版本 -->
+	<input type="button" value="最终版" id="btn1" />
+	<script>
+	//根据id属性的值从整个文档中获取这个元素
+	var btnObj1=document.getElementById("btn1");
+	// 为按钮注册点击事件
+	btn1.onclick=function(){
+		alert("终于完成了");
+	};
+	</script>
+</body>
+</html>

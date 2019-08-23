@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+		<style>
+			.cls{
+				background-color: black;
+			}
+		</style>
+</head>
+<body>
+	<input type="button" value="开/关灯" id="btn" />
+	<script src="commin.js"></script>
+	<script>
+	my$("btn").onclick=function(){
+		//获取body标签
+		//缺陷不能改变其他属性比如value
+		document.body.className=document.body.className!="cls"?"cls":" ";
+	}
+	</script>
+</body>
+</html>
