@@ -21,11 +21,75 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="plane.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="plane.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/0822飞机大战/plane.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.72202164">
-              <caret line="95" column="0" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
+            <state vertical-scroll-proportion="16.62069">
+              <caret line="79" column="13" selection-start-line="79" selection-start-column="13" selection-end-line="79" selection-end-column="13" />
+              <folding>
+                <element signature="e#4793#7102#0" expanded="false" />
+                <element signature="e#7343#7810#0" expanded="false" />
+                <element signature="e#7859#7938#0" expanded="false" />
+                <element signature="e#8241#8312#0" expanded="false" />
+                <element signature="e#9511#10802#0" expanded="false" />
+                <element signature="e#11082#12334#0" expanded="false" />
+                <element signature="e#12199#12305#0" expanded="false" />
+                <element signature="e#12527#12809#0" expanded="false" />
+                <element signature="e#12850#13129#0" expanded="false" />
+                <element signature="e#13200#13768#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="plane2.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/0822飞机大战/plane2.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.9855596">
+              <caret line="398" column="33" selection-start-line="398" selection-start-column="33" selection-end-line="398" selection-end-column="33" />
+              <folding>
+                <element signature="e#2246#3694#0" expanded="false" />
+                <element signature="e#10328#10770#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="common.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/common.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="131" column="42" selection-start-line="131" selection-start-column="42" selection-end-line="131" selection-end-column="42" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="plane.html" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/Documents/Tencent Files/765677689/FileRecv/plane/plane/plane.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-17.586206">
+              <caret line="25" column="30" selection-start-line="25" selection-start-column="30" selection-end-line="25" selection-end-column="30" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="plane.css" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/Documents/Tencent Files/765677689/FileRecv/plane/plane/css/plane.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="5" column="20" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="20" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="plane.js" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/Documents/Tencent Files/765677689/FileRecv/plane/plane/js/plane.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="131" column="24" selection-start-line="131" selection-start-column="24" selection-end-line="131" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -76,9 +140,11 @@
         <option value="$PROJECT_DIR$/0819/案例6 验证邮箱.html" />
         <option value="$PROJECT_DIR$/0819/案例8 验证表单.html" />
         <option value="$PROJECT_DIR$/0819/案例9 正则表达式其它方法的使用.html" />
-        <option value="$PROJECT_DIR$/0819/cs.html" />
         <option value="$PROJECT_DIR$/0822飞机大战/js/common.js" />
+        <option value="$PROJECT_DIR$/0819/cs.html" />
+        <option value="$PROJECT_DIR$/0819/仿 plane.html" />
         <option value="$PROJECT_DIR$/0822飞机大战/plane.html" />
+        <option value="$PROJECT_DIR$/0822飞机大战/plane2.html" />
       </list>
     </option>
   </component>
@@ -90,7 +156,8 @@
     <order />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-24" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
     <option name="width" value="1382" />
     <option name="height" value="744" />
   </component>
@@ -117,6 +184,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -162,11 +230,24 @@
               <option name="myItemId" value="05Js高级" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="0819" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="05Js高级" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="05Js高级" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -234,10 +315,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-24" y="0" width="1382" height="744" extended-state="0" />
-    <editor active="false" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.11160714" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -269,56 +350,15 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="4" />
+      <option name="time" value="12" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/0819/案例5 验证密码的强度.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="51" column="41" selection-start-line="51" selection-start-column="41" selection-end-line="51" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/0819/案例6 验证邮箱.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="27" column="68" selection-start-line="27" selection-start-column="68" selection-end-line="27" selection-end-column="68" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/0819/案例7 验证中文名.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="27" column="39" selection-start-line="27" selection-start-column="19" selection-end-line="27" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/0819/案例5 验证密码的强度.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="51" column="41" selection-start-line="51" selection-start-column="41" selection-end-line="51" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/0819/案例6 验证邮箱.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="27" column="68" selection-start-line="27" selection-start-column="68" selection-end-line="27" selection-end-column="68" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/0819/案例7 验证中文名.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="27" column="39" selection-start-line="27" selection-start-column="19" selection-end-line="27" selection-end-column="39" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -441,13 +481,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/0813/练习 贪吃蛇.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.12815884">
-          <caret line="178" column="65" selection-start-line="178" selection-start-column="65" selection-end-line="178" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/0817/案例1 原型指向的改变.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-1.6551725">
@@ -564,7 +597,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="27" column="68" selection-start-line="27" selection-start-column="68" selection-end-line="27" selection-end-column="68" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -586,7 +618,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="51" column="41" selection-start-line="51" selection-start-column="41" selection-end-line="51" selection-end-column="41" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -608,14 +639,77 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
-          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/0822飞机大战/js/common.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6981132">
+          <caret line="349" column="4" selection-start-line="349" selection-start-column="4" selection-end-line="349" selection-end-column="4" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/0819/cs.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.275862">
-          <caret line="3" column="31" selection-start-line="3" selection-start-column="31" selection-end-line="3" selection-end-column="31" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="11" column="11" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/0813/练习 贪吃蛇.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="19" column="16" selection-start-line="19" selection-start-column="16" selection-end-line="19" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/0819/仿 plane.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.84115523">
+          <caret line="30" column="16" selection-start-line="30" selection-start-column="16" selection-end-line="30" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Documents/Tencent Files/765677689/FileRecv/plane/plane/css/plane.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="5" column="20" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Documents/Tencent Files/765677689/FileRecv/plane/plane/js/plane.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="131" column="24" selection-start-line="131" selection-start-column="24" selection-end-line="131" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/0822飞机大战/plane.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="16.62069">
+          <caret line="79" column="13" selection-start-line="79" selection-start-column="13" selection-end-line="79" selection-end-column="13" />
+          <folding>
+            <element signature="e#4793#7102#0" expanded="false" />
+            <element signature="e#7343#7810#0" expanded="false" />
+            <element signature="e#7859#7938#0" expanded="false" />
+            <element signature="e#8241#8312#0" expanded="false" />
+            <element signature="e#9511#10802#0" expanded="false" />
+            <element signature="e#11082#12334#0" expanded="false" />
+            <element signature="e#12199#12305#0" expanded="false" />
+            <element signature="e#12527#12809#0" expanded="false" />
+            <element signature="e#12850#13129#0" expanded="false" />
+            <element signature="e#13200#13768#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Documents/Tencent Files/765677689/FileRecv/plane/plane/plane.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-17.586206">
+          <caret line="25" column="30" selection-start-line="25" selection-start-column="30" selection-end-line="25" selection-end-column="30" />
           <folding />
         </state>
       </provider>
@@ -628,19 +722,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/0822飞机大战/js/common.js">
+    <entry file="file://$PROJECT_DIR$/0822飞机大战/plane2.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6981132">
-          <caret line="349" column="4" selection-start-line="349" selection-start-column="4" selection-end-line="349" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/0822飞机大战/plane.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.72202164">
-          <caret line="95" column="0" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
-          <folding />
+        <state vertical-scroll-proportion="-0.9855596">
+          <caret line="398" column="33" selection-start-line="398" selection-start-column="33" selection-end-line="398" selection-end-column="33" />
+          <folding>
+            <element signature="e#2246#3694#0" expanded="false" />
+            <element signature="e#10328#10770#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

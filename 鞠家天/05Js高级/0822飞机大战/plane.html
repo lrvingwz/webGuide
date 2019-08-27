@@ -27,76 +27,62 @@
 <div id="map" class="map">
 </div>
 <script>
-    //子弹
+    //geme
     (function () {
-        function Bullet(width,height,backGround){
-            this.width=width;
-            this.height=height;
-            this.background=backGround;
+        function Game(map){
+            this.foe1=new Foe(34,24,"enemy1_fly_1",1,"xx",1);
+            this.foe2=new Foe(46,60,"enemy3_fly_1",5,"zz",2);
+            this.foe3=new Foe(110,164,"enemy2_fly_1",10,"dd",3);
+            this.plane=new Plane(66,80,"url('image/my.gif') no-repeat","bz");
+            this.bullet=new Bullet(6,14,"url('image/bullet1.png') no-repeat");
+            this.bg=new Bg("url('image/background_1.png') repeat-y",map);
         }
-        window.Bullet=Bullet;
+        window.Game=Game;
     }());
     //敌方飞机
     (function () {
-
-    }());
-    //我方飞机
-    (function () {
-        function Plane(width,height,backGround,death,map){
+        function Foe(width,height,backGround,health,deathImg,speed){
             this.width=width;
             this.height=height;
             this.background=backGround;
-            this.map=map;
-            this.deathGIF=death;
+            this.health=health;
+            this.deathImg=deathImg;
+            this.speed=speed;
+            this.arr=[];
         }
-        Plane.prototype.init= function () {
-          var div=document.createElement("div");
-            div.style.position="absolute";
-            div.style.left=(this.map.offsetWidth-this.width)/2+"px";
-            div.style.top=this.map.offsetHeight-this.height+"px";
+        Foe.prototype.init= function (map) {
+            var mW =map.offsetWidth;
+            var mH =map.offsetHeight;
+            var div=document.createElement("div");
             div.style.width=this.width+"px";
             div.style.height=this.height+"px";
-            div.style.background=this.background;
-            div.style.zIndex=10;
-            this.map.appendChild(div);
-            this.element=div;
+            var c=Math.floor(Math.random()*(mW-this.width));
+            var d=-Math.floor(Math.random()*mH)-this.height;
+            div.style.background="url(image/"+this.background+".png) no-repeat";
+            div.style.position="absolute";
+            div.style.left=c+"px";
+            div.style.top=d+"px";
+            div.health=this.health;
+            div.className="foePlane";
+            div.speed=this.speed;
+            div.fname=this.fname;
+            map.appendChild(div);
+            this.arr=map.getElementsByClassName("foePlane");
+            this.move(div,map);
+            return div;
         };
-        Plane.prototype.remove= function () {
-          this.map.removeChild(this.element);
-          this.element="";
-        };
-        //射击行为
-        Plane.prototype.shoot= function () {
-//            var bullets=[];
-            var that=this;
-            this.shootTId=setInterval(function(){
-                var a=new Bullet(6,14,"url('image/bullet1.png') no-repeat");
-                var div=document.createElement("div");
-                div.style.position="absolute";
-                div.style.left=parseInt(this.element.style.left)+this.width/2- a.width/2+"px";
-                div.style.top=parseInt(this.element.style.top)- a.height+"px";
-                div.style.width= a.width+"px";
-                div.style.height= a.height+"px";
-                div.style.background= a.background;
-                this.map.appendChild(div);
-                a.element=div;
-                uniformChangeB(a.element,"top",0,10, a.height);
-                bullets.push(a);
-            }.bind(this),100);
-            function uniformChangeB(ele,attr,target,speed,astep,foe){
-                var t=parseInt(ele.style.top);
-                var l=parseInt(ele.style.left);
-                var T=parseInt(foe.style.top);
-                var L=parseInt(foe.style.left);
-                var w=ele.offsetWidth;
-                var h=ele.offsetHeight;
-                var W=foe.offsetWidth;
-                var H=foe.offsetHeight;
-                if(t<T+H&&t>T-h)
-
-
-
-
+        Foe.prototype.move= function (ele,map,speedLevel) {
+            var b=ele.speed*20;
+            if(speedLevel){
+                uniformChangeC(ele,"top",map.offsetHeight,b,2,speedLevel);
+            }else{
+                uniformChangeC(ele,"top",map.offsetHeight,b,2);
+            }
+            var reInit=false;
+            var f=this;
+            var map=map;
+            function uniformChangeC(ele,attr,target,speed,astep,speedLevel){
+                var s=speedLevel?(speed+speedLevel*(speed*1/5)):speed;
                 clearInterval(ele.timeId);
                 ele.timeId=setInterval(function(){
                     var current=parseInt(getStyle(ele,attr));
@@ -111,23 +97,173 @@
                     if(current==target){
                         clearInterval(ele.timeId);
                         ele.parentNode.removeChild(ele);
+                        reInit=true;
+                    }
+                    if(reInit){
+                        f.move(f.init(map),map);
+                        reInit=false;
+                    }
+                },s);
+            }
+        };
+        Foe.prototype.death= function (ele,map){
+            var ele=ele;
+            for(var i=0;i<this.arr.length;i++){
+                this.arr.pop();
+            }
+            ele.style.backgroundImage="url(image/"+ele.deathImg+".gif)";
+            clearInterval(ele.timeId);
+              var timeOutId=setTimeout(function () {
+                  var mW =map.offsetWidth;
+                  var mH =map.offsetHeight;
+                  var c=Math.floor(Math.random()*(mW-ele.offsetWidth));
+                  var d=-Math.floor(Math.random()*mH)-ele.offsetHeight;
+                  ele.style.left=c+"px";
+                  ele.style.top=d+"px";
+                  this.move(ele,map);
+                  clearTimeout(timeOutId);
+              }.bind(this),3000*ele.speed);
+        };
+        Foe.prototype.getHurt= function (ele) {
+            if(ele.health!=0){
+                ele.health=ele.health-1;
+            }else{
+                this.death(ele);
+            }
+        };
+        window.Foe=Foe;
+    }());
+    //子弹
+    (function () {
+        function Bullet(width,height,backGround){
+            this.width=width;
+            this.height=height;
+            this.background=backGround;
+        }
+        Bullet.prototype.init= function (map,plane,foeArr,foeObj) {
+          var div=document.createElement("div");
+            div.style.width=this.width+"px";
+            div.style.height=this.height+"px";
+            div.style.position="absolute";
+            div.style.background=this.background;
+            div.style.left=parseInt(plane.element.style.left)+plane.width/2-this.width/2+"px";
+            div.style.top=parseInt(plane.element.style.top)-this.height+"px";
+            map.appendChild(div);
+            //子弹飞行及碰撞判断
+            uniformChangeB(div,"top",0,10,14,foeArr);
+            function uniformChangeB(ele,attr,target,speed,astep,foe){
+                clearInterval(ele.timeId);
+                if(foe){
+                    for(var i=0;i<foe.length;i++){
+                        var t=parseInt(ele.style.top);
+                        var l=parseInt(ele.style.left);
+                        var T=parseInt(foe[i].style.top);
+                        var L=parseInt(foe[i].style.left);
+                        var w=ele.offsetWidth;
+                        var h=ele.offsetHeight;
+                        var W=foe[i].offsetWidth;
+                        var H=foe[i].offsetHeight;
+                        if(t<T+H&&t>T-h&&l<L+W&&l>L-w){
+                            clearInterval(ele.timeId);
+                            ele.parentNode.removeChild(ele);
 
+                        }
+                    }
+                }
+                ele.timeId=setInterval(function(){
+                    var current=parseInt(getStyle(ele,attr));
+                    var step=astep;
+                    step=(target-current)>0?step:-step;
+                    if(Math.abs(target-current)<=Math.abs(step)){
+                        current=target;
+                    }else{
+                        current+=step;
+                    }
+                    ele.style[attr]=current+"px";
+                    if(current==target){
+                        clearInterval(ele.timeId);
+                        ele.parentNode.removeChild(ele);
                     }
                 },speed);
             }
         };
-        Plane.prototype.move= function () {
+        window.Bullet=Bullet;
+    }());
+    //我方飞机
+    (function () {
+        function Plane(width,height,backGround){
+            this.width=width;
+            this.height=height;
+            this.background=backGround;
+        }
+        Plane.prototype.init= function (map) {
+          var div=document.createElement("div");
+            div.style.position="absolute";
+            div.style.left=(map.offsetWidth-this.width)/2+"px";
+            div.style.top=map.offsetHeight-this.height+"px";
+            div.style.width=this.width+"px";
+            div.style.height=this.height+"px";
+            div.style.background=this.background;
+            div.style.zIndex=10;
+            map.appendChild(div);
+            this.element=div;
+        };
+        Plane.prototype.remove= function (map) {
+          map.removeChild(this.element);
+          this.element="";
+        };
+        //射击行为
+        Plane.prototype.shoot= function (bulletObj,map,foe) {
+            var bullet=bulletObj;
+            var map=map;
+            var that=this;
+            var foe=foe;
+            this.shootTId=setInterval(function(){
+                bullet.init(map,that,foe);
+            },100);
+//            function uniformChangeB(ele,attr,target,speed,astep,foe){
+//                var t=parseInt(ele.style.top);
+//                var l=parseInt(ele.style.left);
+//                var T=parseInt(foe.style.top);
+//                var L=parseInt(foe.style.left);
+//                var w=ele.offsetWidth;
+//                var h=ele.offsetHeight;
+//                var W=foe.offsetWidth;
+//                var H=foe.offsetHeight;
+//                if(t<T+H&&t>T-h)
+//
+//                clearInterval(ele.timeId);
+//                ele.timeId=setInterval(function(){
+//                    var current=parseInt(getStyle(ele,attr));
+//                    var step=astep;
+//                    step=(target-current)>0?step:-step;
+//                    if(Math.abs(target-current)<=Math.abs(step)){
+//                        current=target;
+//                    }else{
+//                        current+=step;
+//                    }
+//                    ele.style[attr]=current+"px";
+//                    if(current==target){
+//                        clearInterval(ele.timeId);
+//                        ele.parentNode.removeChild(ele);
+//
+//                    }
+//                },speed);
+//            }
+        };
+        Plane.prototype.move= function (map) {
+            var map=map;
           document.onmousemove=document.onmousemove==null?function (event) {
               var e = event || window.event;
               var scrollX = document.documentElement.scrollLeft || document.body.scrollLeft;
               var scrollY = document.documentElement.scrollTop || document.body.scrollTop;
               var x = e.pageX || e.clientX + scrollX;
               var y = e.pageY || e.clientY + scrollY;
-              var a=x-getElementPageLeft(this.map)-this.width/2;
-              var b=y-getElementPageTop(this.map)-this.height/2;
-              var aMax=this.map.offsetWidth-(this.width+6)/2;
+              var a=x-getElementPageLeft(map)-this.width/2;
+              var b=y-getElementPageTop(map)-this.height/2;
+              var aMax=map.offsetWidth-(this.width+6)/2;
               var aMin=-(this.width-6)/2;
-              var bMax=this.map.offsetHeight-this.height/2;
+              var bMax=map.offsetHeight-this.height/2;
               var bMin=-this.height/2;
               if(a<aMin){
                   this.element.style.left=aMin+"px";
@@ -145,10 +281,10 @@
               }
           }.bind(this):null;
         };
-        Plane.prototype.death= function () {
+        Plane.prototype.death= function (deathImg,map) {
           clearInterval(this.shootTId);
-            this.move();
-            this.element.style.backgroundImage="url(image/"+this.deathGIF+".gif)";
+            this.move(map);
+            this.element.style.backgroundImage="url(image/"+deathImg+".gif)";
         };
         window.Plane=Plane;
     }());
@@ -179,6 +315,7 @@
                 this.element.style.bottom=bgB+"px";
                 if(bgB==0){
                     bgB=-this.height/2;
+                    this.element.style.bottom=bgB+"px";
                 }
             }.bind(this),40);
         };
@@ -192,10 +329,7 @@
 //    bg.init();
 //    bg.move();
 //    bg.stop();
-    var plane=new Plane(66,80,"url('image/my.gif') no-repeat","bz",my$("map"));
-    plane.init();
-    plane.move();
-    plane.shoot();
+
 
     // 获取元素在页面上的绝对位置
     function getElementPageLeft(element){
@@ -237,6 +371,22 @@
             }
         },speed);
     }
+</script>
+<script>
+    var g=new Game(my$("map"));
+    g.bg.init();
+    g.bg.move();
+    g.foe1.init(my$("map"));
+    g.foe1.init(my$("map"));
+    g.foe1.init(my$("map"));
+    g.foe1.init(my$("map"));
+    g.foe1.init(my$("map"));
+    g.foe2.init(my$("map"));
+    g.foe3.init(my$("map"));
+    g.plane.init(my$("map"));
+    g.plane.move(my$("map"));
+    var foearr=document.getElementsByClassName("foePlane");
+    g.plane.shoot(g.bullet,my$("map"),foearr);
 </script>
 </body>
 </html>
