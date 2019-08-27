@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		ul{
+			list-style: none;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<ul>
+		<li score="60">one</li>
+		<li score="70">two</li>
+		<li score="80">three</li>
+		<li score="90">four</li>
+		<li score="100">five</li>
+	</ul>
+	<script src="common.js"></script>
+	<script>
+	//在html标签中添加的自定义属性，如果想要获取这个属性的值，需要使用getAttribute（"自定义属性的名字"）才能获取这个属性的值
+	var list=document.getElementsByTagName("li");
+	for(var i=0;i<list.length;i++){
+		list[i].onclick=function(){
+			//alert(this.score);
+			alert(this.getAttribute("score"));
+		};
+	}
+	</script>
+</body>
+</html>

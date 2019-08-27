@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		input{
+			color: #ccc;
+		}
+	</style>
+</head>
+<body>
+	<input type="text" value="请输入搜索内容" id="btn">
+	<script src="common.js"></script>
+	<script>
+	//注册焦点事件
+	my$("btn").onfocus=function(){
+		//判断
+		if(this.value=="请输入搜索内容"){
+			this.value="";
+			this.style.color="black";
+		}
+	};
+	my$("btn").onblur=function(){
+		//判断
+		if(this.value==""){
+			this.value="请输入搜索内容";
+			this.style.color="#ccc";
+		}
+	};
+	</script>
+</body>
+</html>

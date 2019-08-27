@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div{
+			width: 200px;
+			height: 50px;
+			background-color: blue;
+		}
+		/*.cls={
+			background-color: yellow;
+		}*/
+	</style>
+</head>
+<body>
+
+	<input type="button" value="显示" id="btn">
+	<p class="cls">文本</p>
+	<p>文本</p>
+	<span class="cls">>文本</span><br />
+	<span>文本</span><br />
+	<div>文本</div>
+	<div class="cls">>文本</div>
+	<script src="common.js"></script>
+	<script>
+	//根据类样式的名字获取元素，返回的是一个伪数组，里面保存了多个DOM元素
+		my$("btn").onclick=function(){
+			var objs=document.getElementsByClassName("cls");
+			for(var i=0;i<objs.length;i++){
+				objs[i].style.backgroundColor="yellow";
+			}
+		};
+	</script>
+</body>
+</html>
