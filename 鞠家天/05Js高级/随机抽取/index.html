@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>乁( ˙ ω˙乁)</title>
+    <link rel="stylesheet" href="css/normalize.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
+    <script src="../js/common.js"></script>
+</head>
+<body>
+<header>⭐乁( ˙ ω˙乁)⭐</header>
+<div class="main" id="main">
+    <div class="main-l-1" id="itemBox"></div>
+    <div class="main-l-2">
+        <ul>
+            <li><input type="radio" name="itemnum" value="1" checked/> 随机选择1个</li>
+            <li><input type="radio" name="itemnum" value="3"/> 随机选择3个</li>
+            <li><input type="radio" name="itemnum" value="5"/> 随机选择5个</li>
+            <li><input type="button" value="开始/暂停" id="btn"/></li>
+        </ul>
+    </div>
+</div>
+<script>
+    var count = 1;
+    var inputs = document.getElementsByTagName("input");
+    var header = document.getElementsByTagName("header")[0];
+    var itemBox = my$("itemBox");
+    var btn = my$("btn");
+    var database = ["网页", "覆盖", "剧院", "二分", "玉国夫人", "实打实", "孙菲菲", "输出", "爱护他人", "兔鳄", "棉混纺", "普热夫", "评论人", "巧爷", "欧特", "造成行"];
+    (function () {
+        function Item(name) {
+            this.name = name;
+            this.element = null;
+        }
+
+        Item.prototype.init = function (ele, classN) {
+            var div = document.createElement("div");
+            div.className = classN;
+            div.innerHTML = this.name;
+            this.element = div;
+            this.isChecked = false;
+            ele.appendChild(div);
+        };
+        Item.prototype.changeColor = function () {
+            var a = Math.floor(Math.random() * 256);
+            var b = Math.floor(Math.random() * 256);
+            var c = Math.floor(Math.random() * 256);
+            this.element.style.backgroundColor = "rgb(" + a + "," + b + "," + c + ")";
+        };
+        window.Item = Item;
+    }());
+    (function () {
+        function RandomDraw() {
+            this.items = [];
+            this.start = false;
+            this.checkedItems = [];
+        }
+
+        RandomDraw.prototype.createItem = function (arr) {
+            for (var i = 0; i < arr.length; i++) {
+                this.items.push(new Item(arr[i]));
+            }
+        };
+        RandomDraw.prototype.output = function (ele) {
+            var str = "";
+            for (var i = 0; i < this.checkedItems.length; i++) {
+                str += "⭐" + this.checkedItems[i];
+            }
+            ele.innerHTML = str;
+            this.checkedItems.splice(0,this.checkedItems.length);
+        };
+        RandomDraw.prototype.check = function (num, outputBox) {
+            var temp=num;
+            var num = num;
+            var outputBox = outputBox;
+            if (this.start) {
+                if (this.timeId) {
+                    clearInterval(this.timeId);
+                }
+                this.timeId = setInterval(function () {
+                    for (var i = 0; i < this.items.length; i++) {
+                        this.items[i].element.style = "";
+                        this.items[i].isChecked = false;
+                    }
+                    while (num > 0) {
+                        var x = Math.floor(Math.random() * this.items.length);
+                        while (this.items[x].isChecked) {
+                            x = Math.floor(Math.random() * this.items.length);
+                        }
+                        this.items[x].isChecked = true;
+                        this.items[x].changeColor();
+                        this.checkedItems.push(this.items[x].element.innerHTML);
+                        num--;
+                    }
+                    this.output(outputBox);
+                    num=temp;
+                }.bind(this), 100);
+            } else {
+                clearInterval(this.timeId);
+            }
+        };
+        window.RandomDraw = RandomDraw;
+    }());
+    var r = new RandomDraw();
+    r.createItem(database);
+    for(var i=0;i< r.items.length;i++){
+        r.items[i].init(itemBox,"items");
+    }
+    inputs[0].onclick = function () {
+        count = 1;
+    };
+    inputs[1].onclick = function () {
+        count = 3;
+    };
+    inputs[2].onclick = function () {
+        count = 5;
+    };
+    btn.onclick= function () {
+        r.start=!r.start;
+        r.check(count,header);
+    }
+</script>
+</body>
+</html>
