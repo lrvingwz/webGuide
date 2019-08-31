@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>乁( ˙ ω˙乁)</title>
+    <style>
+        .cls{
+            background-color: black;
+        }
+    </style>
+    <script src="../js/common.js"></script>
+</head>
+<body>
+<input type="button" value="关灯" id="btn"/>
+<script>
+    var bd=document.body;
+    var btn=my$("btn");
+//    btn.onclick=function(){
+//        if(this.value=="关灯"){
+//            this.value="开灯";
+//            bd.style.backgroundColor="black";
+//        }else{
+//            this.value="关灯";
+//            bd.style="";
+//        }
+//    }
+      btn.onclick=function(){
+          if(this.value=="关灯"){
+              this.value="开灯";
+              bd.className="cls";
+          }else{
+              this.value="关灯";
+              bd.className="";
+          }
+        }
+</script>
+</body>
+</html>
