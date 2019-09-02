@@ -87,6 +87,7 @@ section.wrap{
 .docCatalogue{
     margin-top: 20px;
 }
+
 .docCata-item{
     float: left;
     min-width: 60px;
@@ -109,6 +110,6 @@ section.wrap{
     display: none;
     padding: 20px;
     background-color: #fff;
-    margin-top: 40px;
+    margin: 40px 0;
 }
 /**/
