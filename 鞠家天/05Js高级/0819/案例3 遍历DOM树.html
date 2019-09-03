@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>乁( ˙ ω˙乁)</title>
+</head>
+<body>
+<script>
+    var root=document.documentElement;
+    function outputChildren(root1,fn){
+//        fn(root1); 如果不注释 每次重新调用outputChildren都会输出一次当前元素的名字
+        var childrens=root1.children;
+        getChildren(childrens,fn);
+    }
+    function getChildren(n,fn){
+        for(var i=0;i<n.length;i++){
+            var childd=n[i];
+            fn(childd);
+            childd.children&&outputChildren(childd,fn);
+        }
+    }
+    function outputName(n){
+        console.log("节点的名字为："+n.nodeName);
+    }
+    outputChildren(root,outputName);
+</script>
+</body>
+</html>

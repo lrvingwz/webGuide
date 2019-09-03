@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div{
+			width: 200px;
+			height: 200px;
+			background-color: skyblue;
+			float: left;
+			margin-left: 10px;
+			box-sizing: border-box;
+		}
+	</style>
+</head>
+<body>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<script src="common.js"></script>
+	<script>
+	var objs=document.getElementsByTagName("div");
+	for(var i=0;i<objs.length;i++){
+		//添加鼠标进入事件
+		objs[i].onmouseover=function(){
+			this.style.border="2px solid red";
+		};
+		//添加鼠标离开事件
+		objs[i].onmouseout=function(){
+			this.style.border="";
+		};
+	}
+	</script>
+</body>
+</html>

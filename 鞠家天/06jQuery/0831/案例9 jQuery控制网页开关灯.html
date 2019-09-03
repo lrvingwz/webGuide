@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>乁( ˙ ω˙乁)</title>
+    <style>
+        .cls{
+            background-color: black;
+        }
+    </style>
+    <script src="../js/common.js"></script>
+    <script src="../js/jquery-1.12.1.js"></script>
+    <script>
+        //案例10
+//        $(function () {
+//           $("#btn").click(function () {
+//               if($(this).val()=="关灯"){
+//                   $("body").css("backgroundColor","black");
+//                   $(this).val("开灯");
+//               }else{
+//                   $("body").css("backgroundColor","");
+//                   $(this).val("关灯");
+//               }
+//           });
+//        });
+        $(function () {
+            $("#btn").click(function () {
+                if($("body").hasClass("cls")){
+                    $("body").removeClass("cls");
+                    $("#btn").val("关灯");
+                }else{
+                    $("body").addClass("cls");
+                    $("#btn").val("开灯");
+                }
+            });
+        })
+    </script>
+</head>
+<body>
+<input type="button" value="关灯" id="btn"/>
+</body>
+</html>

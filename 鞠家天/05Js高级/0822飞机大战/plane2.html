@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>乁( ˙ ω˙乁)</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        #map{
+            width: 320px;
+            height: 568px;
+            margin: auto;
+            background: url("image/ks.png") no-repeat;
+            position: relative;
+            overflow: hidden;
+        }
+        #chengji{
+            display: none;
+            position: absolute;
+            left: 5px;
+            top: 5px;
+            font-size: 12px;
+            font-weight: bold;
+            color: #333;
+            z-index: 99;
+        }
+        #start{
+            position: absolute;
+            left: 50%;
+            bottom: 30px;
+            width: 120px;
+            height: 35px;
+            margin-left: -61px;
+            border: 1px solid #333333;
+            font-size: 20px;
+            line-height: 35px;
+            text-align: center;
+            background-color: white;
+            color: #333;
+            border-radius: 20px;
+        }
+        #restartbox{
+            display: none;
+            position: absolute;
+            left: 9px;
+            top: 150px;
+            width: 300px;
+            height: 120px;
+            z-index: 100;
+            background-color: white;
+            border: 1px solid #333;
+            border-radius: 20px;
+        }
+        #restartbox p{
+            font-size: 20px;
+            text-align: center;
+        }
+        #restartbox button{
+            display: block;
+            width: 120px;
+            height: 35px;
+            margin: auto;
+            outline: none;
+            border:1px solid #333333;
+            background-color: white;
+            border-radius: 20px;
+        }
+    </style>
+    <script src="js/common.js"></script>
+</head>
+<body>
+    <div id="map">
+        <div id="chengji">分数：0</div>
+        <button id="start">开 始 游 戏</button>
+        <div id="restartbox">
+            <p></p>
+            <button>重 新 开 始</button>
+        </div>
+    </div>
+    <script>
+        var map=my$("map");
+        var chengjiBox=my$("chengji");
+        var start=my$("start");
+        var restartbox=my$("restartbox");
+        var chengji=0;
+        //背景
+        (function () {
+            function Bg(backGround,map){
+                this.width=map.offsetWidth;
+                this.height=map.offsetHeight*2;
+                this.backGround=backGround;
+                this.map=map;
+            }
+            Bg.prototype.init= function () {
+                var div=document.createElement("div");
+                div.style.position="absolute";
+                div.style.left=0;
+                div.style.bottom=-this.height/2+"px";
+                div.style.width=this.width+"px";
+                div.style.height=this.height+"px";
+                div.style.background="url('image/"+this.backGround+".png')";
+                div.style.zIndex=0;
+                div.id="bg";
+                this.map.appendChild(div);
+                this.element=div;
+            };
+            Bg.prototype.move= function () {
+                this.timeId=setInterval(function () {
+                    var bgB=parseInt(this.element.style.bottom);
+                    bgB++;
+                    this.element.style.bottom=bgB+"px";
+                    if(bgB==0){
+                        bgB=-this.height/2;
+                        this.element.style.bottom=bgB+"px";
+                    }
+                }.bind(this),40);
+            };
+            Bg.prototype.stop= function () {
+                clearInterval(this.timeId);
+                this.element.style.bottom=-this.height/2+"px";
+            };
+            window.Bg=Bg;
+        }());
+        //我方飞机
+        (function () {
+            function Plane(width,height,backGround){
+                this.width=width;
+                this.height=height;
+                this.background=backGround;
+            }
+            Plane.prototype.init= function (map) {
+                var div=document.createElement("div");
+                div.style.position="absolute";
+                div.style.left=(map.offsetWidth-this.width)/2+"px";
+                div.style.top=map.offsetHeight-this.height+"px";
+                div.style.width=this.width+"px";
+                div.style.height=this.height+"px";
+                div.style.background="url('image/"+this.background+".gif') no-repeat";
+                div.style.zIndex=10;
+                map.appendChild(div);
+                this.element=div;
+            };
+            Plane.prototype.remove= function (map) {
+                map.removeChild(this.element);
+                this.element="";
+            };
+            //射击行为
+            Plane.prototype.shoot= function (game) {
+                var game=game;
+                this.shootTId=setInterval(function(){
+                    game.bullet.init(game.map,game);
+                },100);
+            };
+            Plane.prototype.move= function (map,game) {
+                var map=map;
+                var game=game;
+                document.onmousemove=function (event) {
+                    var e = event || window.event;
+                    var scrollX = document.documentElement.scrollLeft || document.body.scrollLeft;
+                    var scrollY = document.documentElement.scrollTop || document.body.scrollTop;
+                    var x = e.pageX || e.clientX + scrollX;
+                    var y = e.pageY || e.clientY + scrollY;
+                    var a=x-getElementPageLeft(map)-this.width/2;
+                    var b=y-getElementPageTop(map)-this.height/2;
+                    var aMax=map.offsetWidth-(this.width+6)/2;
+                    var aMin=-(this.width-6)/2;
+                    var bMax=map.offsetHeight-this.height/2;
+                    var bMin=-this.height/2;
+                    if(a<aMin){
+                        this.element.style.left=aMin+"px";
+                    }else if(a>aMax){
+                        this.element.style.left=aMax+"px";
+                    }else{
+                        this.element.style.left=a+"px";
+                    }
+                    if(b<bMin){
+                        this.element.style.top=bMin+"px";
+                    }else if(b>bMax){
+                        this.element.style.top=bMax+"px";
+                    }else{
+                        this.element.style.top=b+"px";
+                    }
+                }.bind(this);
+            };
+            Plane.prototype.death= function (deathImg,game) {
+                clearInterval(this.shootTId);
+                document.onmousemove=null;
+                this.element.style.backgroundImage="url('image/"+deathImg+".gif')";
+            };
+            window.Plane=Plane;
+        }());
+        //子弹
+        (function () {
+            function Bullet(width,height,backGround,power){
+                this.width=width;
+                this.height=height;
+                this.background=backGround;
+                this.power=power;
+            }
+            Bullet.prototype.init= function (map,game) {
+                var div=document.createElement("div");
+                div.style.width=this.width+"px";
+                div.style.height=this.height+"px";
+                div.style.position="absolute";
+                div.style.background="url('image/"+this.background+".png') no-repeat";
+                div.style.left=parseInt(game.plane.element.style.left)+game.plane.width/2-this.width/2+"px";
+                div.style.top=parseInt(game.plane.element.style.top)-this.height+"px";
+                div.className="bullet";
+                map.appendChild(div);
+                this.move(div,game);
+
+            };
+            Bullet.prototype.move= function (ele,game) {
+                var game=game;
+                uniformChangeB(ele,"top",0,10,this.height);
+                function uniformChangeB(ele,attr,target,speed,astep){
+                    clearInterval(ele.timeId);
+                    ele.timeId=setInterval(function(){
+                        var current=parseInt(getStyle(ele,attr));
+                        var step=astep;
+                        step=(target-current)>0?step:-step;
+                        if(Math.abs(target-current)<=Math.abs(step)){
+                            current=target;
+                        }else{
+                            current+=step;
+                        }
+                        ele.style[attr]=current+"px";
+                        if(current==target){
+                            clearInterval(ele.timeId);
+                            ele.parentNode.removeChild(ele);
+                        }
+                        game.bullet.hurt(game);
+                    },speed);
+                }
+            };
+            Bullet.prototype.hurt= function (game) {
+                var bullets=document.getElementsByClassName("bullet");
+                var foePlanes=document.getElementsByClassName("foeplane");
+                for(var i=0;i<bullets.length;i++){
+                    for(var j=0;j<foePlanes.length;j++){
+                        if(bullets[i]){
+                            var t=parseInt(bullets[i].style.top);
+                            var l=parseInt(bullets[i].style.left);
+                            var T=parseInt(foePlanes[j].style.top);
+                            var L=parseInt(foePlanes[j].style.left);
+                            var w=bullets[i].offsetWidth;
+                            var h=bullets[i].offsetHeight;
+                            var W=foePlanes[j].offsetWidth;
+                            var H=foePlanes[j].offsetHeight;
+                            if(t<T+H&&t>T-h&&l<L+W&&l>L-w){
+                                if(foePlanes[j].health>0){
+                                    foePlanes[j].health=foePlanes[j].health-this.power;
+                                    if(foePlanes[j].health<=0){
+                                        game.foe.death(foePlanes[j],game);
+                                    }
+                                    clearInterval(bullets[i].timeId);
+                                    bullets[i].parentNode.removeChild(bullets[i]);
+                                }
+                            }
+                        }
+                    }
+                }
+            };
+            window.Bullet=Bullet;
+        }());
+        //敌机属性
+        (function () {
+            function FoePlane(name,width,height,backGround,deathImg,health,speed,price){
+                this.name=name;
+                this.width=width;
+                this.height=height;
+                this.background=backGround;
+                this.health=health;
+                this.deathImg=deathImg;
+                this.speed=speed;
+                this.price=price;
+            }
+            window.FoePlane=FoePlane;
+        }());
+        //敌机动作
+        (function () {
+            function Foe(){
+                this.speedLevel=0;
+                this.upLevel=false;
+            }
+            Foe.prototype.init=function (obj,map){
+                var mW =map.offsetWidth;
+                var mH =map.offsetHeight;
+                var c=Math.floor(Math.random()*(mW-obj.width));
+                var d=-Math.floor(Math.random()*mH)-obj.height;
+                var div=document.createElement("div");
+                div.name=obj.name;
+                div.style.width=obj.width+"px";
+                div.style.height=obj.height+"px";
+                div.style.background="url('image/"+obj.background+".png')";
+                div.style.position="absolute";
+                div.style.left=c+"px";
+                div.style.top=d+"px";
+                div.health=obj.health;
+                div.className="foeplane";
+                div.diePlane=false;
+                map.appendChild(div);
+                return div;
+            };
+            Foe.prototype.move= function (obj,game) {
+                var speedLevel=this.speedLevel;
+                var upLevel=this.upLevel;
+                var speed=game.foePlane[obj.name].speed*20;
+                var game=game;
+                var obj=obj;
+                var that=this;
+                uniformChangeC(obj,"top",568);
+                function uniformChangeC(ele,attr,target){
+                    var s=upLevel?(speed-speedLevel*(speed*1/5)):speed;
+                    clearInterval(ele.timeId);
+                    ele.timeId=setInterval(function(){
+                        var news;
+                        if(chengji>2500){
+                            news=4;
+                        }else if(chengji>1200){
+                            news=3;
+                        }else if(chengji>500){
+                            news=2;
+                        }else if(chengji>100){
+                            news=1;
+                        }else{
+                            news=0;
+                        }
+                        if(news>speedLevel){
+                            that.upLevel=true;
+                            that.speedLevel=news;
+                            that.move(obj,game);
+                        }
+                        var current=parseInt(getStyle(ele,attr));
+                        var step=2;
+                        step=(target-current)>0?step:-step;
+                        if(Math.abs(target-current)<=Math.abs(step)){
+                            current=target;
+                        }else{
+                            current+=step;
+                        }
+                        ele.style[attr]=current+"px";
+                        if(current==target){
+                            var mW =map.offsetWidth;
+                            var mH =map.offsetHeight;
+                            var c=Math.floor(Math.random()*(mW-obj.offsetWidth));
+                            var d=-Math.floor(Math.random()*mH)-obj.offsetHeight;
+                            ele.health=game.foePlane[ele.name].health;
+                            ele.style.left=c+"px";
+                            ele.style.top=d+"px";
+                        }
+                        game.over();
+                    },s);
+                }
+            };
+            Foe.prototype.death= function (obj,game) {
+                var game=game;
+                var thePlane=game.foePlane[obj.name];
+                clearInterval(obj.timeId);
+                obj.style.backgroundImage="url('image/"+thePlane.deathImg+".gif')";
+                chengji+=thePlane.price;
+                chengjiBox.innerHTML="分数："+chengji;
+                var timeId2=setTimeout(function () {
+                    obj.parentNode.removeChild(obj);
+                    this.move(this.init(thePlane,game.map),game);
+                    clearTimeout(timeId2);
+                }.bind(this),300*thePlane.speed);
+            };
+            window.Foe=Foe;
+        }());
+        //游戏
+        (function () {
+            function Game(map){
+                this.map=map;
+                this.bg=new Bg("background_1",map);
+                this.foePlane={
+                    "sFoe":new FoePlane("sFoe",34,24,"enemy1_fly_1","xx",1,1,10),
+                    "mFoe":new FoePlane("mFoe",46,60,"enemy3_fly_1","zz",5,2,50),
+                    "lFoe":new FoePlane("lFoe",110,164,"enemy2_fly_1","dd",10,3,100)
+                };
+                this.foe=new Foe();
+                this.plane=new Plane(66,80,"my");
+                this.bullet=new Bullet(6,14,"bullet1",1);
+            }
+            Game.prototype.start= function () {
+                my$("map").innerHTML="<div id='chengji'>分数：0</div>" +
+                        "<button id='start'>开 始 游 戏</button>" +
+                        "<div id='restartbox'><p></p><button>重 新 开 始</button></div>";
+                chengji=0;
+                chengjiBox=my$("chengji");
+                start=my$("start");
+                restartbox=my$("restartbox");
+                start.style.display="none";
+                chengjiBox.style.display="block";
+                restartbox.style.display="none";
+                restartbox.children[1].onclick= function () {
+                    this.start();
+                }.bind(this);
+                this.bg.init();
+                this.bg.move();
+                this.plane.init(this.map);
+                this.plane.move(this.map,this);
+                this.foe.init(this.foePlane["sFoe"],this.map);
+                this.foe.init(this.foePlane["sFoe"],this.map);
+                this.foe.init(this.foePlane["sFoe"],this.map);
+                this.foe.init(this.foePlane["sFoe"],this.map);
+                this.foe.init(this.foePlane["sFoe"],this.map);
+                this.foe.init(this.foePlane["sFoe"],this.map);
+                this.foe.init(this.foePlane["mFoe"],this.map);
+                this.foe.init(this.foePlane["mFoe"],this.map);
+                this.foe.init(this.foePlane["lFoe"],this.map);
+                this.plane.shoot(this);
+                var foesss=document.getElementsByClassName("foeplane");
+                for(var i=0;i<foesss.length;i++){
+                    this.foe.move(foesss[i],this);
+                }
+            };
+            Game.prototype.over= function () {
+                var foePlane2=document.getElementsByClassName("foeplane");
+                for(var i=0;i<foePlane2.length;i++){
+                    if(foePlane2[i].health>0){
+                        var fPL=foePlane2[i].offsetLeft;
+                        var fPW=foePlane2[i].offsetWidth;
+                        var fPT=foePlane2[i].offsetTop;
+                        var fPH=foePlane2[i].offsetHeight;
+                        var mPL=this.plane.element.offsetLeft;
+                        var mPT=this.plane.element.offsetTop;
+                        if(mPL<fPL+fPW&&mPL>fPL-this.plane.width&&mPT<fPT+fPH&&mPT>fPT-this.plane.height){
+                            restartbox.style.display="block";
+                            restartbox.children[0].innerHTML=chengjiBox.innerHTML;
+                            chengjiBox.style.display="none";
+                            this.plane.death("bz",this.map);
+                            for(var j=0;j<foePlane2.length;j++){
+                                clearInterval(foePlane2[j].timeId);
+                            }
+                        }
+                    }
+                }
+            };
+            window.Game=Game;
+        }());
+    </script>
+    <script>
+        var g=new Game(my$("map"));
+        start.onclick= function () {
+            g.start();
+        };
+    </script>
+</body>
+</html>

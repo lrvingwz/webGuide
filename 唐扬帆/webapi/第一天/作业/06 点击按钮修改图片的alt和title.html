@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="button" value="修改" id="btn">
+	<img src="images/1.jpg" alt="呵呵" title="哈哈" id="im">
+	<script src="common.js"></script>
+	<script>	
+		//根据id获取按钮，注册点击事件，添加事件处理函数
+		my$("btn").onclick=function(){
+			my$("im").alt="one";
+			my$("im").title="one";
+		}
+	</script>
+</body>
+</html>

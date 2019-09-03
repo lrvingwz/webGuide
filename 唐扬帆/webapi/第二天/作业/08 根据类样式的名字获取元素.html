@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div{
+			width: 200px;
+			height: 100px;
+			background-color: blue;
+		}
+
+	</style>
+</head>
+<body>
+	<input type="button" value="按钮" id="btn">
+	<div class="cls">123</div>
+	<div>123</div>
+	<div class="cls">123</div>
+	<div>123</div>
+	<div class="cls">123</div>
+	<div>123</div>
+	<script src="common.js"></script>
+	<script>
+	my$("btn").onclick=function(){
+		var objs=document.getElementsByClassName("cls");
+		for(var i=0;i<objs.length;i++){
+			objs[i].style.backgroundColor="yellow";
+		}
+	};
+	</script>
+</body>
+</html>

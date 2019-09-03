@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>乁( ˙ ω˙乁)</title>
+</head>
+<body>
+<script>
+    var obj={};
+    function Videos(duration,dpi,describe){
+        this.duration=duration;
+        this.dpi=dpi;
+        this.describe=describe;
+    }
+    Videos.prototype.affect1= function () {
+        console.log("给人视觉冲击");
+    };
+    var videos=new Videos("50\"","1080X1920","lololololololo");
+    for(var key in videos){
+        obj[key]=videos[key];
+    }
+    console.log(obj.duration,obj.dpi,obj.describe);
+    obj.affect1();
+</script>
+</body>
+</html>

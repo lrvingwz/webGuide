@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+	//.length---字符串的长度
+	//.charAt(索引)---返回的值是索引位置的字符串，超出索引，结果为空字符串
+	var str="012345";
+	console.log(str.length);// 6
+	console.log(str.charAt(3));// 3
+
+	//String.fromCharCode(数字值，可以是多个参数)---返回的是ascll码对应的值
+	var str1=String.fromCharCode(83,79,83);// SOS
+	console.log(str1);
+
+	//.concat(字符串1，字符串2，...)；连接多个字符串，返回的是新的字符串
+	var str2="张三";
+	console.log(str2.concat("很","帅"));// 张三很帅
+
+	//.indexOf(要找的字符串，从某个位置开始找)，找到了输出该字符串的下标，未找到输出-1；
+	//.lastIndexOf(),与上面一样，只是从后往前数
+	//.replace("原来的字符串","新的字符串")用来替换字符串
+	var str3="我是一个帅哥帅";
+	//console.log(str3.indexOf("帅"));// 4
+	console.log(str3.indexOf("帅",5));// 6
+	console.log(str3.lastIndexOf("帅"));// 6
+	if(str3.indexOf("帅哥")!=-1){
+		str3=str3.replace("帅哥","丑逼");
+	}else {
+		console.log("不存在");
+	}
+	console.log(str3);
+
+	//.slice(开始的下标，结束的下标)从开始的下标开始提取，到结束的下标前一个结束，并返回这个提取后的字符串
+	var str4="如果有一天我帅了，请记住，我曾经更帅";
+	console.log(str4.slice(5,8));
+
+	//.split("要删除的字符串"，删除后留下了的个数)；切割字符串
+	var str5="one|two|three|four|five";
+	var arr=str5.split("|",4);
+	for(var i=0;i<arr.length;i++){
+		console.log(arr[i]);
+	}
+	console.log(arr);
+
+	//.substring(开始的下标，结束的下标)，返回截取后的字符串，不包含结束的下标的字符串
+	var str6="我真的帅呆了";
+	str6=str6.substring(3,5);
+	console.log(str6);
+
+	//.toLocaleLowerCase(),大写转小写
+	//.toLowerCase()也是转小写
+	var str7="HELLO";
+	// str7=str7.toLocaleLowerCase();
+	str7=str7.toLowerCase();
+	console.log(str7);
+
+	//.toLocaleUpperCase()转大写
+	//.toUpperCase()转大写
+	var str8="hello";
+	//str8=str8.toLocaleUpperCase();
+	str8=str8.toUpperCase();
+	console.log(str8);
+
+	//.trim()清除字符串两端的空格，字符串中间有空格不清除
+	var str9="   空力奇瓦   "
+	console.log(str9.trim());
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

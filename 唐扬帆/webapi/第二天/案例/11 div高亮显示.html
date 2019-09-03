@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div{
+			width: 200px;
+			height: 200px;
+			background-color: blue;
+			float: left;
+			margin-left: 10px;
+			box-sizing: border-box;
+		}
+	</style>
+</head>
+<body>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<script src="common.js"></script>
+	<script>
+	//获取所有的div
+	var dvObjs=document.getElementsByTagName("div");
+	for(var i=0;i<dvObjs.length;i++){
+		//为每个div添加鼠标进入的事件
+		dvObjs[i].onmouseover=function(){
+			this.style.border="2px solid red";
+		};
+		//为每个div添加鼠标离开的事件
+		dvObjs[i].onmouseout=function(){
+			this.style.border="";
+		};
+	}
+	</script>
+</body>
+</html>

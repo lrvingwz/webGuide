@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		//当前的时间
+		var dt=new Date();
+		console.log(dt);
+		//自己传入时间
+		var dt1=new Date("2019-08-15");
+		console.log(dt1);
+		//毫秒
+		var dt2=Date.now();
+		console.log(dt2);
+
+
+		//获取年份
+		console.log(dt.getFullYear());
+		//获取月份
+		console.log(dt.getMonth()+1);
+		//获取小时
+		console.log(dt.getHours());
+		//获取分钟
+		console.log(dt.getMinutes());
+		//获取秒
+		console.log(dt.getSeconds());
+		//获取星期
+		console.log(dt.getDay());
+		//日期（英文）
+		console.log(dt.toDateString());
+		//日期（数字格式）
+		console.log(dt.toLocaleDateString());
+		//时间（24小时制）
+		console.log(dt.toTimeString());
+		//时间（12小时制）
+		console.log(dt.toLocaleTimeString());
+		//毫秒
+		console.log(dt.valueOf());
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

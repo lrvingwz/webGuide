@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>乁( ˙ ω˙乁)</title>
+</head>
+<body>
+<div>这是div</div>
+<div>这是div</div>
+<div>这是div</div>
+<p>这是p</p>
+<p>这是p</p>
+<p>这是p</p>
+<script>
+    var divObjs=10;
+    var pObjs=20;
+    (function () {
+        function my$(str){
+            return document.getElementsByTagName(str);
+        }
+        var divObjs=my$("div");
+        var pObjs=my$("p");
+        for(var i=0;i<divObjs.length;i++){
+            divObjs[i].style.border="2px solid pink";
+        }
+        for(var i=0;i<pObjs.length;i++){
+            pObjs[i].style.border="2px solid pink";
+        }
+    }());
+    console.log(divObjs);
+    console.log(pObjs);
+</script>
+</body>
+</html>

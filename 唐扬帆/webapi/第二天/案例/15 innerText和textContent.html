@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div{
+			height: 200px;
+			width: 200px;
+			border: 1px solid red;
+		}
+	</style>
+</head>
+<body>
+	<input type="button" value="设置" id="btn">
+	<div id="dv">兼容成功</div>
+	<script src="common.js"></script>
+	<script>
+	//设置标签中的文本内容，使用textContent属性，谷歌，火狐支持IE8不支持
+	//设置标签中的文本内容，使用innerText属性，谷歌，火狐，IE8都支持
+	my$("btn").onclick=function(){
+		console.log(getInnerText(my$("dv")));
+		setInnerText(my$("dv"),"成功");
+	};
+	</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="button" value="点菜" id="btn">
+	<select name="" id="">
+		<option value="1">清蒸蛋</option>
+		<option value="2" id="op1">电饭锅炖肉</option>
+		<option value="3">小炒肉</option>
+		<option value="4">炒青菜</option>
+	</select>
+	<script src="common.js"></script>
+	<script>
+	my$("btn").onclick=function(){
+		my$("op1").selected=true;
+	};
+	</script>
+	<textarea name="" id="tt" cols="30" rows="10" readonly>
+		我是一行文字
+	</textarea>
+	<input type="button" value="注册" id="btn2" />
+	<script>
+		my$("btn2").onclick=function(){
+			my$("tt").value="呵呵";
+		};
+		</script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+body{
+    background:url("../images/timg.gif");
+}
+header {
+    width: 800px;
+    height: 80px;
+    margin: 0 auto;
+    border-radius: 40px;
+    box-shadow: 0 4px #09c;
+    text-align: center;
+    line-height: 80px;
+    color: white;
+    font-size: 30px;
+}
+#btn{
+    padding: 5px;
+}
+.star{
+    font-style: normal;
+}
+.main{
+    width: 800px;
+    margin: 60px auto;
+    overflow: hidden;
+}
+.main-l-1{
+    float: left;
+    width: 644px;
+    border-right:1px solid #0099cc;
+    overflow: hidden;
+}
+.main-l-2{
+    float: left;
+    width: 155px;
+    text-align: center;
+    padding-top: 210px;
+}
+.main-l-2 li{
+    margin-top: 10px;
+    font-size: 20px;
+    color: white;
+}
+.items{
+    float: left;
+    width: 79px;
+    height: 79px;
+    margin: 40px;
+    border: 1px solid aquamarine;
+    -webkit-border-radius: 40px;
+    -moz-border-radius: 40px;
+    border-radius: 40px;
+    font-size: 14px;
+    text-align: center;
+    line-height: 79px;
+    color: white;
+}

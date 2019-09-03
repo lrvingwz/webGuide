@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		img{
+			width: 500px;
+		}
+	</style>
+</head>
+<body>
+	<img src="images/1.jpg" alt="">
+	<img src="images/2.jpg" alt="">
+	<img src="images/3.jpg" alt="">
+	<script src="common.js"></script>
+	<script>
+	for(var i=0;i<my$$("img").length;i++){
+		my$$("img")[i].onclick=function(){
+			alert("被点了");
+		};
+	}
+	</script>
+</body>
+</html>

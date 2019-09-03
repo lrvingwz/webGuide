@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div{
+			height: 200px;
+			width: 200px;
+			border: 1px solid red;
+		}
+	</style>
+</head>
+<body>
+	<input type="button" value="设置" id="btn">
+	<div id="dv">兼容成功</div>
+	<script src="common.js"></script>
+	<script>
+	my$("btn").onclick=function(){
+		console.log(getInnerText(my$("dv")));//获取
+		setInnerText(my$("dv"),"成功");//设置
+	};
+	</script>
+</body>
+</html>

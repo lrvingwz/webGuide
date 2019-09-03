@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>	
+		.cls{
+			background-color: black;
+		}
+	</style>
+</head>
+<body id="dv">
+	<input type="button" value="关灯" id="btn" />
+	<script src="common.js"></script>
+	<script>
+		my$("btn").onclick=function(){
+			if(my$("dv").className!="cls"){
+				my$("dv").className="cls";
+				this.value="开灯";
+			}else{
+				my$("dv").className="";
+				this.value="关灯";
+			}
+		};
+	</script>
+</body>
+</html>
