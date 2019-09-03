@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet/less" type="text/less" href="css/summaries.less">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <script src="js/less.js"></script>
+    <script src="js/jquery-1.7.1.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="mask">
+        <div class="w">
+            <h3 class="summary-title">总结（10）</h3>
+        </div>
+    </div>
+    <div class="w container">
+        <div class="summary-list">
+            
+            <!-- <dl>
+                <dt>数组操作&nbsp;&nbsp;<span>2019-09-02 21:01</span></dt>
+                <dd><h2>Array类型</h2></dd>
+            </dl>
+            <dl>
+                <dt>数组操作&nbsp;&nbsp;<span>2019-09-02 21:01</span></dt>
+                <dd><h2>Array类型</h2></dd>
+            </dl>
+            <dl>
+                <dt>数组操作&nbsp;&nbsp;<span>2019-09-02 21:01</span></dt>
+                <dd><h2>Array类型</h2></dd>
+            </dl>
+            <dl>
+                <dt>数组操作&nbsp;&nbsp;<span>2019-09-02 21:01</span></dt>
+                <dd><h2>Array类型</h2></dd>
+            </dl> -->
+        </div>
+        <div class="w load-more">
+            <hr>
+            <button class="load-more">加载更多</button>
+        </div>
+    </div>
+
+    <script>
+        $(function(){
+            //获取元素
+            var summaryList = $(".summary-list");
+            var loadMore = $(".load-more");
+
+            $.ajax({
+                url: "http://study.zhanlaoshi.vip/v1/openapi/course/category/summarys",
+                type: "get",
+                headers: {
+                    "Content-Type": "application/json",  
+                    "Authorization": "ptarsta0po3fg9gb95qkunv92jiswl0cy65jb0cuoue1zjxy09bm2tnpndknxbrf0eso4nch5qay2v2siu0zhrfret4lhmws0zpb43r06vzg2f2hzgeuplwgmzm5289v"
+                },
+                success: function(res){
+                    console.log(res);
+                    if(res["statuscode"] === 200){
+                        var result = res["content"];
+                        console.log(result);//[{cname: "数组操作", content: "<h2 class="ql-align-center">Array 类型</h2><h3>1.创建数…></p><p><br></p><p><br></p><p><br></p><p><br></p>"},{cname: "字符串操作", content: "<h2 class="ql-align-center">字符串操作</h2><p>可以使用 Stri…are("yellow")); //-1↵</pre><p><br></p><p><br></p>"}...]
+                        for(var i = 0; i<result.length; i++){
+                            var knowName = result[i]["cname"];
+                            var knowContent = result[i]["content"];
+                            //创建 dl ,并加入 summaryList 中
+                            var summaryDl = $("<dl></dl>");
+                            summaryDl.appendTo(summaryList);
+                            //创建 dt 和 dd ,并加入 dl 中
+                            $("<dt>"+(i+1)+"> "+knowName+"&nbsp;&nbsp;<span>2019-09-02 21:01</span></dt>").appendTo(summaryDl);
+                            $("<dd>"+knowContent+"</dd>").appendTo(summaryDl);
+
+                            //为 “加载更多” 按钮添加请求更多数据的方法
+                            loadMore.click(function(){
+                                
+                            });
+                        }
+                    } else {
+                        console.log("有问题"+ res["msg"]);
+                        var errorMessage = res["msg"];
+                        $(".show-summary").html(errorMessage);
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
