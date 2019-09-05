@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>课程列表</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet/less" type="text/less" href="css/class.less">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <script src="js/less.js"></script>
+    <script src="js/jquery-1.7.1.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="w">
+            <h2 class="cateTitle">课程列表</h2>
+            <hr>
+        </div>
+        <div class="w course-all">
+            <ul id="stage1">
+                <li>
+                    <h3 class="title">初级</h3>
+                </li>
+                <li>
+                    <p class="stage">primary</p>
+                </li>
+            </ul>
+            <ul id="stage2">
+                <li>
+                    <h3 class="title">中级</h3>
+                </li>
+                <li>
+                    <p class="stage">intermediate</p>
+                </li>
+            </ul>
+            <ul id="stage3">
+                <li>
+                    <h3 class="title">高级</h3>
+                </li>
+                <li>
+                    <p class="stage">senior</p>
+                </li>
+            </ul>
+        </div>
+        <div class="w">
+            <h2 class="cateTitle">学习阶段总结 <span id="tosummary">></span></h2>
+            <hr>
+        </div>
+        <div class="mask">
+            <div class="knowledge">
+                <ul>
+                    <li><button>关闭</button></li>
+                    <li>标签</li>
+                    <li>表单元素</li>
+                    <li>常见的清除浮动的方法</li>
+                    <li>Jquery</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    $(function () {
+        //获取元素
+        //“初级” 的 ul
+        var stageUl1 = $("#stage1");
+        //“中级” 的 ul
+        var stageUl2 = $("#stage2");
+        //“高级” 的 ul
+        var stageUl3 = $("#stage3");
+        var mask = $(".mask");
+        //所有课程的大盒子
+        var courseList = $(".course-all");
+        //装课程主要知识点的盒子，默认是隐藏的
+        var knowledgeList = $(".knowledge");
+        //跳转去 “总结页面” 的元素
+        var tosummary = $("#tosummary");
+
+        //请求数据（这里用的原生方法）
+        var xhr1 = new XMLHttpRequest();
+        xhr1.open("GET", "http://study.zhanlaoshi.vip/v1/openapi/course/category", true);
+        xhr1.setRequestHeader("Content-Type", "application/json");
+        xhr1.setRequestHeader("Authorization","ptarsta0po3fg9gb95qkunv92jiswl0cy65jb0cuoue1zjxy09bm2tnpndknxbrf0eso4nch5qay2v2siu0zhrfret4lhmws0zpb43r06vzg2f2hzgeuplwgmzm5289v");
+        xhr1.send(null);
+        xhr1.onreadystatechange = function () {
+            if (this.readyState !== 4) return;
+            console.log("请求成功！");
+            // console.log(this.responseText);
+            var jsonData = JSON.parse(this.responseText); //解析json格式数据为对象形式
+            var content = jsonData["content"];
+            var stage1 = [];
+            var stage2 = [];
+            var stage3 = []; //分别存储  ”初级“、”中级“、”高级“ 课程的数据
+            for (var i = 0; i < content.length; i++) {
+                if (content[i]["stage"] === "初级") {
+                    stage1.push(content[i]);
+                }
+                if (content[i]["stage"] === "中级") {
+                    stage2.push(content[i]);
+                }
+                if (content[i]["stage"] === "高级") {
+                    stage3.push(content[i]);
+                }
+            }
+            /* console.log(stage1);//[{courseName: "HTML", stage: "初级", cnum: "z4z8qa59pmssrv7uu5aq"},{courseName: "CSS", stage: "初级", cnum: "shaspl5xsvxzgwulno9s"},{courseName: "js基础", stage: "初级", cnum: "gbzu3qry4b1mq0hkzz62"}]
+            console.log(stage2);
+            console.log(stage3); */
+
+            for (var j = 0; j < stage1.length; j++) {
+                // 展示 “初级” 的课程
+                $("<li index="+stage1[j]["cnum"]+" class='cateCourse'>"+stage1[j]["courseName"]+"</li><li><span class='progress'><span class='progress-info'>80%</span></span></li>").appendTo(stageUl1);
+            }
+            for (var j = 0; j < stage2.length; j++) {
+                // 展示 “中级” 的课程
+                $("<li index="+stage2[j]["cnum"]+" class='cateCourse'>"+stage2[j]["courseName"]+"</li><li><span class='progress'><span class='progress-info'>80%</span></span></li>").appendTo(stageUl2);
+            }
+            for (var j = 0; j < stage3.length; j++) {
+                // 展示 “高级” 的课程
+                $("<li index="+stage3[j]["cnum"]+" class='cateCourse'>"+stage3[j]["courseName"]+"</li><li><span class='progress'><span class='progress-info'>80%</span></span></li>").appendTo(stageUl3);
+            }
+            //为每个课程注册点击事件，请求该课程对应的主要知识点
+            $(".cateCourse").click(function(){
+                //弹出遮罩层
+                mask.show();
+                //接收被点击的课程的id，用于区分课程
+                var params = $(this).attr("index");
+                $.ajax({
+                    url: "http://study.zhanlaoshi.vip/v1/openapi/course/category/"+params,
+                    type: "get",
+                    headers: {
+                        "Content-Type": "application/json",  
+                        "Authorization": "ptarsta0po3fg9gb95qkunv92jiswl0cy65jb0cuoue1zjxy09bm2tnpndknxbrf0eso4nch5qay2v2siu0zhrfret4lhmws0zpb43r06vzg2f2hzgeuplwgmzm5289v"
+                    },
+                    success: function(res){
+                        var content2 = res["content"];//{courseName: "标签", stage: "初级", cnum: "bng8o6vewdxipsrfczyg"},{courseName: "表格", stage: "初级", cnum: "6slp43qo4tbyrb0xz7ny"},{courseName: "表单", stage: "初级", cnum: "n22yijkh11hkttjlrya8"},{courseName: "标签属性", stage: "初级", cnum: "zzg0b58wuvwr1vmcabu9"}
+                        //创建 ul 并添加到 知识点列表（knowledgeList）中
+                        //有则删除
+                        if(knowledgeList.children().length !== 0){
+                            knowledgeList.html("");
+                        }
+                        var knowledgeUl = $("<ul></ul>");
+                        knowledgeUl.appendTo(knowledgeList);
+                        //创建带有 a 标签的 li，并添加到 ul 中
+                        for(var k=0; k<content2.length; k++){
+                            var href = "./summary.html?" + content2[k]["cnum"];
+                            $("<li><a href="+href+">"+content2[k]["courseName"]+"</a></li>").appendTo(knowledgeUl);
+                        }
+                        $("<li class='closeCourse'>点击关闭</li>").appendTo(knowledgeUl);
+                        $(".closeCourse").click(function(){
+                            mask.fadeOut();
+                        });
+                    }
+                });
+            });
+        }
+        tosummary.click(function(){
+            window.location.href = "./summaries.html";
+        });
+        
+    });
+</script>
+
+</html>

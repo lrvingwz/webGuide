@@ -1,0 +1,92 @@
+* {
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+
+			body {
+				background-color: #f6f6f6;
+				background-color: rgba(65, 66, 69, 0.9);
+			}
+
+			.slider {
+				width: 400px;
+				height: 560px;
+				margin: 100px auto;
+				overflow: hidden;
+				position: relative;
+				text-align: center;
+			}
+
+			.slider:hover #btn-group {
+				display: block;
+			}
+
+			.slider img {
+				width: 100%;
+				height: auto;
+			}
+
+			.slider-container {
+				width: 2000px;
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+
+			.slider-container li {
+				float: left;
+			}
+
+			.slider-btn{
+				position: absolute;
+				left: 0;
+				top: 50%;
+				transform: translateY(-50%);
+				width: 40px;
+				height: 40px;
+				line-height: 35px;
+				font-size: 40px;
+				text-align: center;
+				font-weight: bold;
+				vertical-align: middle;
+				background-color: rgba(255, 255, 255, 0.6);
+				color: #666;
+				z-index: 20;
+				display: none;
+			}
+
+			.slider:hover .slider-btn{
+				display: block;
+				background-color: rgba(255, 255, 255, 0.8);
+				color: #333;
+				cursor: pointer;
+			}
+
+			.slider-btn.slider-btn-right{
+				right: 0;
+				left: initial;
+			}
+
+			.slider-pagecon {
+				position: absolute;
+				bottom: 10px;
+				right: 0;
+			}
+
+			.slider-pagecon li {
+				width: 12px;
+				height: 12px;
+				float: left;
+				background-color: #fff;
+				border-radius: 6px;
+				margin: 0 8px;
+			}
+
+			.slider-pagecon li:hover {
+				cursor: pointer;
+			}
+
+			.slider-pagecon li.current {
+				background-color: #FF8400;
+			}

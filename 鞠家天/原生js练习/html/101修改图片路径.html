@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .box{
+            width: 300px;
+            padding: 10px;
+            border: 1px solid black;
+            margin: 100px auto;
+        }
+        #big {
+            width: 100%;
+        }
+        .triggers{
+            margin-top: 10px;
+            font-size: 0px;
+        }
+        .triggers img{
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div><img id="big" src="../images/1.jpg" alt=""/></div>
+        <div id="triggers" class="triggers">
+            <img src="../images/1.jpg" alt=""/>
+            <img src="../images/2.jpg" alt=""/>
+            <img src="../images/3.jpg" alt=""/>
+        </div>
+    </div>
+    <script>
+        var triggers=document.getElementById("triggers").children;
+        var big=document.getElementById("big");
+        for(var i=0;i<triggers.length;i++){
+            triggers[i].onmouseover= function () {
+              big.src=this.src;
+            };
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="button" value="修改" id="btn">
+	<input type="text">
+	<input type="text">
+	<input type="text">
+	<input type="text">
+	<script src="common.js"></script>
+	<script>
+		//根据id获取按钮，注册点击事件，添加事件处理函数
+		my$("btn").onclick=function(){
+			//my$$("input")==document.getElementsByTagName("input")
+			for(var i=0;i<my$$("input").length;i++){
+				if(my$$("input")[i].type=="text"){
+					my$$("input")[i].value="我是文本";
+				}
+			}
+		};
+	</script>
+</body>
+</html>

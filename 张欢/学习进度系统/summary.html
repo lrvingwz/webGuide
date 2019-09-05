@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet/less" type="text/less" href="css/summary.less">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <script src="js/less.js"></script>
+    <script src="js/jquery-1.7.1.min.js"></script>
+    <title>课程总结</title>
+</head>
+<body>
+    <div class="w show-summary"></div>
+    <script>
+        $(function(){
+            //读取 url 中的查询数据
+            var data = window.location.search;
+            //去掉前面的 “?”
+            data = data.slice(1);//---------------n22yijkh11hkttjlrya8
+
+            $.ajax({
+                url: "http://study.zhanlaoshi.vip/v1/openapi/course/stage/summary/"+data,
+                type: "get",
+                headers: {
+                    "Content-Type": "application/json",  
+                    "Authorization": "ptarsta0po3fg9gb95qkunv92jiswl0cy65jb0cuoue1zjxy09bm2tnpndknxbrf0eso4nch5qay2v2siu0zhrfret4lhmws0zpb43r06vzg2f2hzgeuplwgmzm5289v"
+                },
+                success: function(res){
+                    // console.log(res);
+                    if(res["statuscode"] === 200){
+                        var result = res["content"];
+                        var summary = result["summary"];
+                        console.log(result);
+                        console.log(summary);
+                        $(".show-summary").html(summary);
+                    } else {
+                        console.log("有问题"+ res["msg"]);
+                        var errorMessage = res["msg"];
+                        $(".show-summary").html(errorMessage);
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		function f1() {
+				console.log("这是个函数");
+
+			return function() {
+				console.log("这是一个函数");
+			};
+		}
+		var ff=f1();
+		ff();
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

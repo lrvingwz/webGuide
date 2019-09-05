@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>乁( ˙ ω˙乁)</title>
+</head>
+<body>
+<script>
+    //按一定规则排序
+    function Movie(name,size,time){
+        this.name=name;
+        this.size=size;
+        this.time=time;
+    }
+    var movie1=new Movie("nezha","800M","1997-8-7");
+    var movie2=new Movie("tailuo","400M","2017-8-4");
+    var movie3=new Movie("lalaxia","200M","2010-8-6");
+    var arr=[movie1,movie2,movie3];
+    function f1(attr){
+        return function getSort(a,b){
+            if(a[attr]>b[attr]){
+                return 1;
+            }else if(a[attr]==b[attr]){
+                return 0;
+            }else{
+                return -1;
+            }
+        }
+    }
+
+
+    arr.sort(f1("time"));
+    for(var i=0;i<arr.length;i++){
+        console.log(arr[i].name+"===="+arr[i].size+"===="+arr[i].time);
+    }
+</script>
+</body>
+</html>

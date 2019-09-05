@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+	//求两个数字的差\
+	function getSub(x,y){
+		return x-y;
+	}
+	console.log(getSub(10,2));
+	//求一组数字中的最大值
+	function getArrayMax(arr){
+		var max=arr[0];
+		for(var i=0;i<arr.length;i++){
+			if(max<arr[i]){
+				max=arr[i];
+			}
+		}
+		return max;
+	}
+	var arr=[10,20,2,3,50];
+	console.log(getArrayMax(arr));
+	//求一组数字的和
+	function getArraySum(array){
+		var sum=0;
+		for(var i=0;i<array.length;i++){
+			sum+=array[i];
+		}
+		return sum;
+
+	}
+	var arr1=[1,12,35,45,87,95];
+	console.log(getArraySum(arr1));
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

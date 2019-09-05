@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>乁( ˙ ω˙乁)</title>
+    <style>
+        div{
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+<input type="text" id="txt"/><br/>
+<div>
+    <span id="warning"></span>
+</div>
+<script>
+    function my$(str){
+        return document.getElementById(str);
+    }
+
+
+    var names=my$("txt");
+    var warn=my$("warning");
+    names.onblur=effector;
+
+    function  effector(){
+        var rule=/^[\u4e00-\u9fa5]{2,6}$/;
+        if(rule.test(this.value)){
+            warn.style.color="yellowgreen";
+            warn.innerHTML="你好，"+this.value;
+        }else{
+            warn.style.color="red";
+            warn.innerHTML="输入错误";
+        }
+    }
+</script>
+</body>
+</html>

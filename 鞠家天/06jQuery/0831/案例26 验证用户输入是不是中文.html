@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>乁( ˙ ω˙乁)</title>
+    <script src="../js/common.js"></script>
+    <script src="../js/jquery-1.12.1.js"></script>
+    <script>
+        $(function () {
+           $("#btn").click(function () {
+               if(/^[\u4e00-\u9fa5]{2,6}$/.test($("#txt").val())){
+                   $("#txt").css("backgroundColor","green");
+               }else{
+                   $("#txt").css("backgroundColor","red");
+               }
+           });
+        });
+    </script>
+</head>
+<body>
+请输入中文名字：<input type="text" value="" id="txt"/><br/>
+<input type="button" value="验证" id="btn"/>
+</body>
+</html>

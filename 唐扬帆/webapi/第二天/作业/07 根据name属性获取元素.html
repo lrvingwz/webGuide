@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="button" value="显示" id="btn"><br />
+	<input type="text" value="hello" name="name1"><br />
+	<input type="text" value="hello" name="name1"><br />
+	<input type="text" value="hello" name="name2"><br />
+	<input type="text" value="hello" name="name1"><br />
+	<input type="text" value="hello" name="name3"><br />
+	<input type="text" value="hello" name="name4"><br />
+	<input type="text" value="hello" name="name1"><br />
+	<script src="common.js"></script>
+	<script>
+	my$("btn").onclick=function(){
+		var inputs=document.getElementsByName("name1");
+		for(var i=0;i<inputs.length;i++){
+			inputs[i].value="你好";
+		}
+	};
+	</script>
+</body>
+</html>

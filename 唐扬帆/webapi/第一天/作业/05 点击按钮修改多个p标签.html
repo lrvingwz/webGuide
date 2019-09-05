@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="button" value="修改" id="btn">
+	<div id="dv">
+		<p>我是文字</p>
+		<p>我是文字</p>
+		<p>我是文字</p>
+	</div>
+	<div>
+		<p>hehe</p>
+		<p>hehe</p>
+		<p>hehe</p>
+	</div>
+	<script src="common.js"></script>
+	<script>
+	// my$("btn").onclick=function(){
+	// 	for(var i=0;i<my$$("p").length;i++){
+	// 		my$$("p")[i].innerText="我是帅哥哥";
+	// 	}
+	// };
+	
+	//document.getElementsByTagName(标签名字)；返回的是一个伪数组
+	//无论获取的是一个标签还是多个标签，都是在数组中存储的，这行代码的返回值就是一个数组
+	//根据id获取按钮，注册点击事件，添加事件处理函数
+	my$("btn").onclick=function(){
+		var pObjs=my$("dv").getElementsByTagName("p");
+		for(var i=0;i<pObjs.length;i++){
+			pObjs[i].innerText="我是一名帅哥";
+		}
+	};
+	
+	</script>
+</body>
+</html>

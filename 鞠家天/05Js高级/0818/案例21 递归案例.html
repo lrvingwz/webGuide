@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>乁( ˙ ω˙乁)</title>
+</head>
+<body>
+<script>
+    //求一个数字各个位置上的数字的和
+    function f1(x){
+        if(x<10){
+            return x;
+        }
+        return x%10+f1(parseInt(x/10));
+    }
+    var ff=f1(159);
+    console.log(ff);
+    //求斐波那契数列
+    function f2(n){
+        if(n==1||n==2){
+            return 1;
+        }
+        return f2(n-1)+f2(n-2);
+    }
+    var fff=f2(12);
+    console.log(fff);
+</script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <script>
+    var obj={};
+    obj.name="张三",
+    obj.age=10,
+    obj.sayHi=function(){
+      console.log("我是:"+this.name);
+      },
+      obj.play=function () {
+        console.log("玩游戏");
+    }
+    obj.sayHi();
+   obj.play();
+    var obj2={
+      name:"王二名",
+      age:20,
+      sayHi:function () {
+        console.log("我是:"+this.name);
+      },
+      eat:function () {
+        console.log("吃饭饭");
+      }
+    };
+    obj2.sayHi();
+    obj2.eat();
+  </script>
+</head>
+<body>
+</body>
+</html>

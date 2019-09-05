@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" id="btn" value="触发"/>
+    <p>哈哈哈哈</p>
+    <p>哈哈哈哈</p>
+    <p>哈哈哈哈</p>
+    <p>哈哈哈哈</p>
+    <p>哈哈哈哈</p>
+    <p>哈哈哈哈</p>
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+        $("p").on("click mouseenter",function(){
+            alert("嘎嘎嘎");
+        });
+        $("p").off("mouseenter");
+        $("#btn").on("click",function(){
+            // $("p").click();
+            $("p").trigger("click");
+        });
+    
+    
+    </script>
+</body>
+</html>

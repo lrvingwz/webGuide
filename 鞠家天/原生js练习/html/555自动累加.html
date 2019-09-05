@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自动累加</title>
+    <style>
+        div{
+            padding: 30px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div>0</div>
+<script>
+    var item=document.getElementsByTagName("div")[0];
+    var a=1;
+    window.onload= function () {
+      setInterval(function () {
+          item.innerHTML=a;
+          a++;
+      },1000);
+    };
+</script>
+</body>
+</html>

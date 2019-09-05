@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>简易年历</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        .box{
+            width: 304px;
+            background-color: #eee;
+            padding: 10px;
+            margin: 0 auto;
+        }
+        .list{
+            overflow: hidden;
+        }
+        .list div {
+            float: left;
+            width: 70px;
+            height: 70px;
+            border: 1px solid black;
+            margin: 5px 2px;
+            font-size: 24px;
+            text-align: center;
+            color: white;
+            background-color: #444;
+        }
+        .list div span{
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .details{
+            border: 1px solid white;
+            font-size: 14px;
+            color: #666;
+            padding:10px;
+        }
+        .details h2 {
+            margin-bottom: 10px;
+            font-size: 22px;
+        }
+        .list .hover{
+            background-color: white;
+            color: hotpink;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="list" id="list">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div class="hover"></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="details">
+            <h2 id="month">6月节日</h2>
+            <p id="inf">端午节：6月4日至6日放假3天。</p>
+        </div>
+    </div>
+    <script>
+        var arr=[
+            {"mon":"1","month":"JAN","inf":"元旦：1月1日至3日放假三天。"},
+            {"mon":"2","month":"FER","inf":"春节：2月2日至8日放假7天。"},
+            {"mon":"3","month":"MAR","inf":"妇女节：3月8日妇女节，与我无关。"},
+            {"mon":"4","month":"APR","inf":"清明节：4月3日至5日放假3天。"},
+            {"mon":"5","month":"MAY","inf":"劳动节：4月30日至5月2日放假3天。"},
+            {"mon":"6","month":"JUN","inf":"端午节：6月4日至6日放假3天。"},
+            {"mon":"7","month":"JUL","inf":"小暑：7月7日小暑。不放假。"},
+            {"mon":"8","month":"AUG","inf":"七夕节：8月6日七夕节。不放假。"},
+            {"mon":"9","month":"SEP","inf":"中秋节：9月10日至12日放假3天。"},
+            {"mon":"10","month":"OCT","inf":"国庆节：10月1日至7日放假7天。"},
+            {"mon":"11","month":"NOV","inf":"立冬：11月8日立冬。不放假。"},
+            {"mon":"12","month":"DEC","inf":"艾滋病日:12月1日 废除奴隶制国际日:12月2日。"}
+        ];
+        var divs=document.getElementById("list").getElementsByTagName("div");
+        var mon=document.getElementById("month");
+        var inf=document.getElementById("inf");
+        for(var i=0;i<divs.length;i++){
+            divs[i].innerHTML="<span>"+arr[i]["mon"]+"</span>"+arr[i]["month"];
+            divs[i].setAttribute("index",i);
+            divs[i].onmouseover=f1;
+
+        }
+        function f1(){
+            var j=this.getAttribute("index");
+            for(var e=0;e<divs.length;e++){
+                divs[e].removeAttribute("class");
+            }
+            this.className="hover";
+            mon.innerHTML=arr[j]["mon"]+"月节日";
+            inf.innerHTML=arr[j]["inf"];
+        }
+    </script>
+</body>
+</html>

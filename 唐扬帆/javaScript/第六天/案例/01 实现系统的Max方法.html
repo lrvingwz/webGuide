@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+ 		function MyMath(){
+ 			//添加一个方法
+ 			this.getMax=function(){
+ 				var max=arguments[0];
+ 				for(var i=0;i<arguments.length;i++){
+ 					if(max<arguments[i]){
+ 						max=arguments[i];
+ 					}
+ 				}
+ 				return max;
+ 			}
+ 		}
+ 		var mt=new MyMath();
+ 		var result=mt.getMax(10,20,30,40,50,12,38,56);
+ 		console.log(result);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

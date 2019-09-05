@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+	//两个数的最大值
+	function getMax(num1,num2){
+		if(num1<num2){
+			num1=num2;
+		}
+		return num1;
+	}
+	console.log(getMax(10,20));
+	//三个数的最大值
+		function getThreeMax(num1,num2,num3){
+		if(num1<num2){
+			num1=num2;
+		}
+		if(num1<num3){
+			num1=num3;
+		}
+		return num1;
+	}
+	console.log(getThreeMax(10,20,30));
+	//判断一个数是否为素数
+	function primeNumber (num){
+		for(var i=2;i<num;i++){
+			if(num%i==0){
+				return false;
+			}
+		}
+		return true;
+	}
+	var num=parseInt(prompt("请输入一个数"));
+	var result=primeNumber(num);
+	if(result){
+		console.log("这是一个素数");
+	}else {
+		console.log("这不是一个素数");
+	}
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

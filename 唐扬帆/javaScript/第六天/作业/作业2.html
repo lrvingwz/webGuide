@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+	//将一个字符串数组输出为|分割的形式，比如“刘备|张飞|关羽”。使用两种方式实现
+	//.join（"字符串1"）---返回一个添加进字符串1的新字符串
+	var arr=["刘备","张飞","关羽"]
+	var str=arr.join("|");
+	console.log(str);
+
+
+	var str1=" ";
+	for(var i=0;i<2;i++){
+		str1+=arr[i]+"|";
+	}
+	console.log(str1+arr[arr.length-1]);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

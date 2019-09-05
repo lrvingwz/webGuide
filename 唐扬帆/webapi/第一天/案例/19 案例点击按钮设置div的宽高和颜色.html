@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="button" value="设置样式" id="btn" />
+	<div id="dv"></div>
+	<script src="commin.js"></script>
+	<script>
+	//凡是CSS中这个属性是多个单词的写法，在JS代码中DOM操作的时候，把-去掉，后面单词的首字母大写
+		my$("btn").onclick=function(){
+			my$("dv").style.width="300px";
+			my$("dv").style.height="300px";
+			my$("dv").style.backgroundColor="pink";
+		};
+	</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="button" value="没怀孕">
+	<input type="button" value="没怀孕">
+	<input type="button" value="没怀孕">
+	<input type="button" value="没怀孕">
+	<input type="button" value="没怀孕">
+	<script src="common.js"></script>
+	<script>
+	var btnObjs=my$$("input");
+	//循环遍历所有的按钮
+	for(var i=0;i<btnObjs.length;i++){
+		//为每个按钮都注册点击事件，添加函数
+		btnObjs[i].onclick=function(){
+			//把所有的value值设置为：没怀孕
+			for(var j=0;j<btnObjs.length;j++){
+				btnObjs[j].value="没怀孕";
+			}
+			this.value="怀孕了";
+			//btnObjs[i].value="怀孕了";//会报错，因为循坏在页面加载的时候就已经循环完了，此时i的值为btnObjs.length
+		};
+	}
+	</script>
+</body>
+</html>

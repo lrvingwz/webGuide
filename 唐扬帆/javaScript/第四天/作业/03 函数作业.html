@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+	var arr=[10,20,30,45,25,36,62];	
+	//反转数组
+	function reverseArray(arr){
+		for(var i=0;i<arr.length/2;i++){
+			var temp=arr[i];
+			arr[i]=arr[arr.length-1-i];
+			arr[arr.length-1-i]=temp;
+		}
+		return arr;
+	}
+	console.log(reverseArray(arr));
+	//冒泡排序
+	function getSort(arr){
+		for(var i=0;i<arr.length-1;i++){
+			for(var j=0;j<arr.length-1-i;j++){
+				if(arr[j]>arr[j+1]){
+					var temp=arr[i];
+					arr[j]=arr[j+1];
+					arr[j+1]=temp;
+				}
+			}
+		}
+		return arr;
+	}
+	var arr1=[10,20,30,45,25,36,62];	
+	console.log(getSort(arr1));
+	//求一个数的阶乘
+	function getJiecheng(num){
+		var result=1;
+		for(i=1;i<=num;i++){
+			result*=i;
+		}
+		return result;
+	}
+	console.log(getJiecheng(5));
+	//求一个数的阶乘和
+	function getJiechengSum(num){
+		var result=0;
+		for(var i=1;i<=num;i++){
+			result+= getJiecheng(i);
+		}
+		return result;
+	}
+	console.log(getJiechengSum(5));
+	//求斐波那契数列 12---144
+	//1 1 2 3 5 8 13 21 34 55 89 144
+	function getFib(num){
+		var num1=1, num2=1, sum=0;
+		for(var i=3;i<=num;i++){
+			sum=num1+num2;
+			num1=num2;
+			num2=sum;
+		}
+		return sum;
+	}
+	console.log(getFib(12));
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

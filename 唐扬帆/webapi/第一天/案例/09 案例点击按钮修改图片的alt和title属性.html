@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="button" value="按钮" id="btn" />
+	<img src="images/cangjingkong.jpg"  alt="123" title="123" />
+	<script>
+	document.getElementById("btn").onclick=function(){
+		var imgObjs=document.getElementsByTagName("img");
+		imgObjs[0].alt="one";
+		imgObjs[0].title="one";
+	};
+	</script>
+</body>
+</html>

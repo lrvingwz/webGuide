@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>车展</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .wrap{
+            border: 1px solid #333;
+            width: 620px;
+            margin: 0 auto;
+        }
+        h3 {
+            margin: 10px auto;
+            text-align: center;
+        }
+        .itembox{
+            width: 100%;
+            padding-top: 10px;
+            overflow: hidden;
+            color: #666666;
+        }
+        .item{
+            float: left;
+            position: relative;
+            width: 90px;
+            height: 90px;
+            padding: 10px;
+            margin-bottom: 10px;
+            margin-left: 10px;
+            border: 1px solid #333;
+            background-color: #cccccc;
+        }
+        .imgs{
+            display: none;
+            position: absolute;
+            left: -6px;
+            top: -6px;
+            width: 120px;
+            height: 120px;
+            border: 1px solid #333;
+        }
+        .imgs img {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <h3>车展</h3>
+    <div class="itembox" id="itembox">
+        <div class="item">
+            <div class="imgs">
+                <img src="../images/1.jpg" alt=""/>
+            </div>
+            <h4>BMW</h4>
+            <p>马汽车</p>
+        </div>
+        <div class="item">
+            <div class="imgs">
+                <img src="../images/2.jpg" alt=""/>
+            </div>
+            <h4>Alfa Romeo</h4>
+            <p>阿尔法-罗米欧</p>
+        </div>
+        <div class="item">
+            <div class="imgs">
+                <img src="../images/3.jpg" alt=""/>
+            </div>
+            <h4>Skoda</h4>
+            <p>斯柯达</p>
+        </div>
+        <div class="item">
+            <div class="imgs">
+                <img src="../images/4.jpg" alt=""/>
+            </div>
+            <h4>Volkswagen</h4>
+            <p>大众汽车</p>
+        </div>
+        <div class="item">
+            <div class="imgs">
+                <img src="../images/5.jpg" alt=""/>
+            </div>
+            <h4>Saab</h4>
+            <p>萨布牌轿车</p>
+        </div>
+        <div class="item">
+            <div class="imgs">
+                <img src="../images/6.jpg" alt=""/>
+            </div>
+            <h4>Lamborghini</h4>
+            <p>兰博基尼</p>
+        </div>
+        <div class="item">
+            <div class="imgs">
+                <img src="../images/7.jpg" alt=""/>
+            </div>
+            <h4>Porsche</h4>
+            <p>保时捷</p>
+        </div>
+        <div class="item">
+            <div class="imgs">
+                <img src="../images/8.jpg" alt=""/>
+            </div>
+            <h4>Pwugeot</h4>
+            <p>标致</p>
+        </div>
+        <div class="item">
+            <div class="imgs">
+                <img src="../images/9.jpg" alt=""/>
+            </div>
+            <h4>Mercedes1</h4>
+            <p>梅赛德斯奔驰</p>
+        </div>
+        <div class="item">
+            <div class="imgs">
+                <img src="../images/10.jpg" alt=""/>
+            </div>
+            <h4>Buick</h4>
+            <p>别克汽车</p>
+        </div>
+    </div>
+</div>
+<script>
+    var items=document.getElementById("itembox").children;
+    for(var i=0;i<items.length;i++){
+        items[i].onmouseover=f1;
+        items[i].children[0].onmouseout=f2;
+    }
+    function f1(){
+        this.children[0].style.display="block";
+    }
+    function f2(){
+        this.style.display="none";
+    }
+
+</script>
+</body>
+</html>

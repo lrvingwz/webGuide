@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div{
+			width: 200px;
+			height: 200px;
+			background-color: #000;
+		}
+
+	</style>
+</head>
+<body>
+	<input type="button" value="移除自定义属性" id="btn">
+	<div id="dv" score="10" class="cls"></div>
+	<script src="common.js"></script>
+	<script>
+	//移除属性：removeAttribute("属性的名字")
+	
+	my$("btn").onclick=function(){
+		my$("dv").removeAttribute("score");
+	};
+	</script>
+</body>
+</html>

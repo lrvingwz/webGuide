@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选项卡</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            width: 600px;
+            border: 1px solid black;
+            margin: 100px auto;
+        }
+        a{
+            text-decoration: none;
+            color: black;
+        }
+        ul{
+            list-style: none;
+        }
+        .tap{
+            height: 30px;
+            padding: 3px;
+            background-color: black;
+            overflow: hidden;
+        }
+        .tap li{
+            float: left;
+            width: 60px;
+            text-align: center;
+            height: 30px;
+            line-height: 30px;
+            color: white;
+        }
+        .catalog li {
+            padding: 2px;
+        }
+        .catalog {
+            display: none;
+        }
+        .visible {
+            display: block;
+        }
+        .gray {
+            background-color: gray;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <ul class="tap" id="tap">
+        <li class="gray">第一课</li>
+        <li>第二课</li>
+        <li>第三课</li>
+    </ul>
+    <ul class="catalog visible">
+        <li><a href="#">目录1</a></li>
+        <li><a href="#">目录1</a></li>
+        <li><a href="#">目录1</a></li>
+        <li><a href="#">目录1</a></li>
+        <li><a href="#">目录1</a></li>
+        <li><a href="#">目录1</a></li>
+        <li><a href="#">目录1</a></li>
+    </ul>
+    <ul class="catalog">
+        <li><a href="#">目录2</a></li>
+        <li><a href="#">目录2</a></li>
+        <li><a href="#">目录2</a></li>
+        <li><a href="#">目录2</a></li>
+        <li><a href="#">目录2</a></li>
+        <li><a href="#">目录2</a></li>
+        <li><a href="#">目录2</a></li>
+        <li><a href="#">目录2</a></li>
+        <li><a href="#">目录2</a></li>
+        <li><a href="#">目录2</a></li>
+        <li><a href="#">目录2</a></li>
+        <li><a href="#">目录2</a></li>
+        <li><a href="#">目录2</a></li>
+        <li><a href="#">目录2</a></li>
+    </ul>
+    <ul class="catalog">
+        <li><a href="#">目录3</a></li>
+        <li><a href="#">目录3</a></li>
+        <li><a href="#">目录3</a></li>
+        <li><a href="#">目录3</a></li>
+    </ul>
+</div>
+<script>
+    var catalogs=document.getElementById("box").getElementsByClassName("catalog");
+    var taps=document.getElementById("tap").getElementsByTagName("li");
+    for(var i=0;i<taps.length;i++){
+        taps[i].setAttribute("index",i);
+//        catalogs[i].setAttribute("index",i);
+        taps[i].onmouseover=f1;
+    }
+    function f1(){
+        for(var j=0;j<taps.length;j++){
+            taps[j].removeAttribute("class");
+            catalogs[j].className="catalog";
+        }
+        this.className="gray";
+        catalogs[this.getAttribute("index")].className="catalog visible";
+    }
+</script>
+</body>
+</html>

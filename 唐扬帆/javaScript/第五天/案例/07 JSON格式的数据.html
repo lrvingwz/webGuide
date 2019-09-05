@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+	//JSON也是一个对象，数据是成对的，一般JSON格式的数据无论是键还是值都是双引号括起来的
+	var json={
+		"name":"luck",
+		"age":"10",
+		"sex":"man"
+	};
+	//遍历对象，不能通过for循环（因为对象是无序的）可以用for in循环
+	for(var key in json){
+		console.log(json["name"]);
+		console.log(json[key]);
+	}
+	//对象中有这个属性 可以对象.属性名字，如果没有只能对象[属性名字]，如果没有还要用对象.属性名字，那就是创建对象，而不是调用
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自定义右键菜单</title>
+    <style>
+        ul{
+            margin: 0;
+            padding: 0;
+            display: none;
+            width: 100px;
+            position: absolute;
+        }
+        li{
+            line-height: 24px;
+            height: 24px;
+            display: flex;
+            cursor: pointer;
+        }
+        .active{
+            background: #999;
+            color: #fff;
+        }
+        em{
+            flex-basis: 24px;
+            background: #eaead7 url("../images/ico.png")no-repeat;
+            height: 100%;
+        }
+        a{
+            flex: 1;
+            text-align: center;
+            text-decoration: none;
+            color: black;
+            font-size: 14px;
+        }
+        .cut{
+            background-position: 0 0;
+        }
+        .copy{
+            background-position: 0 -24px;
+        }
+        .paste{
+            background-position: 0 -48px;
+        }
+    </style>
+    <script src="../js/common.js"></script>
+</head>
+<body>
+<ul>
+    <li><em class="cut"></em><a href="">剪切</a></li>
+    <li><em class="copy"></em><a href="">复制</a></li>
+    <li><em class="paste"></em><a href="">粘帖</a></li>
+</ul>
+<script>
+    var list=tn$("ul")[0];
+    var lis=list.getElementsByTagName("li");
+    for(var i=0;i<lis.length;i++){
+        addEventListener(lis[i],"click", function (e) {
+            window.event? window.event.cancelBubble = true : e.stopPropagation();
+        });
+        addEventListener(lis[i],"mouseover", function () {
+            this.style.backgroundColor="#999";
+            this.style.color="#fff";
+        });
+        addEventListener(lis[i],"mouseout", function () {
+            this.style="";
+        });
+    }
+//    list.onmouseout= function () {
+//      this.style.display="none";
+//    };
+    document.oncontextmenu= function (event) {
+          var event=event||window.event;
+        event.preventDefault();
+        list.style.display="block";
+        list.style.left=event.clientX+"px";
+        list.style.top=event.clientY+"px";
+    };
+//    function getTop(e){
+//           var offset=e.offsetTop;
+//           if(e.offsetParent!=null) offset+=getTop(e.offsetParent);
+//           return offset;
+//         }
+//    function getLeft(e){
+//           var offset=e.offsetLeft;
+//           if(e.offsetParent!=null) offset+=getLeft(e.offsetParent);
+//           return offset;
+//         }
+</script>
+</body>
+</html>

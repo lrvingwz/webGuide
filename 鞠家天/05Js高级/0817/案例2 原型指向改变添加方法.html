@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>乁( ˙ ω˙乁)</title>
+</head>
+<body>
+<script>
+    function Videos(duration,dpi,describe){
+        this.duration=duration;
+        this.dpi=dpi;
+        this.describe=describe;
+    }
+    Videos.prototype.affect= function () {
+        console.log("给人视觉冲击");
+    };
+    function KSVideos(producer){
+        this.producer=producer;
+    }
+    KSVideos.prototype=new Videos("50\"","1080X1920","请给我点赞");
+    //重新绑定影响行为
+    KSVideos.prototype.affect= function () {
+        console.log("使观看者智商下降，三观发生扭曲，肾上腺素激增并点了个赞");
+    };
+    var ksvideo=new KSVideos("傻子");
+    console.log("时长："+ksvideo.duration,"分辨率："+ksvideo.dpi,"描述内容："+ksvideo.describe,"制作人："+ksvideo.producer);
+    ksvideo.affect();
+</script>
+</body>
+</html>

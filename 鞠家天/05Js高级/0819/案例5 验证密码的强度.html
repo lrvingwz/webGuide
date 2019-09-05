@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>乁( ˙ ω˙乁)</title>
+    <style>
+        div{
+            margin-top: 10px;
+        }
+        .pwdlevel0{
+            width: 40px;
+            height: 10px;
+            background-color: #cccccc;
+        }
+        .pwdlevel1{
+            width: 80px;
+            height: 10px;
+            background-color: orangered;
+        }
+        .pwdlevel2{
+            width: 120px;
+            height: 10px;
+            background-color: yellow;
+        }
+        .pwdlevel3,.pwdlevel34{
+            width: 160px;
+            height: 10px;
+            background-color: yellowgreen;
+        }
+    </style>
+</head>
+<body>
+<input type="password" id="pwd"/><br/>
+<div>
+    密码强度：<span id="power">无</span>
+    <div class="pwdlevel0" id="level"></div>
+</div>
+<script>
+    function my$(str){
+        return document.getElementById(str);
+    }
+
+
+    var pwd=my$("pwd");
+    var power=my$("power");
+    var level=my$("level");
+    pwd.onkeyup=effector;
+
+    function  effector(){
+        var arr=["无","差","中","好"];
+        if(this.value.length>=6){
+            var lel=checkPwd(this.value);
+            level.className="pwdlevel"+lel;
+            power.innerHTML=arr[lel];
+        }else{
+            level.className="pwdlevel0";
+            power.innerHTML=arr[0];
+        }
+    }
+
+
+    function checkPwd(n){
+        var lel=0;
+        if(/[0-9]/.test(n)){
+            lel++;
+        }
+        if(/[a-z]/.test(n)){
+            lel++;
+        }
+        if(/[A-Z]/.test(n)){
+            lel++;
+        }
+        if(/\W/.test(n)){
+            lel++;
+        }
+        return lel;
+    }
+
+</script>
+</body>
+</html>

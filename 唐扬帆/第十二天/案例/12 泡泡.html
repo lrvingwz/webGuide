@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div {
+			width: 400px;
+			height: 100px;
+			background: url(images/paopao.png) no-repeat top left,url(images/paopao.png) no-repeat bottom right;
+			background-color: skyblue; /*多背景时颜色写在下面防止被层叠掉*/
+			transition: all 3s;
+		}
+		div:hover {
+			background-position: right bottom, left top;
+		}
+	</style>
+</head>
+<body>
+	<div></div>
+</body>
+</html>
