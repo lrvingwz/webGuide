@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>学习系统</title>
+    <!-- 域名 sys.io -->
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <style>
+        .w {
+            width: 75%;
+            margin: 0 auto;
+        }
+
+        .container {
+            font-size: 100px;
+        }
+
+        .header p {
+            margin: 5% 0;
+            text-align: center;
+            font-size: 2.5rem;
+        }
+
+        form {
+            display: flex;
+        }
+
+        .form-control option {
+            display: inline-block;
+        }
+
+        .beforeShow {
+            text-align: center;
+            font-size: 3em;
+            margin-top: 10%;
+        }
+
+        .show {
+            display: none;
+            margin-bottom: 10%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <p>《ez》</p>
+    </div>
+    <hr />
+    <form action="http://study.zhanlaoshi.vip/openapi/course/category" class="w" method="GET">
+        <!-- 课程大分类 -->
+        <!-- <select class="form-control sel01" disabled onchange="getChild(this.options[this.options.selectedIndex].value)"> -->
+        <select class="form-control sel01" disabled>
+            <option value="">请选择</option>
+        </select>
+        <!-- 课程子分类 -->
+        <select class="form-control sel02" disabled>
+            <option value="">请选择</option>
+        </select>
+    </form>
+    <hr />
+    <p class="beforeShow w">
+        <strong>请选择您要查看的课程</strong>
+    </p>
+    <p class="show w">
+        
+    </p>
+    <script src="./js/jquery-1.12.1.min.js"></script>
+    <script>
+        var url = "http://study.zhanlaoshi.vip/v1";
+        var filePath = ["/openapi/course/category/",
+            "/openapi/course/stage/summary/", "/openapi/course/category/summarys"
+        ];
+        //发送ajax请求的函数
+        /**
+            url: 域名 + 文件路径
+            cnum: 课程的序号
+            data: 请求参数
+            fn: 回调函数
+        */
+        function getOption(url,cnum, data, fn) {
+            $.ajax({
+                type: "get",
+                url: url + cnum,
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": "02l45rgw2aht0ww78stc47r72aih5lqr3jf33muqior6e9rjf8e9q5x38uxyl3yv815sl5mwh93ucdwjkmcmsd44t7zz4z37qebkcu7y39shuzk5b1km2w8hnagzl07j"
+                },
+                data: data || {},
+                success: function (res) {
+                    console.log(res);
+                    fn(res);
+                },
+                error: function (res) {
+                    console.log("error");
+                }
+            })
+        }
+        //获取子课程数据的函数
+        function getChild(cnum) {
+            $(".sel02").html("<option>请选择</option>")
+            var timeId = setTimeout(function(){
+                getOption(url + filePath[0], cnum, {}, function (res) {
+                    op2 = res["content"]; //数组
+                    $(op2).each(function (index, item) { //遍历数组，
+                        $("<option value=" + item.cnum + ">" + item["courseName"] + "</option>").appendTo($(
+                        '.sel02')); //每一个数组元素都创建一个选项
+                    })
+                })
+            },500)
+        }
+        //展示子课程数据的函数
+        function showData(cnum) {
+            getOption(url + filePath[2],"",{cnum:cnum}, function (res) { //发送请求，获取对应改选项的所有内容
+                var resArr = res["content"]; //赋值到一个变量中，是一个数组
+                $(resArr).each(function (index, item) { //遍历数组，输出内容
+                    var div = $("<div></div>");
+                    $(".show").append(div);
+                    var h3 = $("<h3></h3>");
+                    h3.val(item["cname"]);
+                    $(".show>div").append(h3);
+                    var div2 = $("<div></div>");
+                    div2.html(item["content"]);
+                    $(".show>div").append(div2);
+                })
+                if ($(".show").html() == "") { //如果最后输出的内容为空
+                    $(".show").html("<h3 style='text-align: center;font-size:3em;margin-top:10%;'><strong>您还没有填写该课程的内容<strong></h3>");
+                }
+            })
+        }
+        //当用户作出改变选项的动作时，发生的等待函数
+        function wait(){
+            $('.beforeShow').html("<strong>请稍等</strong>").show()
+            $(".show").html("");
+            $('.sel01').prop("disabled", true);
+            $('.sel02').prop("disabled", true);
+        }
+        //废了的函数
+        function ast(res){
+            if(res.statuscode == 400 && res.msg.indexof("频繁")){
+                wait();
+                $('.beforeShow').html("<strong>服务器出错，请在5秒后刷新页面</strong>")
+            }else {
+            }
+        }
+        $(function () {
+            var op1 = null;
+            var op2 = null;
+            var op3 = null;
+
+            //获取顶级课程
+            getOption(url + filePath[0], '',{}, function (res) {
+                op1 = res["content"]; //数组
+                $(op1).each(function (index, item) { //遍历数组，
+                    $("<option value=" + item.cnum + ">" + item["courseName"] + "</option>")
+                        .appendTo($('.sel01')); //每一个数组元素都创建一个选项
+                })
+                if ($('.sel01').children().length != 1) {
+                    $('.sel01').prop("disabled", false);
+                }
+            })
+            //当下拉框1触发事件，获取子课程数据以及当前顶级课程的所有阶段的内容并显示
+            $(".sel01").change(function () {
+                getChild(this.options[this.options.selectedIndex].value)
+                //     console.log(this)----select对象本身
+                //     console.log(this.options)----所有的option
+                //     console.log(this.options.selectedIndex)当前选中的option的索引值
+                //     console.log(this.options[this.options.selectedIndex])当前选中的option的索引值的option对象
+                //     console.log(this.options[this.options.selectedIndex].value)当前选中的option的索引值的option对象的value属性
+                wait();
+                var that = this;
+                var timeId = setTimeout(function(){
+                    showData(this.options[this.options.selectedIndex].value);
+                    $('.beforeShow').html("<strong>请稍等</strong>").hide()
+                    $('.sel01').prop("disabled", false);
+                    if ($('.sel02').children().length != 1) {
+                        $('.sel02').prop("disabled", false);
+                    }
+                    clearTimeout(timeId);
+                }.bind(that), 2000);
+            })
+            $(".sel02").change(function(){
+                var that = this;
+                wait();
+                var timeId = setTimeout(function(){
+                    getOption(url + filePath[1] , this.options[this.options.selectedIndex].value,{}, function (res) {
+                        op3 = res["content"]; //对象
+                        console.log(op3)
+                        // $('.beforeShow').html("<strong>请稍等</strong>").hide()
+                        $(".show").html(op3["summary"]).prev().hide();
+                        if($(".show").html() == ""){
+                            $(".beforeShow").show().html("<strong>"+res["msg"]+"</strong>")
+                        }
+                    })
+                    $('.sel01').prop("disabled", false);
+                    if ($('.sel02').children().length != 1) {
+                        $('.sel02').prop("disabled", false);
+                    }
+                    clearTimeout(timeId);
+                }.bind(that),500);
+            })
+        })
+    </script>
+</body>
+
+</html>
