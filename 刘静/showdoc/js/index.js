@@ -3,17 +3,51 @@ $(function(){
         //getFCatalogue('初级');
         var timer=null;
 
+        // $(".firstCata-item").on('click',function(){
+        //     var that=this;
+        //     clearTimeout(timer);
+        //     timer=setTimeout(function(){
+        //         $('.docContainer').html("").hide();
+        //         $('.docCata-ul').html("");
+        //         active($(that));
+        //         var level=$(that).text();
+        //         getCatalogue(level,getHTML,'/openapi/course/category');
+        //     },1600);
+        // });
+        
+
+
         $(".firstCata-item").on('click',function(){
+            console.log(this);
             var that=this;
-            clearTimeout(timer);
-            timer=setTimeout(function(){
-                $('.docContainer').html("").hide();
-                $('.docCata-ul').html("");
-                active($(that));
-                var level=$(that).text();
-                getCatalogue(level,getHTML,'/openapi/course/category');
-            },1600);
+            debounce.call(this,fisrtCateArg.call(that));
         });
+
+        
+        function debounce(fn){
+            console.log(this);
+            console.log(fn);
+            clearTimeout(timer);
+            timer=setTimeout(fn,1600);
+        }
+        
+        function fisrtCateArg(){
+            console.log(this);
+            $('.docContainer').html("").hide();
+            $('.docCata-ul').html("");
+            active($(this));
+            var level=$(this).text();
+            getCatalogue(level,getHTML,'/openapi/course/category');
+        }
+
+
+
+
+
+
+
+
+
         
         $(".subCatalogue").on('click','.subCata-item',function(){
             var that=this;
@@ -79,6 +113,7 @@ $(function(){
                     Authorization:'w0xkap48bh8by6x1hwk159d3ihvspq17qecknhdrlf5n7bppgcnrd0viz41v44g12buwl5l4wsfdbm5fybrntp5t8l4vu6pvavhaqytxaqhz875dfgu5sqh7vkj37523'
                 },
                 success:function(res){
+                    console.log(res);
                 	fn(level,res);
                 }
             })
