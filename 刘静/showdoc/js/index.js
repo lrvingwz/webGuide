@@ -3,42 +3,45 @@ $(function(){
         //getFCatalogue('初级');
         var timer=null;
 
+        $(".firstCata-item").on('click',function(){
+            var that=this;
+            clearTimeout(timer);
+            timer=setTimeout(function(){
+                $('.docContainer').html("").hide();
+                $('.docCata-ul').html("");
+                active($(that));
+                var level=$(that).text();
+                getCatalogue(level,getHTML,'/openapi/course/category');
+            },1600);
+        });
+        
+
+
         // $(".firstCata-item").on('click',function(){
+        //     console.log(this);
         //     var that=this;
+        //     debounce.call(this,fisrtCateArg.call(that));
+        // });
+
+        
+        // function debounce(fn){
+        //     console.log(this);
+        //     console.log(fn);
         //     clearTimeout(timer);
-        //     timer=setTimeout(function(){
+        //     timer=setTimeout(fn,1600);
+        // }
+        
+        // function fisrtCateArg(){
+        //     console.log(this);
+        //     var that=this;
+        //     return function(){
         //         $('.docContainer').html("").hide();
         //         $('.docCata-ul').html("");
         //         active($(that));
         //         var level=$(that).text();
         //         getCatalogue(level,getHTML,'/openapi/course/category');
-        //     },1600);
-        // });
-        
-
-
-        $(".firstCata-item").on('click',function(){
-            console.log(this);
-            var that=this;
-            debounce.call(this,fisrtCateArg.call(that));
-        });
-
-        
-        function debounce(fn){
-            console.log(this);
-            console.log(fn);
-            clearTimeout(timer);
-            timer=setTimeout(fn,1600);
-        }
-        
-        function fisrtCateArg(){
-            console.log(this);
-            $('.docContainer').html("").hide();
-            $('.docCata-ul').html("");
-            active($(this));
-            var level=$(this).text();
-            getCatalogue(level,getHTML,'/openapi/course/category');
-        }
+        //     }
+        // }
 
 
 
