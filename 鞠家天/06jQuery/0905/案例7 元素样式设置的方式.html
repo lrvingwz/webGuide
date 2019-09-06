@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>乁( ˙ ω˙乁)</title>
+    <script src="../js/jquery-1.12.1.js"></script>
+    <script>
+        $(function () {
+            //一般写法
+//           $("#btn").click(function () {
+//               $("#dv").css("width",300);
+//               $("#dv").css("height",200);
+//               $("#dv").css("backgroundColor","pink");
+//           });
+            //链式编程写法
+//            $("#btn").click(function () {
+//                $("#dv").css("width",300).css("height",200).css("backgroundColor","#9999ff");
+//            });
+            //传入对象
+            $("#btn").click(function () {
+                $("#dv").css({"width":300,"height":200,"backgroundColor":"yellow"});
+            });
+        });
+    </script>
+</head>
+<body>
+<input type="button" value="change" id="btn"/>
+<div id="dv"></div>
+</body>
+</html>

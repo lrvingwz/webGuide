@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>乁( ˙ ω˙乁)</title>
+    <style>
+        div{
+            width: 300px;
+            height: 200px;
+            border: 1px solid red;
+        }
+        #dv2{
+            border-color: green;
+        }
+
+    </style>
+    <script src="../js/jquery-1.12.1.js"></script>
+    <script>
+        $(function () {
+            $("#btn").click(function () {
+                //剪切
+//                $("#dv1>p").appendTo("#dv2");
+                $("#dv2").append($("#dv1>p"));
+                //克隆
+//                $("#dv1>p").clone().appendTo("#dv2");
+
+
+                //无效克隆
+//                $("#dv2").append($("#dv1>p")).clone();
+            });
+        });
+    </script>
+</head>
+<body>
+<input type="button" value="显示效果" id="btn"/>
+<div id="dv1">
+    <p>我我我哦我哦哦啊睡觉哦范吉奥i奇偶啊</p>
+</div>
+<div id="dv2"></div>
+</body>
+</html>

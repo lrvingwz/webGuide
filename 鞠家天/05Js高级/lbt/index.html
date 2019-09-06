@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>乁( ˙ ω˙乁)</title>
+    <style>
+        .w{
+            margin: auto;
+            position: relative;
+        }
+        .point{
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            margin: 5px;
+            border: 4px solid rgba(255,255,255,0.4);
+            background-color: rgba(255,255,255,0.4);
+            border-radius: 10px;
+        }
+        .focuspoint{
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            margin: 5px;
+            border: 4px solid rgba(255,255,255,0.4);
+            background-color: orangered;
+            border-radius: 10px;
+        }
+    </style>
+    <script src="../js/common.js"></script>
+</head>
+<body>
+    <div class="w" id="w">
+    </div>
+    <script>
+        //图片盒子
+        (function () {
+            function ImageBox(){
+                this.a=null;
+                this.im=null;
+            }
+            ImageBox.prototype.init= function (obj,downEle) {
+                var im=document.createElement("img");
+                var a=document.createElement("a");
+                a.style.display="block";
+                a.style.width="100%";
+                a.style.height="100%";
+                im.style.width="100%";
+                im.style.height="100%";
+                im.src="images/"+obj["imgName"]+".jpeg";
+                a.appendChild(im);
+                downEle.appendChild(a);
+                this.a=a;
+                this.im=im;
+            };
+            ImageBox.prototype.change= function (num,downEle,arr) {
+                downEle.style.backgroundImage="url(images/"+arr[num]["imgName"]+".jpeg)";
+                downEle.style.backgroundSize="100% 100%";
+                this.a.href=arr[num]["href"];
+                var src="images/"+arr[num]["imgName"]+".jpeg";
+                animate(this.a,{"opacity":0}, function () {
+                    this.im.src=src;
+                    this.a.style.opacity="1";
+                }.bind(this));
+            };
+            window.ImageBox=ImageBox;
+        }());
+        //按钮组
+        (function () {
+            function IndexBtn(style,focusStyle){
+                this.sty=style;
+                this.focSty=focusStyle;
+                this.btnBox=null;
+                this.indexBtns=[];
+            }
+            IndexBtn.prototype.boxInit= function (left,top,box){
+                var div=document.createElement("div");
+                div.style.position="absolute";
+                div.style.left=left+"px";
+                div.style.top=top+"px";
+                box.appendChild(div);
+                this.btnBox=div;
+            };
+            IndexBtn.prototype.btnInit= function (arr) {
+                for(var j=0;j<arr.length;j++){
+                    var i=document.createElement("i");
+                    i.className=this.sty;
+                    i.index=arr[j]["index"];
+                    this.btnBox.appendChild(i);
+                    this.indexBtns.push(i);
+                }
+            };
+            IndexBtn.prototype.btnEvent= function () {
+                var str=this.focSty;
+                var str2=this.sty;
+//                var obj=obj;
+                for(var i=0;i<this.indexBtns.length;i++){
+                    this.indexBtns[i].onmouseover= function () {
+                        if(this.className==str){
+                            this.isfocus=true
+                        }else{
+                            this.isfocus=false;
+                            this.className=str;
+                        }
+                    };
+                    this.indexBtns[i].onmouseout= function () {
+                        if(!this.isfocus){
+                            this.className=str2;
+                        }else{
+                            this.isfocus=false;
+                        }
+                    };
+                }
+            };
+            IndexBtn.prototype.light= function (num) {
+                for(var i=0;i<this.indexBtns.length;i++){
+                    this.indexBtns[i].className=this.sty;
+                }
+                this.indexBtns[num].className=this.focSty;
+            };
+            window.IndexBtn=IndexBtn;
+        }());
+        //左右按钮组
+        (function () {
+            function ControlBtn(width,height,xSpace,top){
+                this.width=width;
+                this.height=height;
+                this.xSpace=xSpace;
+                this.top=top;
+                this.controlBtns=[];
+            }
+            ControlBtn.prototype.init=function (direction,box){
+                var div=document.createElement("div");
+                div.direction=direction;
+                div.style.position="absolute";
+                div.style[direction]=this.xSpace+"px";
+                div.style.top=this.top+"px";
+                div.style.width=this.width+"px";
+                div.style.height=this.height+"px";
+                div.style.opacity="0.2";
+                div.style.background="url(images/"+direction+".png) no-repeat";
+                box.appendChild(div);
+                this.controlBtns.push(div);
+            };
+            ControlBtn.prototype.btnEvent= function (obj,arr) {
+                var obj=obj;
+                var arr=arr;
+                var max=arr.length-1;
+                for(var i=0;i<this.controlBtns.length;i++){
+                    if(this.controlBtns[i].direction=="right"){
+                        addEventListener(this.controlBtns[i],"click", function () {
+                            var num=f1(obj.num);
+                            obj.num=num;
+                            obj.imageBox.change(num,obj.element,arr);
+                            obj.indexBtn.light(num);
+                        });
+                    }else{
+                        addEventListener(this.controlBtns[i],"click", function () {
+                            var num=f2(obj.num);
+                            obj.num=num;
+                            obj.imageBox.change(num,obj.element,arr);
+                            obj.indexBtn.light(num);
+                        });
+                    }
+                }
+                function f1(num){
+                    num++;
+                    num=num>max?0:num;
+                    return num;
+                }
+                function f2(num){
+                    num--;
+                    num=num<0?max:num;
+                    return num;
+                }
+            };
+            window.ControlBtn=ControlBtn;
+        }());
+        //总体
+        (function () {
+            function Slideshow(width,height){
+                this.width=width;
+                this.height=height;
+                this.element=null;
+                this.num=0;
+                this.imageBox=new ImageBox();
+                this.indexBtn=new IndexBtn("point","focuspoint");
+                this.controlBtn=new ControlBtn(40,60,20,270);
+            }
+            Slideshow.prototype.upCount=function(n,arr){
+                this.num=count(this.num,arr.length-1,n);
+            };
+            Slideshow.prototype.init=function (box) {
+                var div=document.createElement("div");
+                div.style.width=this.width+"px";
+                div.style.height=this.height+"px";
+                div.style.position="relative";
+                box.appendChild(div);
+                this.element=div;
+            };
+            Slideshow.prototype.active= function () {
+                var that=this;
+              this.element.timeId=setInterval(function () {
+                  this.upCount(1,arr);
+                  this.indexBtn.light(this.num);
+                  this.imageBox.change(this.num,this.element,arr);
+              }.bind(this),5000);
+
+                this.element.onmouseover= function () {
+                  clearInterval(this.timeId);
+                    that.controlBtn.controlBtns[0].style.opacity="1";
+                    that.controlBtn.controlBtns[1].style.opacity="1";
+                };
+
+                this.element.onmouseout= function () {
+                    this.timeId=setInterval(function () {
+                        that.upCount(1,arr);
+                        that.indexBtn.light(that.num);
+                        that.imageBox.change(that.num,that.element,arr);
+                    },5000);
+                    that.controlBtn.controlBtns[0].style.opacity="0.2";
+                    that.controlBtn.controlBtns[1].style.opacity="0.2";
+                };
+            };
+            window.Slideshow=Slideshow;
+        }());
+
+        function count(num,maxNum,n) {
+            var num=num;
+            if(num+n>maxNum){
+                num=num+n-maxNum-1;
+            }else{
+                num+=n;
+            }
+            return num;
+        }
+    </script>
+    <script>
+        var arr=[
+            {"index":0,"imgName":"1","href":"#"},
+            {"index":1,"imgName":"2","href":"#"},
+            {"index":2,"imgName":"3","href":"#"},
+            {"index":3,"imgName":"4","href":"#"},
+            {"index":4,"imgName":"5","href":"#"}
+        ];
+        var sShow=new Slideshow(800,600);
+        sShow.init(my$("w"));
+        sShow.imageBox.init(arr[0],sShow.element);
+        sShow.indexBtn.boxInit(600,530,sShow.element);
+        sShow.indexBtn.btnInit(arr);
+        sShow.indexBtn.btnEvent();
+        sShow.indexBtn.light(0);
+        sShow.controlBtn.init("left",sShow.element);
+        sShow.controlBtn.init("right",sShow.element);
+        sShow.controlBtn.btnEvent(sShow,arr);
+        sShow.active();
+        for(var i=0;i<arr.length;i++){
+            addEventListener(sShow.indexBtn.indexBtns[i],"click", function () {
+                sShow.num=this.index;
+                sShow.indexBtn.light(this.index);
+                sShow.imageBox.change(this.index,sShow.element,arr);
+                this.isfocus=true;
+            });
+        }
+
+
+
+
+    </script>
+</body>
+</html>

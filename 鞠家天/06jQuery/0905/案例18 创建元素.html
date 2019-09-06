@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>乁( ˙ ω˙乁)</title>
+    <style>
+        div{
+            width: 300px;
+            height: 200px;
+            border: 4px solid red;
+        }
+    </style>
+    <script src="../js/jquery-1.12.1.js"></script>
+    <script>
+        $(function () {
+            $("#btn").click(function () {
+//                //父元素中创建元素
+//                $("#dv").append($('<a href="http://www.baidu.com">百度</a>'));
+                //创建元素添加到父元素中
+                $('<a href="http://www.baidu.com">百度</a>').appendTo("#dv");
+            });
+        });
+    </script>
+</head>
+<body>
+<input type="button" value="创建一个超链接" id="btn"/>
+<div id="dv"></div>
+</body>
+</html>
