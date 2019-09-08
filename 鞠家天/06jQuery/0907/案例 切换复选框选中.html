@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>乁( ˙ ω˙乁)</title>
+
+    <script src="../js/jquery-1.12.1.js"></script>
+    <script>
+        $(function () {
+            $("#btn").click(function () {
+                if($("#cb").prop("checked")){
+                    $("#cb").prop("checked",false);
+                }else{
+                    $("#cb").prop("checked",true);
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+<input type="button" value="切换" id="btn"/>
+<input type="checkbox" id="cb"/>
+</body>
+</html>

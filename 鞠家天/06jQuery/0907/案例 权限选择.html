@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>乁( ˙ ω˙乁)</title>
+
+    <script src="../js/jquery-1.12.1.js"></script>
+    <script>
+        $(function () {
+            //选中移入右
+            $("#btn1").click(function () {
+                $("#dv1>option:selected").appendTo($("#dv2"));
+            });
+            //选中移入左
+            $("#btn2").click(function () {
+                $("#dv2>option:selected").appendTo($("#dv1"));
+            });
+            //全部移入右
+            $("#btn3").click(function () {
+                $("#dv1>option").appendTo($("#dv2"));
+            });
+            //全部移入左
+            $("#btn4").click(function () {
+                $("#dv2>option").appendTo($("#dv1"));
+            });
+        });
+    </script>
+</head>
+<body>
+<select multiple="multiple" name="word" id="dv1" style="float: left; width: 60px; height: 100px">
+    <option>添加</option>
+    <option>删除</option>
+    <option>修改</option>
+    <option>查询</option>
+    <option>打印</option>
+</select>
+<div style="width: 50px; float: left; height: 100px">
+    <button style="  margin-bottom: 5px; display: block; width: 100%" id="btn1"> > </button>
+    <button style="  margin-bottom: 5px; display: block; width: 100%" id="btn2"> < </button>
+    <button style="  margin-bottom: 5px; display: block; width: 100%" id="btn3"> >> </button>
+    <button style="  margin-bottom: 5px; display: block; width: 100%" id="btn4"> << </button>
+</div>
+<select multiple="multiple" name="word" id="dv2" style="float: left; width: 60px; height: 100px"></select>
+</body>
+</html>
