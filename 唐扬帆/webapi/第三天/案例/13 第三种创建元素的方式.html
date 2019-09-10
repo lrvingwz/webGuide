@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="button" value="创建p" id="btn">
+	<div id="dv"></div>
+	<script src="common.js"></script>
+	<script>
+		//document.createElement("标签名字"):返回对象
+		//把元素追加到父级元素中
+		my$("btn").onclick=function(){
+			//创建元素
+			var pObj=document.createElement("p");
+			setInnerText(pObj,"这是一个p");
+			//把创建后的元素追加到父级元素中
+			my$("dv").appendChild(pObj);
+		};
+	</script>
+</body>
+</html>

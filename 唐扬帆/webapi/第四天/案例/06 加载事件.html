@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+	//很重要
+	window.onload=function(){
+		document.getElementById("btn").onclick=function(){
+			alert("hello");
+		};
+	};
+	//扩展事件
+	//只有IE8能用，关闭页面之后触发
+	// window.onunload=function(){	
+	// 		alert("hello");
+	// 	};
+	//
+	//页面关闭时触发
+	// window.onbeforunload=function(){	
+	// 		alert("hello");
+	// 	};
+	</script>
+</head>
+<body>
+	<input type="button" value="button" id="btn">
+</body>
+</html>

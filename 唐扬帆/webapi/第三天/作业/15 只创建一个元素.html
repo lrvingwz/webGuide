@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="button" value="创建按钮" id="btn">
+	<div id="dv"></div>
+	<script src="common.js"></script>
+	<script>
+		my$("btn").onclick=function(){
+			//判断这个按钮的子元素是否存在
+			if(!my$("btn2")){//如果为true就有
+				var obj=document.createElement("input");
+				obj.type="button";
+				obj.value="按钮";
+				obj.id="btn2";
+				my$("dv").appendChild(obj);
+			}
+		};
+	</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="button" value="创建列表" id="btn">
+	<div id="dv"></div>
+	<script src="common.js"></script>
+	<script>
+		var names=["one","one","one","one","one","one","one"];
+		my$("btn").onclick=function(){
+			var str="<ul style='list-style:none; cursor:pointer'>";
+			//根据循环创建对应的li
+			for(var i=0;i<names.length;i++){
+				str+="<li>"+names[i]+"</li>";
+			}
+			str+="</ul>";
+			my$("dv").innerHTML=str;
+
+			//获取所有的li，添加鼠标进入事件，鼠标离开事件
+			var list=my$("dv").getElementsByTagName("li");
+			for(var i=0;i<list.length;i++){
+				list[i].onmouseover=function(){
+					this.style.backgroundColor="yellow";
+				};
+				list[i].onmouseout=function(){
+					this.style.backgroundColor="";
+				};
+			}
+		};
+	</script>
+</body>
+</html>

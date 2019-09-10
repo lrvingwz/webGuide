@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<input type="button" value="停止1" id="btn1">
+<input type="button" value="停止2" id="btn2">
+	<script>
+		//常用的，反复的执行
+		var timeId=window.setInterval(function(){
+			alert("hello");
+		},1000);
+		document.getElementById("btn1").onclick=function(){
+			window.clearInterval(timeId);//清理定时器
+		};
+		//一次性的
+		var timeId2=window.setTimeout(function(){
+			alert("hellow");
+		},1000);
+		//点击这个按钮，停止这个一次性的定时器（虽然不写这个按钮，定时器也会停止，但它会占内存）
+			document.getElementById("btn2").onclick=function(){
+				clearTimeout(timeId);
+			};
+	</script>
+</body>
+</html>

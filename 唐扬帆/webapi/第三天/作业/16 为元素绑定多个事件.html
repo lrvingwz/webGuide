@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="button" value="按钮" id="btn">
+	<script src="common.js"></script>
+	<script>
+		//对像.addEventListener("参数1",参数2，参数3);（IE8不支持）
+
+		//为一个元素绑定多个相同的事件
+		my$("btn").addEventListener("click",function(){
+			console.log("hello");
+		},false);
+		my$("btn").addEventListener("click",function(){
+			console.log("hello");
+		},false);
+		my$("btn").addEventListener("click",function(){
+			console.log("hello");
+		},false);
+		my$("btn").addEventListener("click",function(){
+			console.log("hello");
+		},false);
+
+
+		//2---对象.attachEvent("参数1",参数2)（只有IE8支持）
+		// my$("btn").attachEvent("onclick",function(){
+		// 	console.log("hello111");
+		// });
+		// my$("btn").attachEvent("onclick",function(){
+		// 	console.log("hello111");
+		// });
+		// my$("btn").attachEvent("onclick",function(){
+		// 	console.log("hello111");
+		// });
+	</script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#dv {
+      		background-color: rgba(255, 255, 255, 0.3);
+      		height: 200px;
+      		text-align: center;
+    	}
+		#dv img {
+      		width: 200px;
+      		margin-top: 35px;
+      		cursor: pointer;
+    	}
+	</style>
+</head>
+<body>
+	<body>
+	<div id="dv">
+		<img src="images/1.jpg" alt="">
+		<img src="images/2.jpg" alt="">
+		<img src="images/3.jpg" alt="">
+	</div>
+	<script src="common.js"></script>
+		<script src="common.js"></script>
+		<script>
+		var imgObjs=my$("dv").children;
+		for(var i=0;i<imgObjs.length;i++){
+		imgObjs[i].onclick=function(){
+			document.body.style.backgroundImage="url("+this.src+")";
+		};
+	}
+	</script>
+</body>
+</html>

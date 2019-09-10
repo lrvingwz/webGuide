@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>title</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    body{
+      height: 2000px;
+    }
+    img{
+      position: absolute;
+    }
+  </style>
+</head>
+<body>
+
+<img src="images/bird.png" alt="" id="im" />
+<script src="common.js"></script>
+<script>
+
+    
+  //兼容代码  获取页面向上或者向左卷曲出去的距离的值
+  document.onmousemove=function(){
+    function getScroll(){
+      return {
+        left:window.pageXOffset||document.body.scorllLeft||document.documentElement.scrollLeft||0,
+        top:window.pageYOffset||document.body.scorllTop||document.documentElement.scrollTop||0,
+      } 
+    }
+    my$("im").style.left=window.event.clientX+getScroll().left+"px";
+    my$("im").style.top=window.event.clientY+getScroll().top+"px";
+  }
+
+</script>
+
+</body>
+</html>

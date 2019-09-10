@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="dv">
+		<ul id="uu">哈哈
+			<li>one</li>
+			<li>two</li>嘻嘻
+			<li id="three">three</li>呵呵
+			<li>four</li>
+			<li>five</li>
+			<li>six</li>嘎嘎
+		</ul>
+	</div>
+	<script src="common.js"></script>
+	<script>
+		// 12行代码，获取节点和元素
+		var ulObj=my$("uu");
+		console.log(ulObj.parentNode);//父节点
+		console.log(ulObj.parentElement);//父元素
+
+		console.log(ulObj.childNodes);//子节点
+		console.log(ulObj.children);//子元素
+
+		console.log("=========")
+
+		//后面的在IE8种凡是节点的代码返回的是元素，是元素的代码都不支持
+		
+		console.log(ulObj.firstChild);//第一个子节点-----IE8种显示第一个元素
+		console.log(ulObj.firstElementChild);//第一个子元素---IE8不支持
+
+		console.log(ulObj.lastChild);//最后一个子节点
+		console.log(ulObj.lastElementChild);//最后一个子元素
+
+		console.log(my$("three").previousSibling);//某个元素的前一个兄弟节点
+		console.log(my$("three").previousElementSibling);//某个元素的前一个兄弟元素
+
+		console.log(my$("three").nextSibling);//某个元素的后一个兄弟节点
+		console.log(my$("three").nextElementSibling);//某个元素的后一个兄弟元素
+	</script>
+</body>
+</html>

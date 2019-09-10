@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="button" value="变色" id="btn">
+	<ul id="uu">
+		<li>123</li>
+		<li>123</li>
+		<li>123</li>
+		<li>123</li>
+		<li>123</li>
+		<li>123</li>
+		<li>123</li>
+		<li>123</li>
+	</ul>
+	<script src="common.js"></script>
+	<script>
+	my$("btn").onclick=function(){
+		var count=0;//记录li
+		//获取ul中所有的子节点
+		var nodes=my$("uu").childNodes;
+		for(var i=0;i<nodes.length;i++){
+			//判断这个节点是不是里标签
+			if(nodes[i].nodeType==1&&nodes[i].nodeName=="LI"){
+				//nodes[i].style.backgroundColor=i%2==0?"red":"yellow";此方法不行节点不是元素，这里面有17个节点
+				nodes[i].style.backgroundColor=count%2==0?"red":"yellow";
+				count++;
+			}
+		}
+	};
+	</script>
+</body>
+</html>

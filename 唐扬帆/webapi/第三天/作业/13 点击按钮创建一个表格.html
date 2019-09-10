@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="button" value="创建表格" id="btn">
+	<div id="dv"></div>
+	<script src="common.js"></script>
+	<script>
+		var arr=[
+			{name:"百度",href:"http://www.baidu.com"},
+			{name:"百度",href:"http://www.baidu.com"},
+			{name:"百度",href:"http://www.baidu.com"},
+			{name:"百度",href:"http://www.baidu.com"},
+			{name:"百度",href:"http://www.baidu.com"},
+			{name:"百度",href:"http://www.baidu.com"},
+			{name:"百度",href:"http://www.baidu.com"}
+		];
+		my$("btn").onclick=function(){
+			var tableObj=document.createElement("table");
+			tableObj.border="1";
+			tableObj.cellPadding="0";
+			tableObj.cellSpacing="0";
+			my$("dv").appendChild(tableObj);
+			//创建行
+			for(var i=0;i<arr.length;i++){
+				var trObj=document.createElement("tr");
+				tableObj.appendChild(trObj);
+				//创建第一个列
+				var td1=document.createElement("td");
+				td1.innerText=arr[i].name;
+				trObj.appendChild(td1);
+				//创建第二个列
+				var td2=document.createElement("td");
+				td2.innerHTML="<a href="+arr[i].href+">"+arr[i].name+"</a>";
+				trObj.appendChild(td2);
+			}
+		}
+	</script>
+</body>
+</html>

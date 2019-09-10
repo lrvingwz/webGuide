@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+
+    ul {
+      list-style: none;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    div {
+      width: 1150px;
+      height: 400px;
+      margin: 50px auto;
+      border: 1px solid red;
+      overflow: hidden;
+    }
+
+    div li {
+      width: 240px;
+      height: 400px;
+      float: left;
+    }
+
+    div ul {
+      width: 1300px;
+      overflow: hidden;
+    }
+
+
+  </style>
+</head>
+<body>
+<div id="box">
+  <ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+</div>
+<script src="common.js"></script>
+<script>
+  //获取所有点li标签
+  var list=my$("box").getElementsByTagName("li");
+  for(var i=0;i<list.length;i++){
+    list[i].style.backgroundImage="url(images/"+(i+1)+".jpg)";
+    //鼠标进入
+    list[i].onmouseover=mouseoverHandle;
+    //鼠标离开
+    list[i].onmouseout=mouseoutHandle;
+  }
+
+  //进入
+  function mouseoverHandle(){
+    //设置所有的图片宽度
+    for(var j=0;j<list.length;j++){
+      animate(list[j],{"width":100});
+    }
+    //设置当前进入图片的宽度
+    animate(this,{"width":800});
+  }
+  //离开
+   function mouseoutHandle() {
+    for (var j = 0; j < list.length; j++) {
+      animate(list[j], {"width": 240});
+    }
+  }
+
+</script>
+
+</body>
+</html>

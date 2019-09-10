@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		ul{
+			list-style: none;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<input type="button" value="创建列表" id="btn">
+	<div id="dv"></div>
+	<script src="common.js"></script>
+	<script>
+	var kungfu=["one","one","one","one","one","one","one","one"];
+	//点击按钮动态创建列表，把；列表加到div中
+		my$("btn").onclick=function(){
+			//创建ul
+			var ulObj=document.createElement("ul");
+			//把ul加入到父级div中
+			my$("dv").appendChild(ulObj);
+			//动态的创建li
+			for(var i=0;i<kungfu.length;i++){
+				var liObj=document.createElement("li");
+			//把li追加到ul中
+				liObj.innerText=kungfu[i];
+				ulObj.appendChild(liObj);
+
+				//为li添加鼠标进入事件
+				liObj.onmouseover=onmouseoverHandle;
+				//为li添加鼠标离开事件
+				liObj.onmouseout=onmouseoutHandle;
+			}
+		};
+
+	</script>
+</body>
+</html>

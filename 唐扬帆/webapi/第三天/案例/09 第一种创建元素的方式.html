@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="button" value="创建元素" id="btn">
+	呜呜 我只能活几秒钟
+	<script src="common.js"></script>
+	<script>
+	//document.write("标签代码及内容");
+	my$("btn").onclick=function(){
+		document.write("<p>我是p</p>");//页面加载完毕后用这种方式创建元素，页面其他内容消失
+	};
+	document.write("<p>我是p</p>");//页面加载时创建元素，其他内容不消失
+	</script>
+
+	<!-- document.write("标签代码及内容");缺点：如果页面加载完毕后，此时通过这种方式创建元素，那么页面上所有的内容全部消失	 -->
+</body>
+</html>

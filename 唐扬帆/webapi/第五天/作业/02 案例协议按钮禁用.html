@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<textarea name="" id="" cols="30" rows="10" disabled>
+	good good study,day day up
+	</textarea>
+	<input type="button" value="请阅读协议(5)" id="btn" disabled>
+	<script src="common.js"></script>
+	<script>
+	var time=5;
+	var timeId=setInterval(function(){
+		time--;
+		my$("btn").value="请阅读协议("+time+")";
+		if(time<=0){
+			//停止定时器就可以了
+			clearInterval(timeId);
+			//按钮可以被点击
+			my$("btn").disabled=false;
+			my$("btn").value="同意";
+		}
+	},1000);
+	</script>
+</body>
+</html>

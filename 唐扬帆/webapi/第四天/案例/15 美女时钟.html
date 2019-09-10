@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<img src="" alt="" id="im">
+	<script src="common.js"></script>
+	<script>
+	function f1(){
+			//获取当前时间
+			var dt=new Date()
+			//获取小时
+			var hour=dt.getHours();
+			//获取秒
+			var second=dt.getSeconds();
+			
+			// second=second<10?"0"+second:second;
+			// hour=hour<10?"0"+hour:hour;
+			my$("im").src="meimei/"+hour+"_"+second+".jpg";
+		}
+		f1();
+		//图片先加载然后再定时1秒开始跳转
+		setInterval(f1,100)
+	</script>
+</body>
+</html>

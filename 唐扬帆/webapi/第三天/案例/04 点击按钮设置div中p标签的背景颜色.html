@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="button" value="改变颜色" id="btn">
+	<div id="dv">
+		<span>我是span</span>
+		<p>我是p</p>
+		<span>我是span</span>
+		<p>我是p</p>
+		<span>我是span</span>
+		<p>我是p</p>
+		<span>我是span</span>
+		<p>我是p</p>
+	</div>
+	<script src="common.js"></script>
+	<script>
+	my$("btn").onclick=function(){
+		//获取div
+		var dvObj=my$("dv")
+		//获取div中所有的子节点
+		var nodes=dvObj.childNodes;
+		for(var i=0;i<nodes.length;i++){
+			//判断这个标签是不是p标签
+			if(nodes[i].nodeType==1&&nodes[i].nodeName=="P"){
+				nodes[i].style.backgroundColor="red";
+			}
+		}
+	};
+	</script>
+</body>
+</html>

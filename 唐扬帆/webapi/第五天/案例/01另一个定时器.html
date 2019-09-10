@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+	//常用的，反复的执行
+	//	window.setInterval(function(){
+	//		alert("hello");
+	//	},100);
+	//	
+	//	window.clearInterval(定时器id)  清理定时器
+	//	
+	//	
+	//	另一个定时器。。。。。一次性的定时
+	//	
+	//	window.setTimeout(参数1，参数2)
+	//	参数1：函数
+	//	参数2：时间----1000毫秒---1秒
+	//	返回值该定时器的id
+		
+		//页面加载后
+		window.onload=function(){
+			//一次性的定时器
+			var timeId=window.setTimeout(function(){
+				alert("hello");
+			},1000);
+
+			//点击这个按钮，停止这个一次性的定时器（虽然不写这个按钮，定时器也会停止，但它会占内存）
+			document.getElementById("btn").onclick=function(){
+				clearTimeout(timeId);
+			};
+		};	
+	</script>
+	<input type="button" value="停止" id="btn" />
+</body>
+</html>

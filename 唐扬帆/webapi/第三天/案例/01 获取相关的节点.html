@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="dv">
+		<span>这是span</span>
+		<p>这是p</p>
+		<ul id="uu">
+			<li>one</li>
+			<li>two</li>
+			<li>three</li>
+			<li>four</li>
+			<li>five</li>
+			<li>six</li>
+		</ul>
+	</div>
+	<script src="common.js"></script>
+	<script>
+	var ulObj=my$("uu");
+	//ul标签的父级节点
+	console.log(ulObj.parentNode);
+	//ul标签的父级元素
+	console.log(ulObj.parentElement);
+	</script>
+</body>
+</html>

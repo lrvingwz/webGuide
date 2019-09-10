@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="button" value="变色" id="btn">
+	<ul id="uu">
+		<li>123</li>
+		<li>123</li>
+		<li>123</li>
+		<li>123</li>
+		<li>123</li>
+		<li>123</li>
+		<li>123</li>
+		<li>123</li>
+	</ul>
+	<script src="common.js"></script>
+	<script>
+		var count=0;
+		my$("btn").onclick=function(){
+			//获取所有的li
+			var nodes=my$("uu").childNodes;
+			for(var i=0;i<nodes.length;i++){
+				if(nodes[i].nodeType==1&&nodes[i].nodeName=="LI"){
+					nodes[i].style.backgroundColor=count%2==0?"red":"yellow";
+					count++;
+				}
+			}
+		};
+	</script>
+</body>
+</html>
