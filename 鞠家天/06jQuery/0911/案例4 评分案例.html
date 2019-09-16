@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>乁( ˙ ω˙乁)</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .comment {
+            font-size: 40px;
+            color: yellow;
+        }
+
+        .comment li {
+            float: left;
+        }
+
+        ul {
+            list-style: none;
+        }
+    </style>
+    <script src="../js/jquery-1.12.1.js"></script>
+    <script>
+        $(function () {
+            $(".comment").mouseleave(function () {
+                    $(this).find("li").text("☆");
+                    $(this).find("li[index=1]").nextAll().text("☆");
+                    $(this).find("li[index=1]").text("★").prevAll().text("★");
+
+            }).find("li").mouseenter(function () {
+                $(this).text("★").prevAll().text("★").end().nextAll().text("☆");
+            }).click(function () {
+                $(this).attr("index","1").siblings().removeAttr("index");
+            });
+        });
+    </script>
+</head>
+<body>
+<ul class="comment">
+    <li>☆</li>
+    <li>☆</li>
+    <li>☆</li>
+    <li>☆</li>
+    <li>☆</li>
+</ul>
+</body>
+</html>

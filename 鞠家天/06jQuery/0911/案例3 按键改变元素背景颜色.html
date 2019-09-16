@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>乁( ˙ ω˙乁)</title>
+    <style>
+        #dv {
+            width: 300px;
+            height: 200px;
+            background-color: #404060;
+        }
+    </style>
+    <script src="../js/jquery-1.12.1.js"></script>
+    <script>
+        $(function () {
+            $(document).keydown(function (e) {
+                switch (e.keyCode) {
+                    case 65:
+                        $("#dv").css("backgroundColor", "red");
+                        break;
+                    case 83:
+                        $("#dv").css("backgroundColor", "orange");
+                        break;
+                    case 68:
+                        $("#dv").css("backgroundColor", "yellow");
+                        break;
+                    case 70:
+                        $("#dv").css("backgroundColor", "green");
+                        break;
+                    case 71:
+                        $("#dv").css("backgroundColor", "skyblue");
+                        break;
+                    case 72:
+                        $("#dv").css("backgroundColor", "blue");
+                        break;
+                    case 74:
+                        $("#dv").css("backgroundColor", "purple");
+                        break;
+                    case 75:
+                        $("#dv").css("backgroundColor", "black");
+                        break;
+                    case 76:
+                        $("#dv").css({"backgroundColor": "white", "border": "1px solid black"});
+                }
+
+            });
+        });
+    </script>
+</head>
+<body>
+<div id="dv"></div>
+</body>
+</html>

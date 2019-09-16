@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>乁( ˙ ω˙乁)</title>
+
+    <script src="../js/jquery-1.12.1.js"></script>
+    <script>
+        $(document).mousedown(function (e) {
+            if(e.altKey){
+                console.log("alt + 鼠标");
+            }else if(e.ctrlKey){
+                console.log("Ctrl + 鼠标");
+            }else if(e.shiftKey){
+                console.log("shift + 鼠标");
+            }else{
+                console.log("鼠标");
+            }
+        });
+    </script>
+</head>
+<body>
+
+</body>
+</html>
