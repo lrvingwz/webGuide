@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>鼠标进入/离开改变样式</title>
+	<style>
+		div{
+			width: 300px;
+			height: 300px;
+			margin: auto;
+			background-color: #000;
+			color: #fff;
+			padding: 20px;
+			border: 5px solid #000;
+		}
+		.dv{
+			border: 5px solid red;
+			background-color: #fff;
+			color: #000;
+
+		}
+	</style>
+</head>
+<body>
+	<div id="dv">鼠标进入改变样式/离开恢复</div>
+	<script src="common.js"></script>
+	<script>
+		my$("dv").onmouseover=function(){
+			my$("dv").className="dv";
+		};
+		my$("dv").onmouseout=function(){
+			my$("dv").className="";
+		};
+	</script>
+</body>
+</html>

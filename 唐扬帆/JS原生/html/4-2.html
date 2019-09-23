@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		li{
+			list-style: none;
+		}
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.dv{
+			width: 490px;
+			height: 170px;
+			border: 10px solid #aaa;
+			margin:  auto;
+			border-radius: 5px;
+			position: relative;
+			overflow: hidden;
+		}
+		#uu1{
+			width: 2450px;
+		}
+		#uu1 li{
+			float: left;
+		}
+		#uu2{
+			width: 124px;
+			height: 24px;
+			position: absolute;
+			bottom: 0;
+			right: 0;
+		}
+		#uu2 li{
+			float: left;
+			width: 20px;
+			height: 20px;
+			line-height: 20px;
+			text-align: center;
+			background-color: #FFB449;
+			border-radius: 50%;
+			margin: 2px;
+			cursor: pointer;
+
+		}
+		#uu1 .current1{
+			display: block;
+		}
+		#uu2 .current2{
+			background-color: #FE934D;
+		}
+	</style>
+</head>
+<body>
+	<div class="dv">
+		<ul id="uu1">
+			<li class="current1"><img src="image/01.jpg" alt=""></li>
+			<li><img src="image/02.jpg" alt=""></li>
+			<li><img src="image/03.jpg" alt=""></li>
+			<li><img src="image/04.jpg" alt=""></li>
+			<li><img src="image/05.jpg" alt=""></li>
+		</ul>
+		<ul id="uu2">
+			<li class="current2">1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+		</ul>
+	</div>
+	<script src="common.js"></script>
+	<script>
+		var uu1=my$("uu1");
+		var list1=my$("uu1").children;
+		var list2=my$("uu2").children;
+		var index=0;
+		for(var i=0;i<list2.length;i++){
+			list2[i].index=i;
+			list2[i].onmouseover=function(){
+				clearInterval(timeId);
+				for(var j=0;j<list2.length;j++){
+					list2[j].className="";
+				}
+				this.className="current2";
+				 index=this.index;
+				uu1.style.marginLeft=-index*490+"px";
+			};
+			list2[i].onmouseout=function(){
+                timeId=setInterval(f1,1000);
+			};
+		}
+		var timeId=setInterval(f1,1000);
+		function f1(){
+			for(var j=0; j<list2.length; j++){
+                list2[j].style.backgroundColor="";
+                list2[j].className="";
+             }
+            if(index==list1.length) {
+                index=0;
+                uu1.style.marginLeft=0+"px";
+            }
+			animate(uu1,-index*490);
+			if(index==list1.length){
+                list2[list1.length].className=="";
+                list2[0].className="current2";
+            }else {
+                for(var i=0; i<list2.length; i++){
+                    list2[i].className="";
+                }
+            }
+            list2[index].className="current2";
+            index++;
+		}
+
+		//匀速动画函数
+        function animate(element,target){
+            clearInterval(element.timeId);
+            element.timeId=setInterval(function(){
+                var current=element.offsetLeft;
+                var step=490;
+                step=current<target?step:-step;
+                current+=step;
+                if(Math.abs(target-current)>Math.abs(step)){
+                    element.style.marginLeft=current+"px";
+                }else{
+                    element.style.marginLeft=target+"px";
+                    clearInterval(element.timeId);
+                }
+            },10);
+        }
+	</script>
+</body>
+</html>

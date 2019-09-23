@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>函数接收参数并弹出</title>
+	<style>
+		input{
+			margin-top: 5px;
+		}
+		div{
+			width: 180px;
+			height: 100px;
+			margin: auto;
+		}
+		#btn{
+			display: block;
+			margin: auto;
+			margin-top: 5px;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<input type="text" value="请输入" id="im1">
+		<input type="text" value="请输入" id="im2">
+		<br>
+		<input type="button" value="传参" id="btn">
+	</div>
+	<script src="common.js"></script>
+	<script>
+	my$("btn").onclick=function(){
+		alert(my$("im1").value)
+		alert(my$("im2").value)
+	};
+	</script>
+</body>
+</html>

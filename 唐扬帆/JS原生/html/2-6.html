@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>图片列表：鼠标移入/移出改变图片透明度</title>
+	<style>
+		.dv{
+			width: 720px;
+			height: 300px;
+			margin: auto;
+		}
+		.dv div{
+			width: 130px;
+			height: 130px;
+			margin: 5px;
+			float: left;
+			border: 1px solid #ccc;
+			cursor: pointer;
+			opacity: 0.5;
+		}
+	</style>
+</head>
+<body>
+	<div class="dv" id="dv">
+		<div><img src="image/1.jpg" alt=""></div>
+		<div><img src="image/2.jpg" alt=""></div>
+		<div><img src="image/3.jpg" alt=""></div>
+		<div><img src="image/4.jpg" alt=""></div>
+		<div><img src="image/5.jpg" alt=""></div>
+		<div><img src="image/6.jpg" alt=""></div>
+		<div><img src="image/7.jpg" alt=""></div>
+		<div><img src="image/8.jpg" alt=""></div>
+		<div><img src="image/9.jpg" alt=""></div>
+		<div><img src="image/10.jpg" alt=""></div>
+		<script src="common.js"></script>
+		<script>
+			var dvs=my$("dv").children;
+			for(var i=0;i<dvs.length;i++){
+				dvs[i].onmouseover=function(){
+					this.style.opacity="1";
+				};
+				dvs[i].onmouseout=function(){
+					this.style.opacity="";
+				};
+			}
+		</script>
+	</div>
+</body>
+</html>

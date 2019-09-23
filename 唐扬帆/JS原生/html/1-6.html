@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		label{
+			display: block;
+			width: 200px;
+			margin: auto;
+		}
+		div{
+			display: none;
+			margin: auto;
+			width: 200px;
+			border: 1px solid red;
+			font-size: 12px;
+			background-color: #FDDD9B;
+			line-height: 20px;
+		}
+	</style>
+</head>
+<body>
+	<label for="">
+		<input type="checkbox" id="ch" >
+		<span>两周之内，自动登录</span>
+	</label>
+	<div id="dv">为了您的信息安全，请不要在网吧或者公用网络使用此功能</div>
+	<script src="common.js"></script>
+	<script>
+		var lab=document.getElementsByTagName("label");
+		lab[0].onclick=function(){
+			if(my$("ch").checked){
+				my$("ch").checked=false;
+			}else{
+				my$("ch").checked=true;
+			}
+		};
+		lab[0].onmouseover=function(){
+			my$("dv").style.display="block";
+		};
+		lab[0].onmouseout=function(){
+			my$("dv").style.display="none";
+		};
+	</script>
+</body>
+</html>

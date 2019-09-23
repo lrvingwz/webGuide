@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>页面加载后累加，自加1</title>
+	<style>
+		div{
+			width: 30px;
+			margin: auto;
+		}
+	</style>
+</head>
+<body>
+	<div id="dv">0</div>
+	<script src="common.js"></script>
+	<script>
+		window.onload=function(){
+			var n=0; 
+			setInterval(function(){
+				n++;
+				my$("dv").innerText=n;
+			},1000)
+		};
+	</script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.dv{
+			width: 500px;
+			margin: auto;
+		}
+		.inner{
+			width: 130px;
+			border-radius: 3px;
+			border: 1px solid #000;
+			margin: auto;
+		}
+		p{
+			margin-left: 20px;
+		}
+		table{
+			cursor: default;
+		}
+		#tt{
+			cursor: pointer;
+		}
+		#tt:hover{
+			color: blue;
+		}
+	</style>
+</head>
+<body>
+	<div class="dv">
+		<div class="inner">
+			<table>
+				<thead id="th">
+					<tr>
+						<th><input type="checkbox" id="btn"></th>
+						<th>全选</th>
+						<th class="tt" id="tt">反选</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th><input type="checkbox"></th>
+						<th>选项</th>
+						<th>（一）</th>
+					</tr>
+					<tr>
+						<th><input type="checkbox"></th>
+						<th>选项</th>
+						<th>（二）</th>
+					</tr>
+					<tr>
+						<th><input type="checkbox"></th>
+						<th>选项</th>
+						<th>（三）</th>
+					</tr>
+					<tr>
+						<th><input type="checkbox"></th>
+						<th>选项</th>
+						<th>（四）</th>
+					</tr>
+					<tr>
+						<th><input type="checkbox"></th>
+						<th>选项</th>
+						<th>（五）</th>
+					</tr>
+				</tbody>
+			</table>
+			
+		</div>
+		<p>1、切换全选/全不选文字；2、根据选中个数更新全选框状态；</p>
+	</div>
+	<script>
+		var inputs=document.getElementsByTagName("input");
+		var btn=document.getElementById("btn");
+		var tt=document.getElementById("tt");
+        btn.onclick=function(){
+			for(var i=0;i<inputs.length;i++){
+				inputs[i].checked=this.checked;
+			}
+		};
+		for(var i=1;i<inputs.length;i++){
+			inputs[i].onclick=function(){
+				var flag=true;
+				for(var j=1;j<inputs.length;j++){
+					if(!inputs[j].checked){
+						flag=false;
+						break;
+					}
+				}
+				btn.checked=flag;
+			};
+		}
+		tt.onclick=function(){
+			if(btn.checked==true){
+				for(var k=0;k<inputs.length;k++){
+					inputs[k].checked=false;
+				}
+			}else{
+				for(var k=0;k<inputs.length;k++){
+					inputs[k].checked=!inputs[k].checked;
+				}
+			}
+			var flag=true;
+			for(var j=0;j<inputs.length;j++){
+					if(!inputs[j].checked){
+						flag=false;
+						break;
+					}
+				}
+				btn.checked=flag;
+		};
+	</script>
+</body>
+</html>

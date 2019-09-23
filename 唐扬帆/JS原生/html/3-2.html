@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>用parseInt解析数字，并求和</title>
+	<style>
+		div{
+			width: 500px;
+			margin: auto;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<input type="text" id="btn1">
+		<span>+</span>
+		<input type="text" id="btn2">
+		<span>=</span>
+		<span id="sp">?</span>
+		<input type="button" value="求和" id="btn">
+	</div>
+	<script src="common.js"></script>
+	<script>
+		my$("btn").onclick=function(){
+			my$("sp").innerText=parseInt(my$("btn1").value)+parseInt(my$("btn2").value);
+		};
+	</script>
+</body>
+</html>

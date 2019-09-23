@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>提示框效果</title>
+	<style>
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		.dv{
+			width: 600px;
+			height: 290px;
+			border: 1px solid #000;
+			margin: 20px auto;
+			cursor: pointer;
+		}
+		p{
+			margin-left: 200px;
+			background
+		}
+		ul{
+			width: 600px;
+			height: 230px;
+			margin: 10px auto;
+		}
+		li{
+			list-style: none;
+			float: left;
+			width: 107px;
+			height: 107px;
+			border: 1px solid #000;
+			margin: 5px 5px 5px 8px;
+			background-color: #eee;
+			padding: 5px;
+			box-sizing: border-box;
+			position: relative;
+		}
+		img{
+			display: none;
+			position: absolute;
+			top: -6px;
+			left: -6px;
+			border: 1px solid #000;
+			z-index: 999;
+		}
+	</style>
+</head>
+<body>
+	<div class="dv">
+		<p>名车车标展示-鼠标移过显示车标</p>
+		<ul id="uu">
+			<li><strong>BMW</strong><br>宝马
+				<img src="image/1.jpg" alt="">
+			</li>
+			<li><strong>Alfa</strong><br>阿尔法
+				<img src="image/2.jpg" alt="">
+			</li>
+			<li><strong>Skoda</strong><br>斯柯达
+				<img src="image/3.jpg" alt="">
+			</li>
+			<li><strong>volkswagen</strong><br>大众
+				<img src="image/4.jpg" alt="">
+			</li>
+			<li><strong>saab</strong><br>萨布
+				<img src="image/5.jpg" alt="">
+			</li>
+			<li><strong>lamborghina</strong><br>兰博基尼
+				<img src="image/6.jpg" alt="">
+			</li>
+			<li><strong>porsche</strong><br>保时捷
+				<img src="image/7.jpg" alt="">
+			</li>
+			<li><strong>peugeot</strong><br>标致
+				<img src="image/8.jpg" alt="">
+			</li>
+			<li><strong>Mercedes
+			</strong><br>梅赛德斯
+				<img src="image/9.jpg" alt="">
+			</li>
+			<li><strong>buick</strong><br>别克
+				<img src="image/10.jpg" alt="">
+			</li>
+		</ul>
+	</div>
+	<script src="common.js"></script>
+	<script>
+		var list=my$("uu").children;
+		var im=document.getElementsByTagName("img");
+		for(var i=0;i<list.length;i++){
+			list[i].index=i;
+			list[i].onmouseover=function(){
+				im[this.index].style.display="block";
+			};
+			list[i].onmouseout=function(){
+				im[this.index].style.display="";
+			};
+		}
+	</script>
+</body>
+</html>

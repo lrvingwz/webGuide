@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>自定义右键菜单</title>
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    .dv {
+        position: absolute;
+        display: none;
+    }
+    img {
+        float: left;
+        background-color: #ccc;
+    }
+    ul {
+        float: left;
+        width: 45px;
+        font-size: 14px;
+        text-align: center;
+    }
+    li {
+        height: 24px;
+        list-style: none;
+        cursor: pointer;
+    }
+    .current{
+    	background-color: #ddd;
+    }
+    </style>
+</head>
+<body>
+    <div class="dv" id="dv">
+        <img src="image/ico.png" alt="">
+        <ul id="uu">
+            <li>剪贴</li>
+            <li>复制</li>
+            <li>粘贴</li>
+        </ul>
+    </div>
+    <script src="common.js"></script>
+    <script>
+    var list=my$("uu").children;
+    document.oncontextmenu=function(e){
+            my$("dv").style.display="block";
+            my$("dv").style.left=evt.getPageX()+"px";
+            my$("dv").style.top=evt.getPageY()+"px";
+            return false;
+        };
+        for(var i=0;i<list.length;i++){
+        	list[i].onmouseover=function(){
+        		for(var j=0;j<list.length;j++){
+        			list[j].className="";
+        		}
+        		this.className="current";
+        	};
+        	list[i].onclick=function(){
+        		my$("dv").style.display="none";
+        		location.reload();//刷新
+        	};
+        }
+    </script>
+</body>
+</html>

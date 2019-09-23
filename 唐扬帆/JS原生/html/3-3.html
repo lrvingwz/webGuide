@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>累加按钮，自加1</title>
+	<style>
+		input{
+			display: block;
+			margin: auto;
+		}
+	</style>
+</head>
+<body>
+	<input type="button" value="0" id="btn">
+	<script src="common.js"></script>
+	<script>
+		var n=0;
+		my$("btn").onclick=function(){
+			n++;
+			this.value=n;
+		};
+	</script>
+</body>
+</html>

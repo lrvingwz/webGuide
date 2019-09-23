@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>网页换肤</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		button{
+			width: 15px;
+			height: 15px;
+			box-sizing: border-box;
+		}
+		a{
+			text-decoration: none;	
+			color: #fff;
+		}
+		div{
+			width: 400px;
+			margin: auto;
+			overflow: hidden;
+		}
+		span{
+			width: 50px;
+			height: 20px;
+			display: block;
+			float: left;
+			background-color: red;
+			margin-right: 5px;
+			text-align: center;
+		}
+		#red,.red{
+			background-color: red;
+			border: 3px solid red;
+		}
+		#green,.green{
+			border: 3px solid green;
+			background-color: green;
+		}
+		#black,.black{
+			border: 3px solid black;
+			background-color: black;
+		}
+		.current{
+			background-color: #fff !important;
+		}
+		.i0{
+			background-color: #FFDDDD;
+		}
+		.i1{
+			background-color: #A3C5A8;
+		}
+		.i2{
+			background-color: #CCCCCC;
+		}
+		.c0{
+			background-color: red;
+		}
+		.c1{
+			background-color: green;
+		}
+		.c2{
+			background-color: black;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<button id="red"></button>
+		<button id="green"></button>
+		<button id="black"></button>
+		<br />
+		<span><a href="#">新闻</a></span>
+		<span><a href="#">娱乐</a></span>
+		<span><a href="#">体育</a></span>
+		<span><a href="#">音乐</a></span>
+		<span><a href="#">电影</a></span>
+		<span><a href="#">旅游</a></span>
+	</div>
+	<script src="common.js"></script>
+	<script>
+		var spans=document.getElementsByTagName("span");
+		var bts=document.getElementsByTagName("button");
+		for(var i=0;i<bts.length;i++){
+			bts[i].setAttribute("index",i)
+			bts[i].onclick=function(){
+				for(var j=0;j<bts.length;j++){
+					bts[j].className="";
+				}
+				this.className="current";
+				var bg=this.getAttribute("index")
+				document.body.className="i"+bg;
+				for(var j=0;j<spans.length;j++){
+					spans[j].className="c"+bg;
+				}
+			}
+		}
+	</script>
+</body>
+</html>

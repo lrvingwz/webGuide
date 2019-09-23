@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>弹出层效果</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		input{
+			display: block;
+			margin: auto;
+		}
+		div{
+			width: 500px;
+			height: 300px;
+			margin: auto;
+			border: 1px solid red;
+			margin-top: 100px;
+			display: none;
+		}
+		.one{
+			width: 500px;
+			height: 50px;
+			background-color: yellow;
+			position: relative;
+		}
+		.two{
+			width: 500px;
+			height: 250px;
+			background-color: white;
+		}
+		span{
+			top: 5px;
+			right: 5px;
+			width: 20px;
+			height: 20px;
+			background-color: white;
+			position: absolute;
+		}
+	</style>
+</head>
+<body>
+	<input type="button" value="弹出层" id="btn">
+	<div id="dv">
+		<p class="one"><span></span></p>
+		<p class="two"></p>
+	</div>
+	<script src="common.js"></script>
+	<script>
+		my$("btn").onclick=function(){
+			document.body.style.backgroundColor="#ccc";
+			my$("dv").style.display="block";
+		};
+		var spans=my$("dv").children[0].children;
+		spans[0].onclick=function(){
+			document.body.style.backgroundColor="";
+			my$("dv").style.display="none";
+		};
+	</script>
+</body>
+</html>

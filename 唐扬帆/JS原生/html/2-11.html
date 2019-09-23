@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>鼠标移过，修改图片路径</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.dv{
+			width: 275px;
+			height: 345px;
+			margin: auto;
+			border: 1px solid #000;
+			box-sizing: border-box;
+			padding: 8px;
+			cursor: pointer;
+		}
+		.list{
+			width: 188px;
+			height: 188px;
+			border: 1px solid #ccc;
+
+		}
+		ul{
+			overflow: hidden;
+		}
+		li{
+			list-style: none;
+			width: 60px;
+			height: 60px;
+			float: left;
+			border: 1px solid #ccc;
+			margin: 1px;
+		}
+		li img{
+			width: 60px;
+			height: 60px;
+		}
+		.list img{
+			width: 188px;
+			height: 188px;
+		}
+	</style>
+</head>
+<body>
+	<div class="dv">
+		<ul id="uu">
+			<li class="list"><img src="image/big_1.jpg" alt=""></li>
+			<li><img src="image/big_1.jpg" alt=""></li>
+			<li><img src="image/big_2.jpg" alt=""></li>
+			<li><img src="image/big_3.jpg" alt=""></li>
+			<li><img src="image/big_4.jpg" alt=""></li>
+			<li><img src="image/big_5.jpg" alt=""></li>
+			<li><img src="image/big_6.jpg" alt=""></li>
+			<li><img src="image/big_7.jpg" alt=""></li>
+			<li><img src="image/big_8.jpg" alt=""></li>
+			<li><img src="image/big_9.jpg" alt=""></li>
+			<li><img src="image/big_10.jpg" alt=""></li>
+			<li><img src="image/big_11.jpg" alt=""></li>
+		</ul>
+	</div>
+	<script src="common.js"></script>
+	<script>
+		var imgs=document.getElementsByTagName("img");
+		for(var i=0;i<imgs.length;i++){
+			imgs[i].onmouseover=function(){
+				imgs[0].src=this.src;
+			};
+		}
+	</script>
+</body>
+</html>

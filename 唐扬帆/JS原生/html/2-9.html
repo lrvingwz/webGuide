@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>单一按钮显示/隐藏一播放列表收缩展开</title>
+	<style>
+		div{
+			cursor: pointer;
+		}
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		li{
+			list-style: none;
+		}
+		.hd{
+			width: 250px;
+			height: 30px;
+			border: 1px solid #ccc;
+			margin: 20px auto 0;
+		}
+		span{
+			display: block;
+			width: 248px;
+			height: 28px;
+			background-color: #ccc;
+			margin: 1px auto;
+			box-sizing: border-box;
+			padding: 4px;
+		}
+		.bd{
+			width: 250px;
+			margin: auto;
+			border: 1px solid #ccc;
+			background-color: #eee;
+			box-sizing: border-box;
+			padding: 10px;
+			font-size: 16px;
+			line-height: 24px;
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<div class="hd" id="hd">
+		<span>播放列表</span>
+	</div>
+	<div class="bd" id="bd">
+		<ul id="uu">
+			<li>玩家之徒 - 蔡依林</li>
+			<li>原谅我就是这样的女生 - 戴佩妮</li>
+			<li>猜不透 - 丁当</li>
+			<li>自导自演 - 周杰伦</li>
+			<li>浪漫窝 - 弦子</li>
+			<li>流年 - 王菲</li>
+		</ul>
+	</div>
+	<script src="common.js"></script>
+	<script>
+	var list=my$("uu").children;
+	my$("hd").onclick=function(){
+		if(my$("bd").style.display=="block"){
+			my$("bd").style.display="none";
+		}else{
+			my$("bd").style.display="block";
+		}
+	};
+		for(var i=0;i<list.length;i++){
+			list[i].onmouseover=function(){
+				for(var j=0;j<list.length;j++){
+					list[j].style.backgroundColor="";
+				}
+				this.style.backgroundColor="#fff";
+			};
+		}
+	</script>
+</body>
+</html>

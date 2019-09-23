@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>控制div属性</title>
+	<style>
+		.nav{
+			width: 235px;
+			height: 300px;
+			margin: auto;
+		}
+		.nav div{
+			width: 100px;
+			height: 100px;
+			background-color: #000;
+			margin: auto;
+		}
+		.current{
+			width: 100px;
+			height: 100px;
+			background-color: #000;
+			margin: auto;
+		}
+	</style>
+</head>
+<body>
+	<div class="nav">
+		<input type="button" value="变宽" id="btn1">
+		<input type="button" value="变高" id="btn2">
+		<input type="button" value="变色" id="btn3">
+		<input type="button" value="隐藏" id="btn4">
+		<input type="button" value="重置" id="btn5">
+		<div id="dv" calss="current"></div>
+	</div>
+	<script src="common.js"></script>
+	<script>
+	//变宽
+	my$("btn1").onclick=function(){
+		my$("dv").style.width=200+"px";
+	};
+	//变高
+	my$("btn2").onclick=function(){
+		my$("dv").style.height=200+"px";
+	};
+	//变色
+	my$("btn3").onclick=function(){
+		my$("dv").style.backgroundColor="pink";
+	};
+	//隐藏
+	my$("btn4").onclick=function(){
+		my$("dv").style.display="none";
+	};
+	//重置
+	my$("btn5").onclick=function(){
+		my$("dv").style="";
+	};
+	</script>
+</body>
+</html>

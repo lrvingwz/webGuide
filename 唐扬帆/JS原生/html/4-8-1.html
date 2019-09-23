@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.dv{
+			width: 300px;
+			margin: auto;
+		}
+	</style>
+</head>
+<body>
+	<div class="dv">
+		<button id="btn1">没用的按钮</button>
+		<button id="btn2">绑定click</button>
+		<button id="btn3">解除click</button>
+	</div>
+	<script src="common.js"></script>
+	<script>
+		my$("btn2").onclick=function(){
+			my$("btn1").innerHTML="点击查看点击事件";
+		};
+		my$("btn1").onclick=function(){
+			if(this.innerHTML=="点击查看点击事件"){
+				alert("点了");
+			}
+		};
+		my$("btn3").onclick=function(){
+			my$("btn1").innerHTML="没用的按钮";
+		};
+	</script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.dv{
+			width: 300px;
+			margin: auto;
+		}
+	</style>
+</head>
+<body>
+	<div class="dv">
+		<button id="btn1">没用的按钮</button>
+		<button id="btn2">绑定click</button>
+		<button id="btn3">解除click</button>
+	</div>
+	<script src="common.js"></script>
+	<script>
+		//绑定事件的兼容代码
+		function addEventListener(element,type,fn){
+			if(element.addEventListener){
+				element.addEventListener(type,fn,false);
+			}else if(element.attachEvent){
+				element.attachEvent("on"+type,fn);
+			}else{
+				element["on"+type]=fn;
+			}
+		}
+
+		//解绑事件的兼容代码
+		function removeEventListener(element,type,fnName){
+			if(element.removeEventListener){
+				element.removeEventListener(type,fnName,false);
+			}else if(element.detachEvent){
+				element.detachEvent("on"+type,fnName);
+			}else{
+				element["on"+type]=null;
+			}
+		}
+
+		function f1(){
+			my$("btn1").innerHTML="点击查看点击事件";
+			my$("btn1").onclick=function(){
+				alert("添加了点击事件");
+			};
+		}
+		function f2(){
+			my$("btn1").innerHTML="没用的按钮";
+			my$("btn1").onclick="";
+		}
+		addEventListener(my$("btn2"),"click",f1);
+		//addEventListener(my$("btn3"),"click",f2);
+		 my$("btn3").onclick=function(){ //解绑事件
+            removeEventListener(my$("btn2"),"click",f2());
+        };
+	</script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div{
+			background-color: #ccc;
+			border: 1px solid;
+			margin: 20px 0;
+			font-size: 14px;
+		}
+	</style>
+</head>
+<body>
+	<div class="one" id="dv1">January(1),February(2),March(3),April(4),May(5),June(6),July(7),Aguest(8),September(9),October(10),November(11),December(12)</div>
+
+	<button id="btn1">删除January</button>
+	<button id="btn2">删除December</button>
+	<div class="two" id="dv2">
+		0,1,2,3,4,5,6,7,8,9
+	</div>
+	<button id="btn3">复制</button>
+	<button id="btn4">还原</button>
+	<div class="three" id="dv3">
+		red,green,blue,white,yellow,black,brown
+	</div>
+	<button id="btn5">还原</button>
+	<button id="btn6">删除前三项</button>
+	<button id="btn7">删除第二至第三项</button>
+	<button id="btn8">在第二项后面插入（orange，purple）</button>
+	<button id="btn9">替换第二项和第三项</button>
+	<script src="common.js"></script>
+	<script>
+		var dvObj=my$("dv1").innerHTML.split(",");
+		var flag=true;
+		var flag2=true;
+		var num1;
+		var num2;
+		var arr=my$("dv2").innerHTML;
+		var arr2=my$("dv3").innerHTML;
+		var dvObj3=my$("dv3").innerHTML.split(",");
+
+		console.log(dvObj);
+		console.log(arr);
+		//第一部分
+		//删除January
+		my$("btn1").onclick=function(){
+			if(flag==true){
+				this.innerHTML="添加January";
+				num1=dvObj.shift();
+				my$("dv1").innerHTML=dvObj;
+				flag=false;
+			}else{
+				this.innerHTML="删除January";
+				dvObj.unshift(num1);
+				my$("dv1").innerHTML=dvObj;
+				flag=true;
+			}
+		};
+		//删除December
+		my$("btn2").onclick=function(){
+			if(flag2==true){
+				this.innerHTML="添加December";
+				num2=dvObj.pop();
+				my$("dv1").innerHTML=dvObj;
+				flag2=false;
+			}else{
+				this.innerHTML="删除December";
+				dvObj.push(num2);
+				my$("dv1").innerHTML=dvObj;
+				flag2=true;
+			}
+		};
+
+		//第二部分
+		//复制
+		my$("btn3").onclick=function(){
+			my$("dv2").innerHTML+=","+arr;
+		};
+		//还原
+		my$("btn4").onclick=function(){
+			my$("dv2").innerHTML=arr;
+		};
+
+		//第三部分
+		//还原
+		my$("btn5").onclick=function(){
+			my$("dv3").innerHTML=arr2;
+			dvObj3=arr2.split(",");
+		};
+		//删除前三项
+		my$("btn6").onclick=function(){
+			for(var i=0;i<3;i++){
+				dvObj3.shift();
+			}
+			my$("dv3").innerHTML=dvObj3;
+		};
+		//删除第二至第三项
+		my$("btn7").onclick=function(){
+			dvObj3.splice(1,2);	
+			my$("dv3").innerHTML=dvObj3;
+		};
+		//在第二项后面插入（orange，purple）
+		my$("btn8").onclick=function(){
+			dvObj3[1]+=",orange,purple";
+			my$("dv3").innerHTML=dvObj3;
+		};
+		//替换第二项和第三项
+		my$("btn9").onclick=function(){
+			var temp=dvObj3[1];
+			dvObj3.splice(1,1,dvObj3[2]);
+			dvObj3.splice(2,1,temp);
+			my$("dv3").innerHTML=dvObj3;
+		};
+	</script>
+</body>
+</html>

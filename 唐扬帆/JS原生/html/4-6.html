@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>当前输入框高亮显示</title>
+	<style>
+		.dv{
+			width: 400px;
+			height: 300px;
+			border: 1px solid orange;
+			margin: auto;
+		}
+		.hd{
+			width: 400px;
+			height: 50px;
+			border-bottom: 1px solid orange;
+			box-sizing: border-box;
+			padding: 15px;
+		}
+		.bd{
+			width: 400px;
+			height: 250px;
+			box-sizing: border-box;
+			padding: 20px;
+			position: relative;
+		}
+		input{
+			margin-top: 20px;
+		}
+		.in{
+			margin-left: 10px;
+		}
+		button{
+			position: absolute;
+			left: 160px;
+			bottom: 50px;
+		}
+	</style>
+</head>
+<body>
+	<div class="dv">
+		<div class="hd">用户登录</div>
+		<div class="bd">
+
+			用户名：<input type="text" id="btn"><br>
+			密  码：<input type="text" class="in" id="btn1"><br>
+			<button>登录</button>
+		</div>
+	</div>
+	<script src="common.js"></script>
+	<script>
+		my$("btn").onfocus=function(){
+			my$("btn").style.backgroundColor="orange";
+		};
+		my$("btn").onblur=function(){
+			my$("btn").style.backgroundColor="";
+		};
+		my$("btn1").onfocus=function(){
+			my$("btn1").style.backgroundColor="orange";
+		};
+		my$("btn1").onblur=function(){
+			my$("btn1").style.backgroundColor="";
+		};
+	</script>
+</body>
+</html>

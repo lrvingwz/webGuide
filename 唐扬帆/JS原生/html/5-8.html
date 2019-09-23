@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DIV闪烁</title>
+    <style>
+        .dv {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            margin: 300px auto ;
+            text-align: center;
+            line-height: 200px;
+            cursor: pointer;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="dv" id="btn">
+        <p>点击DIV，闪烁</p>
+    </div>
+    <script src="common.js"></script>
+    <script>
+        my$("btn").onclick=function(){
+            var i=0;
+            var timeId=setInterval(function(){
+                i++;
+                my$("btn").style.display=i%2?"none":"block";
+                if(i>5){
+                    clearInterval(timeId);
+                }
+            },100);
+        };
+    </script>
+</body>
+</html>

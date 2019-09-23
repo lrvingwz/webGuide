@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.dv{
+            width: 350px;   
+            height: 30px;
+            margin: 20px auto;
+            background: url(image/search.jpg) no-repeat;
+        }
+        .dv1 {
+            height: 30px;
+            background: url(image/search.jpg) no-repeat right -34px;
+            border-radius: 5px;
+        }
+		span{
+			display: inline-block;
+			width: 200px;
+			height: 20px;
+			margin-left: 40px;
+			margin-top: 5px;
+			background: url(image/search.jpg) no-repeat 0px -69px;
+			color: #fff;
+			font-size: 14px;
+			box-sizing: border-box;
+			padding-left: 10px;
+			cursor: pointer;
+		}
+		a{
+			display: inline-block;
+			width: 80px;
+			height: 20px;
+			margin-left: 10px;
+			padding-right: -20px;
+			background: url(image/search.jpg) no-repeat 0px -92px;
+			color: #000;
+			font-size: 14px;
+			text-align: center;
+			text-decoration: none;
+			cursor: pointer;
+		}
+		a:hover{
+			color: orange;
+		}
+		.dv2{
+			width: 200px;
+			margin-left: 40px;
+			border: 1px solid #fff;
+			display: none;
+		}
+		li{
+			list-style: none;
+			border-bottom: 1px dashed #ccc ;
+			background-color: #2B2B2B;
+			color: #fff;
+			cursor: pointer;
+		}
+		.current{
+			background-color: blue;
+		}
+	</style>
+</head>
+<body style="background-color: #23384e">
+	<div class="dv">
+		<div class="dv1">
+			<span id="sp">请输入游戏名称</span>
+			<a href="#" id="btn">搜索</a>
+		</div>
+		<div class="dv2" id="dv">
+			<ul id="uu">
+				<li>DNF</li>
+				<li>LOL</li>
+				<li>CS</li>
+				<li>神鬼</li>
+				<li>魔兽</li>
+			</ul>
+		</div>
+	</div>
+	<script src="common.js"></script>
+	<script>
+		var arr=["https://dnf.qq.com","https://lol.qq.com","https://csol.tiancity.com","http://sgsj.wanmei.com","https://wow.blizzard.cn"];
+
+		var list=my$("uu").children;
+		my$("sp").onclick=function(){
+			if(my$("dv").style.display=="block"){
+				my$("dv").style.display="";
+			}else{
+				my$("dv").style.display="block"
+			}
+		};
+
+		for(var i=0;i<list.length;i++){
+			list[i].index=i;
+			//点击事件
+			list[i].onclick=function(){
+				my$("sp").innerHTML=this.innerHTML;
+				my$("btn").href=arr[this.index],
+				my$("dv").style.display=""
+			};
+			//高亮显示
+			// list[i].onmouseover=function(){
+			// 	this.className="current";
+			// };
+			// list[i].onmouseout=function(){
+			// 	this.className="none";
+			// };
+			list[i].onmouseover=function(){
+				for(var j=0;j<list.length;j++){
+					list[j].className="";
+				}
+				this.className="current";
+			};
+		}
+	</script>
+</body>
+</html>
