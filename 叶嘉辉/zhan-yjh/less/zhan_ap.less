@@ -1,0 +1,77 @@
+.zhan_ap {
+    h1 {
+        img {
+            width: 374rem/@baseFontSize;
+        }
+    }
+
+    .content {
+        width: 100%;
+        margin-top: 20rem/@baseFontSize;
+        overflow: hidden;
+        display: flex;
+        flex-wrap: wrap;
+
+        li {
+            flex-basis: 25%;
+            // float: left;
+            // width: 167rem/@baseFontSize;
+            // min-width: 21%;
+            // height: 167rem/@baseFontSize;
+            padding: 13rem/@baseFontSize;
+            position: relative;
+
+            img {
+                width: 100%;
+                display: block;
+            }
+
+            p {
+                margin-top: 10rem/@baseFontSize;
+                text-align: center;
+                color: #f6d18c;
+                font-size: 20rem/@baseFontSize;
+            }
+
+            &::after {
+                content: "";
+                position: absolute;
+                width: 27rem/@baseFontSize;
+                height: 16rem/@baseFontSize;
+                background: url("../images/arrow.png") no-repeat center/cover;
+            }
+
+            &:nth-of-type(5)::after {
+                display: none;
+            }
+        }
+
+        li.right {
+            &::after {
+                right: -11rem/@baseFontSize;
+                top: 90rem/@baseFontSize;
+                margin-top: -8rem/@baseFontSize;
+            }
+        }
+
+        li.bottom {
+            &::after {
+                left: 50%;
+                bottom: -4rem/@baseFontSize;
+                margin-left: -13rem/@baseFontSize;
+                transform: rotate(90deg);
+                -webkit-transform: rotate(90deg);
+            }
+        }
+
+        li.left {
+            &::after {
+                left: -11rem/@baseFontSize;
+                top: 90rem/@baseFontSize;
+                margin-top: -8rem/@baseFontSize;
+                transform: rotate(180deg);
+                -webkit-transform: rotate(180deg);
+            }
+        }
+    }
+}

@@ -1,0 +1,54 @@
+.zhan_fe {
+    h1 {
+        img {
+            width: 321rem/@baseFontSize;
+        }
+    }
+
+    .content {
+        width: 100%;
+        margin-top: 20rem/@baseFontSize;
+        display: flex;
+        flex-wrap: wrap;
+
+        li {
+            flex-basis: 25%;
+            width: 160rem/@baseFontSize;
+            height: 230rem/@baseFontSize;
+            background: url("../images/teacher-bg.png") no-repeat center/contain;
+            padding: 0 13rem/@baseFontSize;
+            margin-bottom: 20rem/@baseFontSize;
+
+            img {
+                display: block;
+                width: 110rem/@baseFontSize;
+                height: 110rem/@baseFontSize;
+                margin: 5rem/@baseFontSize auto;
+            }
+
+            p {
+                text-align: center;
+                font-size: 20rem/@baseFontSize;
+
+                &:first-of-type {
+                    color: #a7a1a1;
+                }
+
+                &:nth-of-type(2) {
+                    color: #f6d18c;
+                    margin: 5rem/@baseFontSize 0;
+                }
+
+                &:nth-of-type(3) {
+                    color: black;
+                    background: linear-gradient(to right, #f6d18c 0%, #f7e4c1 45%, #f7e4c1 55%, #f6d18c 100%);
+                    background: -webkit-linear-gradient(to right, #f6d18c 0%, #f7e4c1 45%, #f7e4c1 55%, #f6d18c 100%);
+                    width: 120rem/@baseFontSize;
+                    margin: 0 auto;
+                    border-radius: 50rem/@baseFontSize;
+                }
+            }
+
+        }
+    }
+}
