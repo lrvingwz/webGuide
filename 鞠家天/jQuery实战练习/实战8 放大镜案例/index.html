@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>乁( ˙ ω˙乁)</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        #mainImg{
+            position: relative;
+            width: 320px;
+            height: 380px;
+            padding: 15px;
+            border: 1px solid #ccc;
+            margin: 50px;
+        }
+        #mainImg .boxwrap{
+            width: 320px;
+            height: 320px;
+            position: relative;
+            margin-bottom: 15px;
+        }
+        #imgStand{
+            position: absolute;
+        }
+        #imgStand img{
+            width: 100%;
+            height: 100%;
+        }
+        #imgCover{
+            display: none;
+            position: absolute;
+            background: url("img/cover.png");
+            z-index: 5;
+        }
+        #mainImg .tab li{
+            float: left;
+            position: relative;
+            margin-right: 11px;
+            width: 40px;
+            height: 40px;
+            border: 1px solid #fff;
+        }
+        #mainImg .tab .on{
+            border-color: #f40;
+        }
+        #mainImg .tab img{
+            display: block;
+            position: absolute;
+        }
+        #mainImg .imgbox2{
+            display: none;
+            position: absolute;
+            top: 15px;
+            right: -330px;
+            width: 320px;
+            height: 320px;
+            background: url("img/1.jpg") no-repeat;
+        }
+
+    </style>
+    <script src="js/jquery-1.12.1.js"></script>
+
+</head>
+<body>
+    <div id="mainImg">
+        <div class="boxwrap">
+            <div id="imgStand">
+                <img src="img/1.jpg"/>
+                <div id="imgCover"></div>
+            </div>
+        </div>
+        <ul class="tab">
+            <li class="on"><img src="img/1.jpg"/></li>
+            <li><img src="img/2.jpg"/></li>
+            <li><img src="img/3.jpg"/></li>
+            <li><img src="img/4.jpg"/></li>
+            <li><img src="img/5.jpg"/></li>
+            <li><img src="img/6.jpg"/></li>
+        </ul>
+        <div class="imgbox2"></div>
+    </div>
+    <script>
+        window.onload=function () {
+            //展示中图片
+            var $imgStand=$("#imgStand");
+            var $tabImg=$("#mainImg .tab img");
+            var $tabLi=$("#mainImg .tab li");
+            var $imgCover=$("#imgCover");
+            var $imgBox2=$("#mainImg .imgbox2");
+            var imgArr=[];
+            var index=0;
+            init();
+            imgResize(0);
+            function imgResize(i){
+                $imgStand.css({
+                    "width":imgArr[i]["width"]*320+"px",
+                    "height":imgArr[i]["height"]*320+"px"
+                });
+                $imgStand.css({
+                    "top": (320-imgArr[i]["height"]*320)/2+"px",
+                    "left": (320-imgArr[i]["width"]*320)/2+"px"
+                });
+            }
+            //tab li/图片
+            function init(){
+                $tabImg.each(function () {
+                    var imgSW=$(this).width(),imgSH=$(this).height();
+                    if(imgSW>=imgSH){
+                        $(this).prop({
+                            width:40,
+                            height:40/imgSW*imgSH
+                        }).css({
+                            "top":(40-40/imgSW*imgSH)/2+"px"
+                        });
+                        imgArr.push({"width":1,"height":imgSH/imgSW,"imgW":imgSW,"imgH":imgSH});
+                    }else{
+                        $(this).prop({
+                            width:40/imgSH*imgSW,
+                            height:40
+                        }).css({
+                            "left":(40-40/imgSH*imgSW)/2+"px"
+                        });
+                        imgArr.push({"width":imgSW/imgSH,"height":1,"imgW":imgSW,"imgH":imgSH});
+                    }
+                });
+            }
+
+            $tabLi.mouseenter(function () {
+                index=$(this).index();
+                $(this).addClass("on").siblings().removeClass("on");
+                $imgStand.find("img").attr("src",$(this).find("img").attr("src"));
+                imgResize(index);
+            });
+            $imgStand.mouseenter(function () {
+                var a=(320*$imgStand.width())/imgArr[index].imgW;
+                $imgCover.css({
+                    "display":"block",
+                    "width":a,
+                    "height":a
+                });
+                $imgBox2.css({
+                    "display":"block",
+                    "backgroundImage":"url('"+$(this).find('img').attr('src')+"')"
+                });
+            }).mousemove(function (ev) {
+                ev=ev||window.event;
+                var mousePosition=mousePosition1(ev);
+                var standPosition=$imgStand.offset();
+                var l=mousePosition.x-standPosition.left-$imgCover.width()/ 2,
+                    t=mousePosition.y-standPosition.top-$imgCover.width()/2;
+                    l=Math.max(0,l);
+                    l=Math.min(l,$imgStand.width()-$imgCover.width());
+                    t=Math.max(0,t);
+                    t=Math.min(t,$imgStand.height()-$imgCover.width());
+                $imgCover.css({
+                    "left":l+"px",
+                    "top":t+"px"
+                });
+                $imgBox2.css({
+                    "backgroundPosition":-l*imgArr[index].imgW/$imgStand.width()+"px "+-t*imgArr[index].imgW/$imgStand.width()+"px"
+                });
+            }).mouseleave(function () {
+                $imgCover.css({
+                    "display":"none"
+                });
+                $imgBox2.css({
+                    "display":"none"
+                });
+            });
+        };
+        function mousePosition1(ev){
+            if(ev.pageX || ev.pageY){
+                return {x:ev.pageX, y:ev.pageY};
+            }
+            return {
+                x:ev.clientX + document.body.scrollLeft - document.body.clientLeft,
+                y:ev.clientY + document.body.scrollTop - document.body.clientTop
+            }
+        }
+    </script>
+
+</body>
+</html>

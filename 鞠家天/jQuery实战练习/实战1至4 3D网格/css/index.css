@@ -7,7 +7,14 @@ html{
     height: 100%;
 }
 body{
+    position: relative;
+    height: 100%;
+}
+#body{
+    position: absolute;
+    left: 0;
     overflow: hidden;
+    width: 100%;
     height: 100%;
     background: #022d3d url("../img/bg.png") no-repeat center;
     perspective: 800px;
@@ -16,7 +23,7 @@ ul{
     list-style: none;
 }
 #menu{
-    position: fixed;
+    position: absolute;
     left: 15px;
     bottom: 15px;
     transform: scale(1.5);
@@ -94,8 +101,7 @@ ul{
     background: rgba(0,127,127,0.5);
     box-shadow: 0 0 12px rgba(0,255,255,0.5);
     transform: scale(1.5);
-    opacity: 0;
-    transition: 1s;
+    display: none;
 }
 #show .title{
     width: 60%;
@@ -129,15 +135,17 @@ ul{
     border-radius: 3px;
     background-color: rgba(0,0,0,0.5);
     box-shadow: 0 0 12px rgba(0,255,255,0.5);
+    overflow: hidden;
 }
 #show .imgbox img{
     vertical-align: middle;
 }
 #show .compere{
     float: left;
+    overflow: hidden;
     width: 25%;
     height: 26px;
-    margin: 5% auto 5%;
+    margin: 3% auto 3%;
     padding: 0 2%;
     border: 1px solid rgba(127, 255, 255, 0.5);
     border-radius: 3px;
@@ -146,6 +154,7 @@ ul{
     box-shadow: 0 0 12px rgba(0,255,255,0.5);
 }
 #show .dec{
+    overflow: hidden;
     float: left;
     width: 25%;
     height: 55%;
@@ -158,4 +167,37 @@ ul{
     word-wrap:break-word;
     text-indent: 2em;
     text-align: justify;
+}
+#minwindow{
+    position: absolute;
+    top: 0;
+    left: 100%;
+    width: 100%;
+    height: 100%;
+}
+#minwindow iframe{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+#minwindow #back{
+    position: absolute;
+    left: 15px;
+    bottom: 15px;
+    padding: 8px 10px;
+    border: 1px solid rgba(127, 255, 255, 0.75);
+    border-radius: 3px;
+    margin-right: 5px;
+    color: rgba(127,255,255,0.75);
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+}
+#minwindow #back:hover{
+    background-color: rgba(0,255,255,0.5);
+}
+#minwindow #back:active{
+    color: black;
 }

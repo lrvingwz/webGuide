@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>乁( ˙ ω˙乁)</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            height: 100%;
+        }
+        body{
+            overflow: hidden;
+        }
+        ul{
+            list-style: none;
+        }
+        #header{
+            position: fixed;
+            top: 25px;
+            width: 100%;
+        }
+        #header #logo{
+            float: left;
+            width: 226px;
+            margin-left: 50px;
+        }
+        #header #logo a{
+            outline: none;
+        }
+        #header #logo img{
+            border:none;
+        }
+        #header #nav{
+            position: relative;
+            float: right;
+            margin-right: 50px;
+        }
+        #header ul{
+            position: relative;
+            z-index: 5;
+        }
+        #header li{
+            float: left;
+            height: 47px;
+            margin-left: 53px;
+            line-height: 47px;
+        }
+        #header li a{
+            color: white;
+            color: rgba(255,255,255,0.8);
+            text-align: center;
+            font-size: 14px;
+            text-decoration: none;
+            text-shadow: 3px 3px 10px rgba(0,0,0,0.9);
+        }
+        #header .on a{
+            color: white;
+        }
+        #header .border{
+            position: absolute;
+            left: 37px;
+            top: 9px;
+            width: 58px;
+            height: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            border-radius: 15px;
+        }
+        #bg{
+            height: 100%;
+        }
+        #bg div{
+            height: 100%;
+            background-position: center;
+            background-attachment: fixed;
+            /*background-size: 100% 100%;*/
+        }
+        #side{
+            position: fixed;
+            left: 50px;
+            top: 35%;
+            width: 100px;
+            height: 264px;
+            color: #ffffff;
+            background: url("img/nav.png") no-repeat;
+        }
+        #side li{
+            padding-left: 50px;
+            margin-top: 6px;
+            margin-bottom: 56px;
+            height: 21px;
+            line-height: 21px;
+            font-size: 12px;
+            color: white;
+            color: rgba(255,255,255,0.8);
+        }
+        #side .on{
+            background: url("img/nav_cho.png") no-repeat;
+        }
+    </style>
+    <script src="js/jquery-1.12.1.js"></script>
+    <script src="js/jquery.mousewheel.js"></script>
+    <script>
+        $(function () {
+            //nav 边框飘动
+            var $navLi=$("#nav li");
+            var $border=$("#nav .border");
+            $navLi.mouseenter(function () {
+                var liW=$(this).width();
+                var posiLeft=$(this).position().left;
+                $(this).addClass("on").siblings().removeClass("on");
+                $border.stop(true).animate({"width":liW+30,"left":posiLeft+37});
+            });
+            $("#nav").mouseleave(function () {
+                $navLi.eq(0).addClass("on").siblings().removeClass("on");
+                $border.stop(true).animate({"width":58,"left":37});
+            });
+
+            //页面滑动
+            var $sideLi=$("#side li");
+            var index=0;
+            $sideLi.click(function () {
+                index=$(this).index();
+                fn();
+            });
+            $(document).mousewheel(function (ev, d) {
+                if(d<0){
+                    index++;
+                    index%=$sideLi.length;
+                }else{
+                    index--;
+                    if(index<0)index=$sideLi.length-1;
+                }
+                fn();
+            });
+            $(window).resize(function () {
+                var $windowH=$(window).height();
+                $(document).scrollTop($windowH);
+            });
+            function fn(){
+                $sideLi.eq(index).addClass("on").siblings().removeClass("on");
+                $("body,html").stop(true).animate({"scrollTop":$("body").height()*index},500);
+            }
+        });
+    </script>
+</head>
+<body>
+    <div id="header">
+        <div id="logo">
+            <a href="#"><img src="img/logo.png" alt=""/></a>
+        </div>
+        <div id="nav">
+            <ul>
+                <li class="on"><a href="#">首页</a></li>
+                <li><a href="#">常见问题</a></li>
+                <li><a href="#">论坛</a></li>
+                <li><a href="#">360首页>></a></li>
+            </ul>
+            <div class="border"></div>
+        </div>
+    </div>
+    <div id="bg">
+        <div class="bg1" style="background-image: url('img/1.jpg');"></div>
+        <div class="bg2" style="background-image: url('img/2.jpg');"></div>
+        <div class="bg3" style="background-image: url('img/3.jpg');"></div>
+        <div class="bg4" style="background-image: url('img/4.jpg');"></div>
+    </div>
+    <ul id="side">
+        <li class="on">安全换机</li>
+        <li>无网对传</li>
+        <li>隐私粉碎</li>
+        <li>一键转移</li>
+    </ul>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>乁( ˙ ω˙乁)</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        #banner{
+            position: relative;
+            width: 730px;
+            height: 454px;
+            margin: 20px auto;
+        }
+        #banner .pic{
+            width: 100%;
+            height: 100%;
+        }
+        #banner .pic ul{
+            position: relative;
+        }
+        #banner .pic li {
+            position: absolute;
+            display: none;
+        }
+        #banner .tab{
+            position: absolute;
+            left: 50%;margin-left: -74px;
+            bottom: 20px;
+        }
+        #banner .tab li{
+            float: left;
+            width: 18px;
+            height: 18px;
+            margin: 1px 3px;
+            color: white;
+            background-color: #666;
+            font-size: 12px;
+            text-align: center;
+            line-height: 18px;
+            border-radius: 50%;
+        }
+        #banner .tab .on{
+            background-color: #e4393c;
+        }
+        #banner .btn div{
+            position: absolute;
+            top: 50%;margin-top: -30px;
+            width: 30px;
+            height: 60px;
+            background-color: rgba(0,0,0,0.2);
+            font-size: 20px;
+            text-align: center;
+            line-height: 60px;
+            color: white;
+            display: none;
+        }
+        #leftBtn{
+            left: 0;
+        }
+        #rightBtn{
+            right: 0;
+        }
+    </style>
+    <script src="js/jquery-1.12.1.js"></script>
+    <script>
+        $(function () {
+            var tabLi=$("#banner .tab li");
+            var picLi=$("#banner .pic li");
+            var btns=$("#banner .btn div");
+            var index=0;
+            var timer=setInterval(f1,5000);
+            tabLi.mouseenter(function () {
+                index=$(this).index();
+                fn();
+            });
+            $("#banner").hover(function () {
+                btns.show();
+                clearInterval(timer);
+            }, function () {
+                btns.hide();
+                timer=setInterval(f1,5000);
+
+            });
+            btns.hover(function () {
+                $(this).css("backgroundColor","rgba(0,0,0,0.4)");
+            }, function () {
+                $(this).css("backgroundColor","rgba(0,0,0,0.2)");
+            }).click(function () {
+                var i=$(this).index();
+                if(i){
+                    index++;
+                    index%=tabLi.length;
+                }else{
+                    index--;
+                    index=index<0?tabLi.length-1:index;
+                }
+                fn();
+            }).mousedown(function () {
+                return false;
+            });
+            function f1(){
+                index++;
+                index%=tabLi.length;
+                fn();
+            }
+            function fn(){
+                tabLi.eq(index).addClass("on").siblings().removeClass("on");
+                picLi.eq(index).stop(true).fadeIn().siblings().stop(true).fadeOut();
+            }
+        });
+    </script>
+</head>
+<body>
+    <div id="banner">
+        <div class="pic">
+            <ul>
+                <li style="display: block"><a href="#"><img src="img/1.jpg"/></a></li>
+                <li><a href="#"><img src="img/2.jpg"/></a></li>
+                <li><a href="#"><img src="img/3.jpg"/></a></li>
+                <li><a href="#"><img src="img/4.jpg"/></a></li>
+                <li><a href="#"><img src="img/5.jpg"/></a></li>
+                <li><a href="#"><img src="img/6.jpg"/></a></li>
+            </ul>
+        </div>
+        <div class="tab">
+            <ul>
+                <li class="on">1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+                <li>6</li>
+            </ul>
+        </div>
+        <div class="btn">
+            <div id="leftBtn"><</div>
+            <div id="rightBtn">></div>
+        </div>
+    </div>
+</body>
+</html>
