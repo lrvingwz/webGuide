@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>输入两个数字，比较大小</title>
+	<style>
+		div{
+			width: 500px;
+			margin: auto;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<input type="text" id="btn1">
+		<strong>VS</strong>
+		<input type="text" id="btn2">
+		<button id="bt">The Max is <span id="sp">?</span></button>
+	</div>
+	<script src="common.js"></script>
+	<script>
+		my$("bt").onclick=function(){
+			var num1=parseInt(my$("btn1").value);
+			var num2=parseInt(my$("btn2").value);
+			if(num1>num2){
+				my$("sp").innerText=num1;
+			}else{
+				my$("sp").innerText=num2;
+			}
+		};
+	</script>
+</body>
+</html>

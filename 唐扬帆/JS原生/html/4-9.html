@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		p{
+			text-align: center;
+		}
+		ul{
+			height: 20px;
+			width: 170px;
+			margin: auto;
+			overflow: hidden;
+		}
+		li{
+			width: 28px;
+            height: 24px;
+            float: left;
+            list-style: none;
+
+            cursor: pointer;
+            background: url(image/star.png) no-repeat;
+		}
+		.current{
+			background-position: 0 -28px;
+		}
+	</style>
+</head>
+<body>
+	<p>评分系统：请打分</p>
+	 <ul id="uu">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <script src="common.js"></script>
+    <script>
+    	var liObj=my$("uu").children;
+    	for(var i=0;i<liObj.length;i++){
+    		liObj[i].index=i;
+    		liObj[i].onmouseover=function(){
+    			for(var j=0;j<liObj.length;j++){
+    				liObj[j].className="";
+    			}
+    			for(var j=0;j<=this.index;j++){
+    				liObj[j].className="current";
+    			}
+    			
+    		};
+    		liObj[i].onmouseout=function(){
+    			for(var j=0;j<liObj.length;j++){
+    				liObj[j].className="";
+    			}
+    		};
+    	}
+    </script>
+</body>
+</html>

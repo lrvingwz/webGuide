@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>简易网页时钟</title>
+	<style>
+		.{
+			margin: 0;
+			padding: 0;
+		}
+		.dv{
+			width: 400px;
+			height: 100px;
+			background-color: #000;
+			margin: auto;
+			border: 1px solid #000;
+		}
+		.inner{
+			width: 320px;
+			height: 35px;
+			margin: 32px auto;
+			color: #fff;
+		}
+		span{
+			background-color: #fff;
+			display: inline-block;
+			width: 80px;
+			height: 30px;
+			vertical-align: bottom;
+			color: #000;
+			text-align: center;
+			line-height: 30px;
+			font-size: 20px;
+		}
+	</style>
+</head>
+<body>
+	<div class="dv">
+		<div class="inner" id="inner">
+			<span></span> 点
+			<span></span> 分
+			<span></span> 秒
+		</div>	
+	</div>
+	<script src="common.js"></script>
+	<script>
+		
+		setInterval(function(){
+			var dt=new Date();
+			var spans=my$("inner").children;
+			spans[0].innerText=dt.getHours()<10? "0"+dt.getHours():dt.getHours();
+			spans[1].innerText=dt.getMinutes()<10? "0"+dt.getMinutes():dt.getMinutes();
+			spans[2].innerText=dt.getSeconds()<10? "0"+dt.getSeconds():dt.getSeconds();
+		},1)
+	</script>
+</body>
+</html>

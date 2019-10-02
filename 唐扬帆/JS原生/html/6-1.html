@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		.dv{
+			width: 250px;
+			height: 200px;
+			border: 1px solid #000;
+			position: absolute;
+			left: 500px;
+			top: 200px;
+		}
+		p{
+			margin: 10px 10px;
+		}
+		.p1{
+			border-bottom: 1px solid #000; 
+		}
+		a{
+			margin-left: 150px;
+			text-decoration: none;
+		}
+	</style>
+</head>
+<body>
+	<div class="dv"">
+		<p class="p1"><a href="#" id="aa">点击回放</a></p>
+		<p>Drag: <span>false</span></p>
+		<p>offsetTop: <span></span></p>
+		<p>offsetLeft: <span></span></p>
+	</div>
+	<script src="common.js"></script>
+	<script>
+		var dv=document.getElementsByTagName("div")[0];
+		var spans=document.getElementsByTagName("span");
+		var arr=[];//创建一个空数组用来记录移动的坐标
+		//拖拽
+		dv.onmousedown=function(e){
+			var spaceX=e.clientX-dv.offsetLeft;
+			var spaceY=e.clientY-dv.offsetTop;
+			document.onmousemove=function(e){
+				var x=e.clientX-spaceX;
+				var y=e.clientY-spaceY;
+				dv.style.left=x+"px";
+				dv.style.top=y+"px";
+				spans[0].innerHTML="ture";
+				spans[1].innerHTML=x;
+				spans[2].innerHTML=y;
+				arr.push([x,y]);//把每次移动的坐标记录下来
+			};
+		};
+		document.onmouseup=function(){
+			document.onmousemove=null;
+			spans[0].innerHTML="false";
+		};
+		//还原
+		my$("aa").onclick=function(){
+			timeId=setInterval(function(){
+				var num=arr.pop();//arr.pop为删除最后的那个数组
+				//num为最后那个数组，包含两个值，为横纵坐标
+				if(arr.length>=1){
+					//判断数组中是否全部删除
+					dv.style.left=num[0]+"px";
+					dv.style.top=num[1]+"px"
+					spans[1].innerHTML=num[0];
+					spans[2].innerHTML=num[1];
+				}else{
+					//全部删除后，清理定时器
+					clearInterval(timeId);
+				}
+			},20)
+		};
+	</script>
+</body>
+</html>

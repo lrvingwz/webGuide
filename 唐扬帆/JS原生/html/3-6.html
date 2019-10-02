@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>判断数字是否为几位数t</title>
+	<style>
+		div{
+			width: 300px;
+			margin: auto;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<input type="text" id="btn1">
+		<input type="button" value="判断几位数" id="btn2">
+	</div>
+	<script src="common.js"></script>
+	<script>
+		my$("btn2").onclick=function(){
+			var num=my$("btn1").value.length;
+			if(num==0){
+				alert("请输入数字");
+			}else{
+				alert("这是"+num+"位数");
+			}
+		};
+	</script>
+</body>
+</html>

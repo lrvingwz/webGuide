@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.dv{
+			width: 400px;
+			height: 430px;
+			background-color: #000;
+			margin: auto;
+			border: 1px solid #000;
+		}
+		.hd{
+			width: 400px;
+			height: 80px;
+			background-color: #D5D9B8;
+			margin-top: 20px;
+			box-sizing: border-box;
+			padding: 10px;
+		}
+		ul{
+			overflow: hidden;
+			position: relative;
+		}
+		li{
+			float: left;
+			list-style: none;
+			width: 80px;
+			height: 50px;
+			background-color: #fff;
+			margin: 8px  10px;
+			border-radius: 5px;
+			line-height: 50px;
+			text-align: center;
+			cursor: pointer;
+		}
+		li:hover{
+			background-color: #ccc;
+		}
+		.list1{
+			height: 116px;
+			line-height: 116px;
+		}
+		.list2{
+			position: absolute;
+			width: 180px;
+			bottom: 0px;
+			left: 0px; 
+		}
+		.list3{
+			position: absolute;
+			bottom: 0px;
+			left: 200px; 
+		}
+		#p1{
+
+			height: 20px;
+			text-align: right;
+		}
+		#p2{
+
+			height: 50px;
+			text-align: right;
+			font-size: 35px;
+			font-weight: 700;
+		}
+	</style>
+</head>
+<body>
+	<div class="dv">
+		<div class="hd" id="hd">
+			<p id="p1"></p>
+			<p id="p2">0</p>
+		</div>
+		<div class="bd">
+			<ul id="uu">
+				<li id="C">C</li>
+				<li>%</li>
+				<li>/</li>
+				<li>*</li>
+				<li>7</li>
+				<li>9</li>
+				<li>9</li>
+				<li>-</li>
+				<li>4</li>
+				<li>5</li>
+				<li>6</li>
+				<li>+</li>
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+				<li class="list1" id="=">=</li>
+				<li class="list2">0</li>
+				<li class="list3">.</li>
+			</ul>
+		</div>
+	</div>
+	<script src="common.js"></script>
+	<script>
+		var list=my$("uu").children;
+		for(var i=0;i<list.length;i++){
+			var str="";//用来存储输入的字符串
+			list[i].onclick=function(){
+				//按键为=时算出结果并显示
+				if(this.innerText=="="){
+					my$("p1").innerText=my$("p2").innerText;
+					my$("p2").innerText=eval(str);
+					str=my$("p2").innerText;
+					//按键为C时清0
+				}else if(this.innerText=="C"){
+					my$("p1").innerText="";
+					my$("p2").innerText="0";
+					str="";
+				}else{
+					str+=this.innerText;
+					my$("p2").innerText=str;
+				}
+			};
+		}
+	</script>
+</body>
+</html>

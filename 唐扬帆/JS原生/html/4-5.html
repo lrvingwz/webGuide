@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>css函数一设置/读取对象的属性</title>
+	<style>
+		.dv{
+			width: 300px;
+			height: 200px;
+			margin: auto;
+			background-color: yellow;
+		}
+	</style>
+</head>
+<body>
+	<div class="dv" id="dv">
+		<input type="button" value="get style" id="btn1">
+		<input type="button" value="set style" id="btn2">
+		<input type="button" value="default style" id="btn3">
+	</div>
+	<script src="common.js"></script>
+	<script>
+
+		var dv=my$("dv");
+
+		//获取样式标签中的属性值
+		function getStyle(element,attr) {
+    	//判断浏览器是否支持这个方法
+  		 return window.getComputedStyle? window.getComputedStyle(element,null)[attr]:element.currentStyle[attr]||0;
+ 		 }
+		
+		//获取属性
+		my$("btn1").onclick=function(){
+			alert(getStyle(dv,prompt("")));
+		};
+		//设置属性
+		 my$("btn2").onclick=function(){
+            dv.style[prompt("请输入属性")]=prompt("请输入值");
+        };
+        //清除
+        my$("btn3").onclick=function(){
+            dv.className="";
+        };
+	</script>
+</body>
+</html>

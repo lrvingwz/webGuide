@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>百度输入法</title>
+	<style>
+
+		input{
+			display: block;
+			margin: auto;
+			margin-bottom: 5px;
+		}
+		div{
+			margin: auto;
+			font-size: 14px;
+			text-align: center;
+			border: 1px solid red;
+			cursor: pointer;
+			display: none;
+		}
+		.one{
+			width: 50px;
+			height: 70px;
+		}
+		.two{
+			width: 50px;
+			height: 35px;
+		}
+		p{
+			width: 50px;
+			height: 35px;
+			margin: 0;
+			padding: 0;
+		}
+		.two:hover,p:hover{
+			background-color: #ccc;
+		}
+	</style>
+</head>
+<body>
+	<input type="button" value="输入法" id="btn">
+	<div class="one" id="dv">
+		<p>手写</p>
+		<p>拼音</p>
+	</div>
+	<div class="two" id="dv1">关闭</div>
+	<script src="common.js"></script>
+	<script>
+		my$("btn").onclick=function(){
+			if(my$("dv").style.display=="block"){
+				my$("dv").style.display="none";
+				my$("dv1").style.display="none";
+			}else{
+				my$("dv").style.display="block";
+				my$("dv1").style.display="block";
+			}
+		};
+		my$("dv1").onclick=function(){
+			my$("dv").style.display="none";
+			my$("dv1").style.display="none";
+		};
+	</script>
+</body>
+</html>

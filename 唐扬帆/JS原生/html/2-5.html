@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>函数传参，改变Div任意属性的值</title>
+	<style>
+		.dv{
+			width: 250px;
+			height: 320px;
+			margin: auto;
+		}
+		.btn1{
+			margin-left: 110px;
+			margin-top: 10px;
+		}
+		.dv2{
+			width: 200px;
+			height: 200px;
+			background-color: #000;
+			margin: auto;
+			color: #fff;
+		}
+	</style>
+</head>
+<body>
+	<div class="dv">
+		<span>属性名：</span>
+		<input type="text" value="background">
+		<br/>
+		<span>属性值：</span>
+		<input type="text" value="blue">
+		<input type="button" value="确定" id="btn1" class="btn1">
+		<input type="button" value="重置" id="btn2" >
+		<div class="dv2" id="dv2">在上方输入“属性名”和“属性值”，点击确认按钮查看效果。</div>
+	</div>
+	<script src="common.js"></script>
+	<script>
+		var inputs=document.getElementsByTagName("input");
+		my$("btn1").onclick=function(){
+			var inner1=inputs[0].value;
+			var inner2=inputs[1].value;
+			my$("dv2").style[inner1]=inner2;
+		};
+		my$("btn2").onclick=function(){
+			my$("dv2").style="";
+		};
+	</script>
+</body>
+</html>

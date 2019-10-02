@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.dv{
+			width: 320px;
+			height: 170px;
+			margin: auto;
+			background-color: #000;
+			color: #fff;
+			box-sizing: border-box;
+			padding: 20px;
+		}
+		.hd{
+			width: 260px;
+			height: 40px;
+			margin: auto;
+		}
+		.bd{
+			margin: auto;
+		}
+		input{
+			 width: 105px;
+			 height: 25px;
+			 background-color: #fff;
+			 font-weight: 700;
+			 font-size: 25px;
+			 text-align: center;
+		}
+		button{
+			width: 274px;
+			height: 48px;
+			border-radius: 10px;
+			margin-top: 15px;
+		}
+	</style>
+</head>
+<body>
+	<div class="dv">
+		<div class="hd">输入计时时间： &nbsp; <input type="text" id="btn"></div>
+		<div class="bd">
+			<input type="text" id="btn1"> 分
+			<input type="text" id="btn2"> 秒
+		</div>
+		<button id="bt">启动</button>
+	</div>
+	<script src="common.js"></script>
+	<script>
+		var num=0
+		my$("bt").onclick=function(){
+			clearInterval(my$("bt").timeId);
+			num=my$("btn").value;
+			 my$("bt").timeId=setInterval(function(){
+				my$("btn1").value=parseInt(num/60);
+				my$("btn2").value=parseInt(num%60);
+			num--;
+				//时间运行完后停止定时器
+			 	if(my$("btn1").value=="0"&&my$("btn2").value=="0"){
+				clearInterval(my$("bt").timeId);
+			};
+			},1000)
+		}
+	</script>
+</body>
+</html>
