@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>乁( ˙ ω˙乁)</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        #wrap{
+            width: 838px;
+            margin: 50px auto;
+        }
+        #wrap ul{
+            overflow: hidden;
+        }
+        #wrap ul li{
+            float: left;
+            width: 266px;
+        }
+        #wrap .ele{
+            width: 264px;
+            border: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
+        #wrap .ele img{
+            width: 264px;
+            vertical-align: top;
+        }
+        #wrap .ele .dec{
+            font-size: 16px;
+            line-height: 24px;
+            padding: 8px 10px;
+        }
+        #wrap .ele .dec a{
+            color: #333;
+            text-decoration: none;
+        }
+        #wrap .ele .dec a:hover{
+            color: darkred;
+        }
+        #wrap .ele .time{
+            background-color: #f1f1f1;
+            height: 40px;
+        }
+        #wrap .ele .time p{
+            font-size: 12px;
+            float: left;
+            line-height: 40px;
+            text-indent: 10px;
+            color: #999999;
+        }
+        #wrap .ele .time a{
+            display: block;
+            width: 80px;
+            float: right;
+            border-left: 1px solid #ddd;
+            font-size: 14px;
+            text-align: center;
+            line-height: 40px;
+            color: #666;
+            text-decoration: none;
+        }
+        #wrap .ele .time a:hover{
+            color: darkred;
+        }
+
+    </style>
+    <script src="js/jquery-1.12.1.js"></script>
+    <script>
+        var imgDate=[
+            {
+                src : 'img/1.jpg',
+                dec : '你们男神都爱的倪妮 就是个大写哒美好',
+                time : '2016/03/18 20:08',
+            },
+            {
+                src : 'img/2.jpg',
+                dec : '没有A4腰咋滴 宝宝们有A4脸啊',
+                time : '2016/03/18 18:25',
+            },
+            {
+                src : 'img/3.jpg',
+                dec : '“包”治百病 呵呵那是说手好看的',
+                time : '2016/03/18 17:09',
+            },
+            {
+                src : 'img/4.jpg',
+                dec : '睡不好颜值down 别让7个小习惯毁掉女神梦',
+                time : '2016/03/18 11:46',
+            },
+            {
+                src : 'img/5.jpg',
+                dec : '沙尘天气来袭 需给皮肤做好防护',
+                time : '2016/03/18 11:44',
+            },
+            {
+                src : 'img/6.jpg',
+                dec : '保湿工作有漏洞 皮肤发出异常警报!',
+                time : '2016/03/18 20:08',
+            },
+            {
+                src : 'img/7.jpg',
+                dec : '你们男神都爱的倪妮 就是个大写哒美好',
+                time : '2016/03/18 20:08',
+            },
+            {
+                src : 'img/8.jpg',
+                dec : '你们男神都爱的倪妮 就是个大写哒美好',
+                time : '2016/03/18 20:08',
+            },
+            {
+                src : 'img/9.jpg',
+                dec : '你们男神都爱的倪妮 就是个大写哒美好',
+                time : '2016/03/18 20:08',
+            },
+            {
+                src : 'img/10.jpg',
+                dec : '你们男神都爱的倪妮 就是个大写哒美好',
+                time : '2016/03/18 20:08',
+            },
+            {
+                src : 'img/11.jpg',
+                dec : '你们男神都爱的倪妮 就是个大写哒美好',
+                time : '2016/03/18 20:08',
+            },
+            {
+                src : 'img/12.jpg',
+                dec : '你们男神都爱的倪妮 就是个大写哒美好',
+                time : '2016/03/18 20:08',
+            },
+            {
+                src : 'img/13.jpg',
+                dec : '你们男神都爱的倪妮 就是个大写哒美好',
+                time : '2016/03/18 20:08',
+            },
+            {
+                src : 'img/14.jpg',
+                dec : '你们男神都爱的倪妮 就是个大写哒美好',
+                time : '2016/03/18 20:08',
+            },
+            {
+                src : 'img/15.jpg',
+                dec : '你们男神都爱的倪妮 就是个大写哒美好',
+                time : '2016/03/18 20:08',
+            },
+            {
+                src : 'img/16.jpg',
+                dec : '你们男神都爱的倪妮 就是个大写哒美好',
+                time : '2016/03/18 20:08',
+            },
+            {
+                src : 'img/17.jpg',
+                dec : '你们男神都爱的倪妮 就是个大写哒美好',
+                time : '2016/03/18 20:08',
+            },
+            {
+                src : 'img/18.jpg',
+                dec : '你们男神都爱的倪妮 就是个大写哒美好',
+                time : '2016/03/18 20:08',
+            },
+            {
+                src : 'img/19.jpg',
+                dec : '你们男神都爱的倪妮 就是个大写哒美好',
+                time : '2016/03/18 20:08',
+            },
+            {
+                src : 'img/20.jpg',
+                dec : '你们男神都爱的倪妮 就是个大写哒美好',
+                time : '2016/03/18 20:08',
+            },
+            {
+                src : 'img/21.jpg',
+                dec : '你们男神都爱的倪妮 就是个大写哒美好',
+                time : '2016/03/18 20:08',
+            },
+            {
+                src : 'img/22.jpg',
+                dec : '你们男神都爱的倪妮 就是个大写哒美好',
+                time : '2016/03/18 20:08',
+            },
+            {
+                src : 'img/23.jpg',
+                dec : '你们男神都爱的倪妮 就是个大写哒美好',
+                time : '2016/03/18 20:08',
+            },
+            {
+                src : 'img/24.jpg',
+                dec : '你们男神都爱的倪妮 就是个大写哒美好',
+                time : '2016/03/18 20:08',
+            },
+            {
+                src : 'img/25.jpg',
+                dec : '你们男神都爱的倪妮 就是个大写哒美好',
+                time : '2016/03/18 20:08',
+            },
+
+            {
+                src : 'img/26.jpg',
+                dec : '你们男神都爱的倪妮 就是个大写哒美好',
+                time : '2016/03/18 20:08',
+            },
+
+            {
+                src : 'img/27.jpg',
+                dec : '你们男神都爱的倪妮 就是个大写哒美好',
+                time : '2016/03/18 20:08',
+            },
+
+            {
+                src : 'img/28.jpg',
+                dec : '你们男神都爱的倪妮 就是个大写哒美好',
+                time : '2016/03/18 20:08',
+            },
+
+
+            {
+                src : 'img/29.jpg',
+                dec : '你们男神都爱的倪妮 就是个大写哒美好',
+                time : '2016/03/18 20:08',
+            },
+
+            {
+                src : 'img/30.jpg',
+                dec : '你们男神都爱的倪妮 就是个大写哒美好',
+                time : '2016/03/18 20:08',
+            },
+            {
+                src : 'img/31.jpg',
+                dec : '你们男神都爱的倪妮 就是个大写哒美好',
+                time : '2016/03/18 20:08',
+            },
+            {
+                src : 'img/32.jpg',
+                dec : '你们男神都爱的倪妮 就是个大写哒美好',
+                time : '2016/03/18 20:08',
+            },
+            {
+                src : 'img/33.jpg',
+                dec : '你们男神都爱的倪妮 就是个大写哒美好',
+                time : '2016/03/18 20:08',
+            },
+            {
+                src : 'img/34.jpg',
+                dec : '你们男神都爱的倪妮 就是个大写哒美好',
+                time : '2016/03/18 20:08',
+            },
+            {
+                src : 'img/35.jpg',
+                dec : '你们男神都爱的倪妮 就是个大写哒美好',
+                time : '2016/03/18 20:08',
+            },
+            {
+                src : 'img/36.jpg',
+                dec : '你们男神都爱的倪妮 就是个大写哒美好',
+                time : '2016/03/18 20:08',
+            },
+            {
+                src : 'img/37.jpg',
+                dec : '你们男神都爱的倪妮 就是个大写哒美好',
+                time : '2016/03/18 20:08',
+            },
+            {
+                src : 'img/38.jpg',
+                dec : '你们男神都爱的倪妮 就是个大写哒美好',
+                time : '2016/03/18 20:08',
+            },
+            {
+                src : 'img/39.jpg',
+                dec : '你们男神都爱的倪妮 就是个大写哒美好',
+                time : '2016/03/18 20:08',
+            },
+            {
+                src : 'img/40.jpg',
+                dec : '你们男神都爱的倪妮 就是个大写哒美好',
+                time : '2016/03/18 20:08',
+            },
+            {
+                src : 'img/41.jpg',
+                dec : '你们男神都爱的倪妮 就是个大写哒美好',
+                time : '2016/03/18 20:08',
+            },
+            {
+                src : 'img/42.jpg',
+                dec : '你们男神都爱的倪妮 就是个大写哒美好',
+                time : '2016/03/18 20:08',
+            },
+            {
+                src : 'img/43.jpg',
+                dec : '你们男神都爱的倪妮 就是个大写哒美好',
+                time : '2016/03/18 20:08',
+            },
+            {
+                src : 'img/44.jpg',
+                dec : '你们男神都爱的倪妮 就是个大写哒美好',
+                time : '2016/03/18 20:08',
+            },
+            {
+                src : 'img/45.jpg',
+                dec : '你们男神都爱的倪妮 就是个大写哒美好',
+                time : '2016/03/18 20:08',
+            },
+            {
+                src : 'img/46.jpg',
+                dec : '你们男神都爱的倪妮 就是个大写哒美好',
+                time : '2016/03/18 20:08',
+            },
+            {
+                src : 'img/47.jpg',
+                dec : '你们男神都爱的倪妮 就是个大写哒美好',
+                time : '2016/03/18 20:08',
+            },
+            {
+                src : 'img/48.jpg',
+                dec : '你们男神都爱的倪妮 就是个大写哒美好',
+                time : '2016/03/18 20:08',
+            },
+            {
+                src : 'img/49.jpg',
+                dec : '你们男神都爱的倪妮 就是个大写哒美好',
+                time : '2016/03/18 20:08',
+            },
+            {
+                src : 'img/50.jpg',
+                dec : '你们男神都爱的倪妮 就是个大写哒美好',
+                time : '2016/03/18 20:08',
+            }
+        ];
+    </script>
+    <script>
+        $(function () {
+            var $wrap=$("#wrap");
+            var $boxLi=$("#wrap ul li");
+            var index= 0,num=1;
+            init(num*10);
+
+            $(window).scroll(function () {
+                var wrapT=$wrap.offset().top;
+                var wrapH=$wrap.height();
+                var scrollT=$("body,html").scrollTop();
+                var winH=$(window).height();
+                if(wrapT+wrapH<scrollT+winH){
+                    num++;
+                    index++;
+                    if(num*10>imgDate.length){
+                        num=imgDate.length/10;
+                    }
+                    init(num*10);
+                }
+            });
+
+            function init(num){
+                    var nEle=createElemente(index);
+                    $boxLi.eq(getShort()).append(nEle);
+                $(nEle).find("img").get(0).onload=function () {
+                    if(index<num){
+                        index++;
+                        init(num);
+                    }
+                };
+            }
+            function getShort(){
+                var a=0;
+                var fH=$boxLi.eq(0).height();
+                for(var i=0;i<$boxLi.length;i++){
+                    var nH=$boxLi.eq(i).height();
+                    if(fH>nH){
+                        a=i;
+                        fH=nH;
+                    }
+                }
+                return a;
+            }
+
+
+            function createElemente(i){
+                var nEle=document.createElement("div");
+                nEle.className="ele";
+                var nImg=document.createElement("img");
+                nImg.src=imgDate[i].src;
+                var nDec=document.createElement("p");
+                nDec.className="dec";
+                var nTime=document.createElement("div");
+                nTime.className="time";
+
+                var a1=document.createElement("a");
+                a1.href="";
+                a1.innerHTML=imgDate[i].dec;
+                var timeP=document.createElement("p");
+                timeP.innerHTML=imgDate[i].time;
+                var timeA=document.createElement("a");
+                timeA.href="";
+                timeA.innerHTML="阅读全文";
+
+                nDec.appendChild(a1);
+                nTime.appendChild(timeP);
+                nTime.appendChild(timeA);
+                nEle.appendChild(nImg);
+                nEle.appendChild(nDec);
+                nEle.appendChild(nTime);
+
+                return nEle;
+            }
+        });
+
+//        <div class="ele">
+//                <img src="img/1.jpg"/>
+//                <p class="dec"><a href="">你们男神都爱的倪妮，就是一个大写哒美好</a></p>
+//        <div class="time">
+//                <p>2016/03/18 20:08</p>
+//        <a href="">阅读全文</a>
+//                </div>
+//                </div>
+    </script>
+</head>
+<body>
+    <div id="wrap">
+        <ul>
+            <li></li>
+            <li style="margin: 0 20px"></li>
+            <li style="float: right"></li>
+        </ul>
+    </div>
+</body>
+</html>

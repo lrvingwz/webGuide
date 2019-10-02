@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>乁( ˙ ω˙乁)</title>
+    <link type="text/css" rel="stylesheet" href="css/normalize.css" />
+    <link type="text/css" rel="stylesheet" href="css/reset.css" />
+    <style>
+        #box {
+            position: relative;
+            margin: 50px auto;
+            width: 800px;
+            height: 360px;
+            border: 1px solid #666666;
+        }
+        #box .pic{
+            position: relative;
+            width: 100%;height: 100%;
+            perspective: 800px;
+        }
+        #box .pic li{
+            position: absolute;
+            height: 100%;
+            transform-style: preserve-3d;
+            transform: translateZ(-180px) rotateX(0deg);
+        }
+        #box .pic li span{
+            position: absolute;
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+        #box .pic li span:nth-child(4){
+              background: url("img/1.png");
+              transform: translateZ(180px);
+        }
+        #box .pic li span:nth-child(3){
+            background: url("img/2.png");
+            top: -100%;
+            transform-origin: bottom;
+            transform: translateZ(180px) rotateX(90deg);
+        }
+        #box .pic li span:nth-child(2){
+            background: url("img/3.jpg");
+            transform: translateZ(-180px) rotateX(180deg);
+        }
+        #box .pic li span:nth-child(1){
+            background: url("img/4.jpg");
+            top: 100%;
+            transform-origin: top;
+            transform: translateZ(180px) rotateX(-90deg);
+        }
+        #box #btns{
+            position: absolute;
+            bottom: 8px;
+            right: 20px;
+            z-index: 999;
+        }
+        #box #btns span{
+            display: inline-block;
+            width: 32px;
+            height: 32px;
+            margin-right: 5px;
+            box-shadow: 0 0 5px rgba(0,0,0,0.5);
+            border-radius: 50%;
+            background-color: #333333;
+            text-align: center;
+            line-height: 32px;
+            color: #fff;
+            cursor: pointer;
+        }
+    </style>
+    <script src="js/jquery-1.12.1.js"></script>
+    <script>
+        $(function () {
+            var $pic=$("#box .pic");
+            var $btns=$("#box #btns span");
+            createLi(20);
+            var $lis=$("#box .pic li");
+
+            $btns.click(function () {
+                var i=$(this).index();
+                $lis.each(function () {
+                    $(this).css({
+                        transform:"translateZ(-180px) rotateX("+-i*90+"deg)"
+                    });
+                });
+//                if(i<3){
+//                    $lis.each(function () {
+//                        $(this).css({
+//                            transform:"translateZ(-180px) rotateX("+-i*90+"deg)"
+//                        });
+//                    });
+//                }else{
+//                    $lis.each(function () {
+//                        $(this).css({
+//                            transform:"translateZ(-180px) rotateX(90deg)"
+//                        });
+//                    });
+//                }
+            });
+            function createLi(num){
+                var ulW=$pic.width();
+                var liW=ulW/num;
+                var z=0;
+                var num=num;
+                for(var i=0;i<num;i++){
+                    $pic.append("<li><span></span><span></span><span></span><span></span></li>");
+                }
+                var $l=$pic.find("li");
+                $l.each(function (i) {
+                    if(i>=num/2){
+                        $(this).css({
+                            zIndex:z
+                        });
+                        z--;
+                    }
+                    $(this).css({
+                        width:liW+"px",
+                        left:i*liW+"px",
+                        transition:"transform 0.8s "+i*50+"ms"
+                    });
+                    console.log(i*liW);
+                    $(this).find("span").css({
+                        backgroundPosition:-i*liW+"px"
+                    });
+                });
+
+            }
+        });
+    </script>
+</head>
+<body>
+    <div id="box">
+        <ul class="pic"></ul>
+        <div id="btns">
+            <span>1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+        </div>
+    </div>
+</body>
+</html>

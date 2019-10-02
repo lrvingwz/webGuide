@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>乁( ˙ ω˙乁)</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            height: 100%;
+        }
+        body {
+            overflow: hidden;
+        }
+        img{
+            vertical-align: top;
+        }
+        #wrap {
+            position: absolute;
+            top: 5%;
+            left: 5%;
+            width: 90%;
+            height: 90%;
+            background-color: #dddddd;
+            list-style: none;
+        }
+        #wrap.assemble{
+            left: 50%;
+            top: 50%;
+            width: 750px;
+            height: 500px;
+            margin-top: -250px;
+            margin-left: -375px;
+        }
+        #wrap li {
+            position: absolute;
+            width: 125px;
+            height: 125px;
+            border: 1px solid #999;
+            background-color: white;
+        }
+        #wrap li img {
+            transform: scale(0.95);
+        }
+        .btns{
+            width: 96%;
+            height: 0;
+            position: absolute;
+            top: 50%;
+            padding: 2%;
+        }
+        .btns input{
+            display: none;
+            position: absolute;
+            width: 80px;
+            height: 60px;
+            font-size: 24px;
+            text-align: center;
+            line-height: 60px;
+            color: white;
+            background-color: rgba(50,50,234,0.7);
+            border: 3px solid rgba(255,255,255,0.8);
+            cursor: pointer;
+            z-index: 9;
+        }
+    </style>
+    <script src="js/jquery-1.12.1.js"></script>
+    <script>
+        $(function () {
+            var $wrap=$("#wrap");
+            init();
+            var $li=$("#wrap li");
+            var $btns=$(".btns input");
+            var offLi=true;
+            var thisTime=0;
+            var index=0;
+            var timer1,timer2;
+            scatterLi();
+            rolLi();
+
+            $(window).resize(scatterLi);
+            $li.click(function () {
+                if(new Date()-thisTime>1000){
+                    thisTime=new Date();
+                    if(offLi)
+                    {
+                        index=$(this).index();
+                        $li.find("img").css({
+                            transform:"scale(1)",
+                            transition:"transform 0.5s"
+                        });
+                        timer1=setTimeout(function () {
+                            assembleLi();
+                            $li.find("img").fadeOut(500);
+                            $btns.eq(0).css({
+                                left:"0",
+                                display:"block"
+                            });
+                            $btns.eq(1).css({
+                                right:"0",
+                                display:"block"
+                            });
+                            clearTimeout(timer1);
+                        },500);
+                        $(window).resize(assembleLi);
+                        offLi=!offLi;
+                    }
+                    else
+                    {
+                        $btns.eq(0).css({
+                            display:"block"
+                        });
+                        $btns.eq(1).css({
+                            display:"block"
+                        });
+                        $li.find("img").fadeIn();
+
+                        scatterLi();
+                        rolLi();
+
+                        var timer1=setTimeout(function () {
+                            $li.css({
+                                backgroundImage:""
+                            });
+                            $li.find("img").css({
+                                transform:"scale(0.95)"
+                            });
+                            clearTimeout(timer1);
+                        },500);
+                        $(window).resize(assembleLi);
+                        offLi=!offLi;
+                    }
+                }
+            });
+            $btns.click(function () {
+                if(new Date()-thisTime>800){
+                    thisTime=new Date();
+                    var i=$(this).index();
+                    if(i)
+                    {
+                        index++;
+                        index %= 24;
+                    }
+                    else
+                    {
+                        index--;
+                        if(index<0)
+                        {
+                            index=23;
+                        }
+                    }
+                    changeImg();
+                }
+
+            });
+            $li.mousedown(function () {
+                return false;
+            });
+            function init(){
+                for(var i=0;i<24;i++){
+                    var li=$("<li><img src='img/"+(i+1)+".jpg' /></li>");
+                    $wrap.append(li);
+                }
+            }
+            function rolLi(){
+                $li.each(function () {
+                    var randomDeg=parseInt((Math.random()-0.5)*60);
+                    $(this).css({
+                        transform:"rotate("+randomDeg+"deg)",
+                        transition:"left 0.5s,top 0.5s"
+                    });
+                });
+            }
+            function scatterLi(){
+                var wrapW=$wrap.width();
+                var wrapH=$wrap.height();
+                var j,k;
+                $li.each(function (i) {
+                    j=i%6;
+                    k=parseInt(i/6);
+                    var x=(wrapW-6*$li.width())/5*j+j*$li.width();
+                    var y=(wrapH-4*$li.height())/3*k+k*$li.height();
+                    $li.eq(i).css({
+                        left:x+"px",
+                        top:y+"px",
+                        backgroundPosition: -j*$li.width()+"px "+-k*$li.height()+"px"
+                    });
+                });
+            }
+            function assembleLi(){
+                var wrapW=$wrap.width();
+                var wrapH=$wrap.height();
+                var l=(wrapW-750)/2;
+                var t=(wrapH-500)/2;
+                var j,k;
+                $li.each(function (i) {
+                    j=i%6;
+                    k=parseInt(i/6);
+                    var x=l+j*$li.width();
+                    var y=t+k*$li.height();
+                    $(this).css({
+                        transform:"rotate(0deg)",
+                        left:x+"px",
+                        top:y+"px",
+                        transition:"left 0.5s,top 0.5s,transform 0.5s",
+                        backgroundImage:"url('img/big/"+(index+1)+".jpg')"
+                    });
+                });
+            }
+            function changeImg(){
+                var arr=[];
+                var randNum;
+                for(var i=0;i<24;i++)
+                {
+                    arr[i]=i;
+                }
+                timer2=setInterval(function () {
+                    randNum=Math.floor(Math.random()*arr.length);
+                    $li.eq(arr[randNum]).css({
+                        backgroundImage:"url('img/big/"+(index+1)+".jpg')"
+                    });
+                    arr.splice(randNum,1);
+                    if(arr.length==0){
+                        clearInterval(timer2);
+                    }
+                },30);
+//                $li.each(function () {
+//                    $(this).css({
+//                        backgroundImage:"url('img/big/"+(index+1)+".jpg')"
+//                    });
+//                });
+            }
+        });
+    </script>
+</head>
+<body>
+<div class="btns">
+    <input value="左按钮" type="button"/>
+    <input value="右按钮" type="button"/>
+</div>
+    <ul id="wrap"></ul>
+</body>
+</html>

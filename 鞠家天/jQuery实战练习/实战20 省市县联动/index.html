@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>乁( ˙ ω˙乁)</title>
+
+    <script src="js/jquery-1.12.1.js"></script>
+    <script src="js/areaData.js"></script>
+    <script>
+        $(function () {
+            //获取下拉菜单就jQ对象
+            var $pv=$("#province");
+            var $city=$("#city");
+            var $county=$("#county");
+            var pvIndex,cityIndex;
+            createOption($pv,"sheng");
+            function createOption(box,str){
+                var arr=areaData[str];
+                for(var i=0;i<arr.length;i++){
+                    var $op=$('<option value="'+i+'">'+arr[i]+'</option>');
+                    box.append($op);
+                }
+            }
+            changeEvent();
+            function changeEvent(){
+                $pv.change(function () {
+                     pvIndex=$(this)[0].selectedIndex-1;
+                    var arr=areaData["shi"]["a_"+pvIndex];
+                    for(var i=0;i<arr.length;i++){
+                        var $op=$('<option value="'+i+'">'+arr[i]+'</option>');
+                        $city.append($op);
+                    }
+                });
+                $city.change(function () {
+                    var cityIndex=$(this)[0].selectedIndex-1;
+                    var arr=areaData["xian"]["a_"+pvIndex+"_"+cityIndex];
+                    for(var i=0;i<arr.length;i++){
+                        var $op=$('<option value="'+i+'">'+arr[i]+'</option>');
+                        $county.append($op);
+                    }
+                });
+
+
+            }
+
+        });
+    </script>
+</head>
+<body>
+<form action="#">
+    <select name="pv" id="province">
+        <option value="0">省</option>
+    </select>
+    <select name="city" id="city">
+        <option value="0">市</option>
+    </select>
+    <select name="cy" id="county">
+        <option value="0">县</option>
+    </select>
+</form>
+</body>
+</html>

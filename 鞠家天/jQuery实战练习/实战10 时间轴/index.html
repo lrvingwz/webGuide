@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>乁( ˙ ω˙乁)</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        #top{
+            display: none;
+            text-align: center;
+            position: fixed;
+            top: 0;
+            box-shadow: 0 0 5px rgba(0,0,0,0.5);
+            background-color: white;
+            z-index: 9;
+        }
+        #top img{
+            display: block;
+        }
+        #header{
+            margin: 0 auto;
+            text-align: center;
+        }
+        #main{
+            width: 1080px;
+            margin: 0 auto;
+        }
+        #timeline{
+            width: 680px;
+        }
+        #timeline h2{
+            font-weight: normal;
+            font-size: 20px;
+            line-height: 36px;
+            border-bottom: 1px solid #ddd;
+        }
+        #timeline .article{
+            width: 660px;
+            margin-left: 18px;
+            margin-top: 20px;
+            border-left: 2px dotted #dddddd;
+        }
+        #timeline .article li{
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 40px;
+            width: 630px;
+        }
+        #timeline .article li p{
+            margin-bottom: 20px;
+        }
+        #timeline .step_num {
+            display: block;
+            position: absolute;
+            top: 0;
+            left: -17px;
+            width: 32px;
+            height: 32px;
+            background: url("img/step.png") no-repeat 0 -34px;
+            text-align: center;
+            line-height: 32px;
+            color: white;
+        }
+        #timeline .side{
+            display: none;
+            width: 32px;
+            position: fixed;
+            top: 40px;
+            margin-left: 3px;
+            background-color: white;
+        }
+        #timeline .side li{
+            display: none;
+            width: 32px;
+            height: 32px;
+            background: url("img/step.png") no-repeat 0px -68px;
+            text-align: center;
+            line-height: 32px;
+            color: white;
+        }
+        #timeline .side .hover{
+            background-position: 0 -34px;
+        }
+        #timeline .side .on{
+            background-position: 0 0;
+        }
+    </style>
+    <script src="js/jquery-1.12.1.js"></script>
+    <script>
+        $(function () {
+            var $top=$("#top");
+            var $mainLi=$("#timeline .article li");
+            var $sideLi=$("#timeline .side li");
+            var $side=$("#timeline .side");
+            var index=0;
+
+            $(window).scroll(function () {
+               var scr=$(this).scrollTop();
+               if(scr>=125){
+                   $top.css({
+                       "display":"block"
+                   });
+               }else{
+                   $top.css({"display":"none"});
+               }
+               $mainLi.each(function (i) {
+                   if(scr>($(this).offset().top)-(40+i*32)){
+                        $side.show();
+                        $($sideLi.get(i)).show();
+                       index=i;
+                   }else{
+                       $($sideLi.get(i)).hide();
+                   }
+               });
+               $($sideLi.get(index)).addClass("on").siblings().removeClass("on");
+           });
+            $sideLi.mouseenter(function () {
+                $(this).addClass("hover");
+            }).mouseleave(function () {
+                $(this).removeClass("hover");
+            }).click(function () {
+                var num=$(this).index();
+                $("body,html").animate({"scrollTop":$($mainLi.get(num)).offset().top-40},500);
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="top">
+        <img src="img/top.png" alt=""/>
+    </div>
+    <div id="header">
+        <img src="img/header.png" alt=""/>
+    </div>
+    <div id="main">
+        <div id="timeline">
+            <h2>方法/步骤</h2>
+            <ul class="article">
+                <li><span class="step_num">1</span><p>步骤1</p><img src="img/1.jpg" /></li>
+                <li><span class="step_num">2</span><p>步骤2</p><img src="img/2.jpg" /></li>
+                <li><span class="step_num">3</span><p>步骤3</p><img src="img/3.jpg" /></li>
+                <li><span class="step_num">4</span><p>步骤4</p><img src="img/4.jpg" /></li>
+                <li><span class="step_num">5</span><p>步骤5</p><img src="img/5.jpg" /></li>
+                <li><span class="step_num">6</span><p>步骤6</p><img src="img/6.jpg" /></li>
+                <li><span class="step_num">7</span><p>步骤7</p><img src="img/7.jpg" /></li>
+                <li><span class="step_num">8</span><p>步骤8</p><img src="img/8.jpg" /></li>
+                <li><span class="step_num">9</span><p>步骤9</p><img src="img/9.jpg" /></li>
+            </ul>
+            <ul class="side">
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+                <li>6</li>
+                <li>7</li>
+                <li>8</li>
+                <li>9</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

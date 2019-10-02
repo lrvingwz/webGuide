@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>乁( ˙ ω˙乁)</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        body{
+            background: #f1f1f1;
+            perspective: 800px;
+        }
+        #wrap{
+            position: relative;
+            margin: 50px auto;
+            width: 700px;
+            height: 500px;
+            border: 1px solid #cccccc;
+        }
+        #wrap .pic{
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 570px;
+            height: 420px;
+            margin-top: -210px;
+            margin-left: -285px;
+            box-shadow: 0 0 5px rgba(0,0,0,0.5);
+        }
+        #wrap .pic ul{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            transform-style: preserve-3D;
+        }
+        #wrap .pic ul li{
+            position: absolute;
+        }
+        #wrap .pic ul .leave{
+            transform: translate(-50px,-50px) rotateX(720deg);
+            box-shadow: 0 0 1px #022d3d;
+            transition: transform 1s;
+        }
+        #wrap .pic ul .jump{
+            transform: translate(-50px,-50px) rotateX(720deg);
+            box-shadow: 0 0 3px #022d3d;
+            opacity: 0;
+        }
+        #wrap .pic ul .enter{
+            transform: translate(0px,0px) rotateX(0deg);
+            opacity: 1;
+            box-shadow: 0 0 1px transparent;
+            transition: transform 1s,opacity 0.5s,box-shadow 2s;
+        }
+        #wrap .pic .on{
+            z-index: 2;
+        }
+        #wrap .pic .next{
+            z-index: 1;
+        }
+        #wrap .ul1 li{  background: url("img/1.jpg") no-repeat;  }
+        #wrap .ul2 li{  background: url("img/2.jpg") no-repeat;  }
+        #wrap .ul3 li{  background: url("img/3.jpg") no-repeat;  }
+        #wrap .ul4 li{  background: url("img/4.jpg") no-repeat;  }
+        #wrap .ul5 li{  background: url("img/5.jpg") no-repeat;  }
+        #btns div{
+            overflow: hidden;
+
+             position: absolute;
+            top: 50%;
+            width: 41px;
+            height: 69px;
+            margin-top: -35px;
+            background: url("img/btn.png");
+            cursor: pointer;
+        }
+        #left{
+            left: 0;
+        }
+        #btns #right{
+            right: 0;
+            background-position: -42px 0px;
+        }
+    </style>
+    <script src="js/jquery-1.12.1.js"></script>
+    <script>
+        $(function () {
+
+            var $ul=$("#wrap .pic ul");
+            var numX=10,numY=7;
+            var $btns=$("#btns div");
+            var thisShow=4,nextShow=1;
+            var thisDate=0;
+            var turn=true;
+            createLi();
+            positionLiAll();
+
+            $btns.click(function () {
+                if(new Date()-thisDate>1500){
+                    thisDate=new Date();
+                    var i=$(this).index();
+                    if(i){
+                        thisShow++;
+                        thisShow %= $ul.length;
+                        nextShow = thisShow+1;
+                        nextShow %=$ul.length;
+                    }else{
+
+                        nextShow = thisShow+1;
+                        nextShow %=$ul.length;
+//                        nextShow=thisShow-1;
+//                        if(nextShow<0){
+//                            nextShow=$ul.length-1;
+//                        }
+                    }
+                    $ul.eq(thisShow).addClass("on").siblings().removeClass("on");
+                    $ul.eq(nextShow).addClass("next").siblings().removeClass("next");
+                    if(i){
+                        show(nextShow);
+                        leaveLi(thisShow);
+                    }else{
+                        enter(thisShow);
+                        thisShow--;
+                        if(thisShow<0){
+                            thisShow=$ul.length-1;
+                        }
+                    }
+                }
+
+            });
+
+
+            function show(i){
+                var $li=$ul.eq(i).find("li");
+                $li.fadeIn(0).removeClass("leave");
+            }
+            function leaveLi(i){
+                var $li=$ul.eq(i).find("li");
+                var sum=numX-1+numY-1;
+                var timer1=setInterval(function () {
+                    $li.each(function () {
+                        if($(this).get(0).x+$(this).get(0).y==sum){
+                            $(this).fadeOut(500).addClass("leave");
+                        }
+                    });
+                    sum--;
+                    if(sum<0){
+                        clearInterval(timer1);
+                    }
+                },50);
+            }
+
+            function enter(i){
+                var $li=$ul.eq(i).find("li");
+                var sum=0;
+                $li.each(function () {
+                    $(this).addClass("jump").fadeIn(0).removeClass("leave");
+                });
+                var timer2=setInterval(function () {
+                    $li.each(function () {
+                        if($(this).get(0).x+$(this).get(0).y==sum){
+                            $(this).addClass("enter");
+                        }
+                    });
+                    sum++;
+                    if(sum>15){
+                        var timer4=setTimeout(function () {
+                            $li.each(function () {
+                                $(this).removeClass("jump enter");
+                            });
+                        },1000);
+                        clearInterval(timer2);
+                    }
+                },50);
+            }
+            function positionLiAll(){
+                $ul.each(function () {
+                    var $li=$(this).find("li");
+                    var ulW=$ul.width(),ulH=$ul.height();
+                    var iX,iY,lW=ulW/numX,lH=ulH/numY;
+                    $li.each(function (i) {
+                        iX=i%numX;
+                        iY=parseInt(i/numX);
+                        $(this).get(0).x=iX;
+                        $(this).get(0).y=iY;
+                        $(this).css({
+                            width:lW+"px",
+                            height:lH+"px",
+                            left:iX*lW+"px",
+                            top:iY*lH+"px",
+                            backgroundPosition:-iX*lW+"px "+-iY*lH+"px"
+                        });
+                    });
+                });
+
+            }
+            function createLi(){
+                var s="";
+                for(var i=0;i<numX*numY;i++){
+                    s+="<li></li>";
+                }
+                for(var i=0;i<$ul.length;i++){
+                    $ul.eq(i).append(s);
+                }
+            }
+        });
+    </script>
+</head>
+<body>
+    <div id="wrap">
+        <div class="pic">
+            <ul class="ul1 on"></ul>
+            <ul class="ul2 next"></ul>
+            <ul class="ul3"></ul>
+            <ul class="ul4"></ul>
+            <ul class="ul5"></ul>
+        </div>
+        <div id="btns">
+            <div id="left"></div>
+            <div id="right"></div>
+        </div>
+    </div>
+</body>
+</html>

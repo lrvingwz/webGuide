@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>乁( ˙ ω˙乁)</title>
+    <style>
+        #pic{
+            margin-top: 50px;
+            position: relative;
+        }
+        #pic .main{
+            position: relative;
+            width: 970px;
+            height: 270px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        #pic .main ul{
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        #pic .main li{
+            position: absolute;
+            width: 0;
+            height: 0;
+            display: none;
+        }
+        #pic .main li.mid {
+            display: block;
+            width: 640px;
+            height: 270px;
+            top: 0;
+            left: 165px;
+            transition: all 0.5s;
+            z-index: 10;
+        }
+        #pic .main li.l1{
+            display: block;
+            width: 520px;
+            height: 220px;
+            left: 0;
+            top: 25px;
+            transition: all 0.5s;
+            z-index: 9;
+        }
+        #pic .main li.r1{
+            display: block;
+            width: 520px;
+            height: 220px;
+            left: 450px;
+            top: 25px;
+            transition: all 0.5s;
+            z-index: 9;
+        }
+        #pic .main li.l2{
+            display: block;
+            width: 355px;
+            height: 150px;
+            left: -255px;
+            top: 60px;
+            opacity: 0;
+            z-index: 8;
+            transition: all 0.5s;
+        }
+        #pic .main li.r2{
+            display: block;
+            width: 355px;
+            height: 150px;
+            left: 870px;
+            top: 60px;
+            opacity: 0;
+            z-index: 8;
+            transition: all 0.5s;
+        }
+        #pic .main li img{
+            width: 100%;
+            height: 100%;
+        }
+        #pic .main li .mark{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: rgba(0,0,0,0.5);
+        }
+        #pic .main li.mid .mark{
+            display: none;
+        }
+        #pic .main .btns div {
+            position: absolute;
+            width: 45px;
+            height: 45px;
+            top: 50%;
+            margin-top: -23px;
+            z-index: 99;
+        }
+        #pic .main .btns .left{
+            left: 0;
+            background: url("img/left.png") no-repeat;
+        }
+        #pic .main .btns .right{
+            right: 0;
+            background: url("img/right.png") no-repeat;
+        }
+        #pic .index {
+            width: 220px;
+            height: 20px;
+            position: absolute;
+            top: 290px;
+            left: 50%;
+            margin-left: -110px;
+        }
+        #pic .index span {
+            float: left;
+            display: block;
+            width: 10px;
+            height: 10px;
+            margin: 0 5px;
+            border-radius: 50%;
+            background-color: #999999;
+        }
+        #pic .index span.on {
+            background-color: #09c;
+        }
+    </style>
+    <link type="text/css" rel="stylesheet" href="css/normalize.css" />
+    <link type="text/css" rel="stylesheet" href="css/reset.css" />
+    <script src="js/jquery-1.12.1.js"></script>
+    <script>
+        $(function () {
+            var $li=$("#pic .main ul li");
+            var $btns=$("#pic .main .btns div");
+            var $span=$("#pic .index span");
+            var index=0;
+
+            $btns.click(function () {
+                var j=$(this).index();
+                if(j){
+                    index=calculate(index,true);
+                }else{
+                    index=calculate(index,false);
+                }
+                pluralCalculate(index);
+            });
+            function pluralCalculate(i){
+                var l1=calculate(i,false);
+                var r1=calculate(i,true);
+                var l2=calculate(l1,false);
+                var r2=calculate(r1,true);
+
+                $li.eq(i).addClass("mid").siblings().removeClass("mid");
+                $li.eq(l1).addClass("l1").siblings().removeClass("l1");
+                $li.eq(r1).addClass("r1").siblings().removeClass("r1");
+                $li.eq(l2).addClass("l2").siblings().removeClass("l2");
+                $li.eq(r2).addClass("r2").siblings().removeClass("r2");
+                $span.eq(i).addClass("on").siblings().removeClass("on");
+            }
+            function calculate(i,Boole){
+                var i=i;
+                if(Boole){
+                    i++;
+                    i%=$li.length;
+                }else{
+                    i--;
+                    i=i<0?$li.length-1:i;
+                }
+                return i;
+            }
+        });
+    </script>
+</head>
+<body>
+    <div id="pic">
+        <div class="main">
+            <ul>
+                <li class="mid"><img src="img/1.jpg"/><div class="mark"></div></li>
+                <li class="r1"><img src="img/2.jpg"/><div class="mark"></div></li>
+                <li class="r2"><img src="img/3.jpg"/><div class="mark"></div></li>
+                <li><img src="img/4.jpg"/><div class="mark"></div></li>
+                <li><img src="img/5.jpg"/><div class="mark"></div></li>
+                <li><img src="img/6.jpg"/><div class="mark"></div></li>
+                <li><img src="img/7.jpg"/><div class="mark"></div></li>
+                <li><img src="img/8.jpg"/><div class="mark"></div></li>
+                <li class="l2"><img src="img/9.jpg"/><div class="mark"></div></li>
+                <li class="l1"><img src="img/10.jpg"/><div class="mark"></div></li>
+            </ul>
+            <div class="btns">
+                <div class="left"></div>
+                <div class="right"></div>
+            </div>
+        </div>
+        <div class="index">
+            <span class="on"></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+</body>
+</html>
