@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/plane.css">
+</head>
+<body>
+	<div id="container">
+		<div id="game-con"><!-- 背景环境 -->
+			<div id="score-board"><!-- 得分 -->
+				<span>分数：</span>
+				<span id="score">0</span>
+			</div>
+			<div id="suspend-board"><!-- 暂停页面 -->
+				<button type="button" id="goOn">继续</button>
+				<button type="button" class="reStart">重新开始</button>
+				<button type="button" id="stop">回到主页</button>
+			</div>
+			<div id="end-board"><!-- 结束页面 -->
+				<div>飞机大战分数</div>
+				<div id="endScore">0</div>
+				<button type="button" class="reStart">再来一局</button>
+			</div>
+		</div>
+		<div id="planes"></div><!-- 存放飞机 -->
+		<div id="start-con"><!-- 飞机大战封面 -->
+			<button type="button" id="start">开始游戏</button>
+		</div>
+	</div>
+	<script type="text/javascript" src="js/plane.js"></script>
+	<audio id="audio" src=""></audio>
+	<audio id="audio2" src=""></audio>
+</body>
+</html>

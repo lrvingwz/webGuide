@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		input{
+			cursor: pointer;
+		}
+		body{
+			background-color: #555;
+		}
+		#menu, #show-dishes{
+			width: 560px;
+			background-color: #f9f9f9;
+			margin: 20px auto;
+			text-align: center;
+			border-radius: 8px;
+			overflow: hidden;
+		}
+		#show-dishes{
+			height: 100px;
+			margin-top: 60px;
+			padding: 20px 0;
+		}
+		h2{
+			color: #964a1f;
+		}
+		.btn-group input{
+			padding: 6px 20px;
+			border-radius: 5px;
+			background-color: #964a1f;
+			color: #fff;
+			border: none;
+			font-size: 16px;
+			margin: 30px 10px;
+		}
+		.icon {
+			width: 1em;
+			height: 1em;
+			line-height: 1em;
+			vertical-align: -0.15em;
+			fill: currentColor;
+			overflow: hidden;
+			font-size: 60px;
+		}
+		span {
+			display: inline-block;
+			width: 100px;
+			height: 100px;
+			line-height: 130px;
+			text-align: center;
+			vertical-align: middle;
+		}
+		.current {
+			border-radius: 50px;
+			color: #fff;
+		}
+	</style>
+	<script src="font/iconfont.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+	<div id="show-dishes"></div>
+	<div id="menu">
+		<h2>MENU</h2>
+		<div id="dish-container"></div>
+		<div class=" btn-group">
+			<input type="button" id="btn1" value="点一样" />
+			<input type="button" id="btn2" value="点两样" />
+			<input type="button" id="btn3" value="点五样" />
+			<input type="button" id="btn4" value="重新选择" />
+		</div>
+	</div>
+	<script>
+		var dishImageHref = [
+			"#icon-food-cookie",
+			"#icon-food-pecan",
+			"#icon-food-avocado",
+			"#icon-food-pudding",
+			"#icon-food-strawberry",
+			"#icon-food-doughnut",
+			"#icon-food-chips",
+			"#icon-food-popcorn",
+			"#icon-food-bread",
+			"#icon-food-pizza",
+			"#icon-food-hotdog",
+			"#icon-food-taco",
+			"#icon-food-popsicle",
+			"#icon-food-eggyolkcake",
+			"#icon-food-sushi",
+			"#icon-food-cake",
+			"#icon-food-macaron",
+			"#icon-food-cashew",
+			"#icon-food-mochi",
+			"#icon-food-pistachio"
+		];
+
+		//menu 初始化 创建菜单
+		(function(){
+			function Menu(menu,dishIH,dishCon){
+				this.menu=menu;
+				this.dishIH=dishIH;//图片地址得数组
+				this.dishCon=dishCon;//dish容器
+				this.init();//初始化方法
+			}
+			//初始化
+			Menu.prototype.init=function(){
+				var dishContainer=this.menu.children[1];
+				for(var i=0;i<this.dishIH.length;i++){
+					var span=document.createElement("span");
+					var html="<svg class='icon' aria-hidden='true'>";
+					html+="<use xlink:href="+this.dishIH[i]+"></use></svg>";
+					span.innerHTML=html;
+					dishContainer.appendChild(span);
+				}
+			}
+			window.Menu=Menu;
+		}());
+
+		//获取dish--getDish
+		(function(){
+			function GetDish(menu,showbow,num){
+				this.menu=menu;
+				this.showbox=showbox;
+				this.num=num||1;//选num个菜
+				this.timing=null;
+				this.timeId=null;
+				this.numArr=null;
+			}
+
+			//选择
+			GetDish.prototype.selectDish=function(num){
+				this.clearChoose();
+				var that=this;
+				this.timing=setInterval(function(){
+					that.chooseMultiple(that.num);
+				},100);
+				this.timeId=setInterval(function(){
+					stop(that.timing);
+					that.showDish();
+				},3000);
+			};
+
+			//显示选中
+			GetDish.prototype.showDish=function(){
+				var span=this.menu.children[1].children;//获取所有得dish
+				for(var i=0;i<this.numArr.length;i++){
+					var index=this.numArr[i];
+					var dish=span[index].cloneNode(true);
+					dish.style.backgroundColor="";
+					this.showbox.appendChild(dish);
+				}
+			};
+
+			//获取颜色
+			function getColor(){
+				var arr = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f"];
+				var color="#";
+				for(var i=0;i<6;i++){
+					var x=parseInt(Math.random()*16);
+					color+=arr[x];
+				}
+				return color;
+			}
+
+			//获取0-count之间num个随机数
+			function getRandom(count,num){
+				var count=count;
+				var Arr=new Array;//原数组
+				//给原数组ARR赋值
+				for(var i=0;i<count;i++){
+					Arr[i]=i;
+				}
+				//重排原数组Arr
+				Arr.sort(function(){
+					return 0.5-Math.random();
+				});
+				//取num个放到新数组
+				return newArr=Arr.slice(0,num);
+			}
+
+			//选择num个菜
+			GetDish.prototype.chooseMultiple=function(num){
+				var span=this.menu.children[1].children;
+				//获取所有的dish
+				for(var i=0;i<span.length;i++){
+					span[i].className="";//去除current
+					span[i].style.backgroundColor="";//清除颜色
+				}
+				this.numArr=getRandom(span.length,num);//获取num个随机数返回的数组
+				for(var j=0;j<this.numArr.length;j++){
+					var index=this.numArr[j];
+					span[index].className="current";
+					span[index].style.backgroundColor=getColor();
+				}
+			};
+
+			//去除所有选中的菜单
+			GetDish.prototype.clearChoose=function(){
+				var that=this;
+				var span=this.menu.children[1].children;
+				for(var i=0;i<span.length;i++){
+					span[i].className="";
+					span[i].style.backgroundColor="";
+				}
+				this.showbox.innerHTML="";
+				stop(this.timing);
+				stop(this.timeId);
+			};
+
+			//清除定时器
+			function stop(e){
+				clearInterval(e);
+				clearTimeout(e);//在这个程序中可写可不写这个清除定时器
+			}
+
+			window.GetDish=GetDish;
+		}());
+
+		var btn1=document.getElementById("btn1");
+		var btn2=document.getElementById("btn2");
+		var btn3=document.getElementById("btn3");
+		var btn4=document.getElementById("btn4");
+		var disCon=document.getElementById("dish-container");
+		var menu=document.getElementById("menu"); //dom menu容器
+		var showbox=document.getElementById("show-dishes"); //dom showbox容器
+
+		var menuObj=new Menu(menu,dishImageHref,disCon)//Menu的实例 初始化Menu 创建菜单
+		var getDishObj1=new GetDish(menu,showbox,1);
+		var getDishObj2=new GetDish(menu,showbox,2);
+		var getDishObj3=new GetDish(menu,showbox,5);
+
+		btn1.onclick=function(){
+			getDishObj1.selectDish();
+		};
+		btn2.onclick=function(){
+			getDishObj2.selectDish();
+		};
+		btn3.onclick=function(){
+			getDishObj3.selectDish();
+		};
+		btn4.onclick=function(){ //清除选择
+			getDishObj1.clearChoose();
+			getDishObj2.clearChoose();
+			getDishObj3.clearChoose();
+		}
+	</script>
+</body>
+</html>

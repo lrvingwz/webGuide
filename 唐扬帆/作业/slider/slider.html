@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.all{
+			width: 400px;
+			height: 560px;
+			border: 1px solid #ccc;
+			margin: 100px auto;
+			padding: 7px;
+			position: relative;
+		}
+		.screen{
+			width: 400px;
+			height: 560px;
+			position: relative;
+			overflow: hidden;
+		}
+		.screen ul{
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 2000px;
+		}
+		li{
+			list-style: none;
+			float: left;
+		}
+		ol{
+			position: absolute;
+			right: 10px;
+			bottom: 10px;
+		}
+		ol li{
+			width: 10px;
+			height: 10px;
+			background: #fff;
+			border: 1px solid #ccc;
+			margin-left: 15px;
+			cursor: pointer;
+			border-radius: 50%;
+		}
+		#arr {
+     		display: none;
+   		}
+		#arr span{
+			width: 40px;
+			height: 40px;
+			position: absolute;
+			left: 5px;
+			top: 50%;
+			font-size: 30px;
+			background: #fff;
+			opacity: 0.3;
+			margin-top: -20px;
+			font-weight: 700;
+			text-align: center;
+			font-family: '黑体';
+			cursor: pointer;
+		}
+		#arr #right{
+			right: 5px;
+			left: auto;
+		}
+		.current{
+			background: #FF8400;
+		}
+	</style>
+</head>
+<body>
+	<div class="all" id="box">
+		<div class="screen"><!-- 相框 -->
+			<ul>
+				<li><img src="img/1.jpg" alt=""></li>
+				<li><img src="img/2.jpg" alt=""></li>
+				<li><img src="img/3.jpg" alt=""></li>
+				<li><img src="img/4.jpg" alt=""></li>
+			</ul>
+			<ol>
+				<li class="current"></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ol>
+		</div>
+		<div id="arr"><span id="left"> < </span><span id="right"> > </span></div>
+	</div>
+	<script>
+		//动画函数
+		//设置任意一个值，移动到指定的目标位置
+		function animate(element, target){
+			//每次开始都要清理一次定时器
+			clearInterval(element.timeId);
+			//设置定时器，把定时器的ID值存储到对象的一个属性中
+			element.timeId=setInterval(function(){
+				//获取元素当前的位置--数字类型
+				var current=element.offsetLeft;
+				//每次移动的距离
+				var step=10;
+				step=current<target? step:-step;
+				//当前移动到的位置
+				current+=step;
+				//判断当前到目标的距离是否大于每次移动的距离
+				if(Math.abs(current-target)>Math.abs(step)){
+					//大于每次移动的距离--就按每次移动的计算
+					element.style.left=current+"px";
+				}else{
+					//清理定时器
+					clearInterval(element.timeId);
+					//小于每次移动的距离--直接到达目标
+					element.style.left=target+"px";
+				}
+			},2);
+		}
+
+		//获取最外面的div
+		var box=document.getElementById("box");
+		//获取相框
+		var screen=box.children[0];
+		//获取相框的宽度
+		var imgWidth=screen.offsetWidth;
+		//获取ul
+		var ulObj=screen.children[0];
+		//获取ul中所有的li
+		var list=ulObj.children;
+		//获取ol
+		var olObj=screen.children[1];
+		//获取ol中所有的li
+		var liObj=olObj.children;
+		//获取焦点的div
+		var arr=document.getElementById("arr")
+		//获取右按钮
+		var right=document.getElementById("right")
+		//获取左按钮
+		var left=document.getElementById("left")
+		var index=0;
+		//创建小按钮--根据ul中li的个数
+		for(var i=0;i<liObj.length;i++){
+			//在每个ol的li标签中添加一个属性，存放索引值
+			liObj[i].index=i;
+			//注册鼠标点击事件
+			liObj[i].onclick=function(){
+				for(var j=0;j<liObj.length;j++){
+					liObj[j].className="";
+				}
+				this.className="current";
+				//获取鼠标点击的当前索引值
+				index=this.index;
+				//移动ul
+				animate(ulObj,-index*imgWidth);
+			};
+		}
+
+		//克隆一个ul中第一个li，加入到ul中的最后---为了无缝跳转
+		ulObj.appendChild(list[0].cloneNode(true));
+
+		//自动播放
+		var timeId=setInterval(clickHandle,2000);
+
+		//鼠标进入显示左右焦点的div
+		box.onmouseover=function(){
+			arr.style.display="block";
+			//鼠标进入停止定时器
+   			 clearInterval(timeId);
+		};
+		box.onmouseout=function(){
+			arr.style.display="none";
+    		//鼠标离开自动播放
+     		timeId=setInterval(clickHandle,2000);
+		};
+
+
+		//右边按钮
+		right.onclick=clickHandle;
+		function clickHandle(){
+			//判断如果大于等于最后一张图，使ul的位置移动到原点
+			if(index>=list.length-1){
+				index=0;
+				ulObj.style.left=0+"px";
+			}
+			index++;
+			animate(ulObj,-index*imgWidth)
+
+		//如果index==4，说明此时显示的为第5张图（用户看起来是第一张）第一个按钮有颜色
+		if(index>=list.length-1){
+			//清除最后一个按钮的颜色
+			liObj[liObj.length-1].className="";
+			//第一个按钮有颜色
+			liObj[0].className="current";
+		}
+		else{
+			//清除所有按钮的颜色
+			for(var i=0;i<liObj.length;i++){
+				liObj[i].className="";
+			}
+			liObj[index].className="current";
+		}
+	};
+
+	//左边按钮
+	left.onclick=function(){
+		if(index==0){
+			index=4;
+			ulObj.style.left=-index*imgWidth+"px";
+		}
+		index--;
+		animate(ulObj,-index*imgWidth);
+		//清除所有按钮的颜色
+		for(var i=0;i<liObj.length;i++){
+			liObj[i].className="";
+		}
+		//当前按钮的颜色
+		liObj[index].className="current";
+	};
+	</script>
+</body>
+</html>
