@@ -10,7 +10,7 @@ var reStartBtn=document.getElementsByClassName("reStart");//重新开始按钮
 var startBtn=my$("start");//开始按钮
 var stopBtn=my$("stop");//回到主页按钮
 var showScores=my$("score");//分数显示
-var enScore=my$("endScore");//结束分数
+var endScore=my$("endScore");//结束分数
 var audio=my$("audio");//音效
 var totalScore=0;//得分情况
 
@@ -23,7 +23,7 @@ function moveBg(){
 		bgMove=0;
 	}
 }
-//音效的构造函数
+
 
 //飞机的构造函数
 function Plane(width,height,flyImg,boomImg,placeX,placeY,deadEndTime,speed,score,bloodVolume){
@@ -34,8 +34,8 @@ function Plane(width,height,flyImg,boomImg,placeX,placeY,deadEndTime,speed,score
 	this.flyImg=flyImg;//飞机飞行图片
 	this.placeX=placeX||0;//飞机X坐标
 	this.placeY=placeY||0;//飞机Y坐标
-	this.deadEndTime=deadEndTime;//飞机死亡时间
-	this.deadTime=0;//飞机死亡计算
+	this.deadEndTime=deadEndTime;//飞机死亡时间 这个参数不知道有什么用
+	this.deadTime=0;//飞机死亡分数计算
 	this.speed=speed||1;//飞机速度
 	this.score=score||0;//飞机得分
 	this.bloodVolume=bloodVolume||1;//敌机血量
@@ -123,7 +123,7 @@ Bullet.prototype.init=function(){
 };
 
 Bullet.prototype.move=function(){
-	this.bulletObj.style.top=this.bulletObj.offsetTop-20+"px";
+	this.bulletObj.style.top=this.bulletObj.offsetTop-10+"px";
 };
 
 //function oddBullet(pageX, pageY) {
@@ -156,7 +156,7 @@ function start(){
 		}
 	}
 	//创建敌机
-	if(bInitTime==20){//射出几发子弹再创建敌机
+	if(bInitTime>=20){//射出几发子弹再创建敌机
 		eInitTime++;//敌机计次
 		if (eInitTime % 5 == 0) { //5次循环创建中敌机
 			var mEnemy = new Plane(46, 60, "./image/enemy3_fly_1.png", "./image/zz.gif", random(0, 274), -100, 600, random(1, 2),
@@ -187,7 +187,7 @@ function start(){
 		}
 		if (enemies[j].planeDie == true) { //敌机死亡以后删除  
 			enemies[j].deadTime += 20;
-			if (enemies[j].deadTime == enemies[j].deadEndTime) {
+			if (enemies[j].deadTime == enemies[j].deadEndTime) {//这个判断感觉对于整个程序没什么作用
 				planes.removeChild(enemies[j].planeObj);
 				enemies.splice(j, 1);
 			};
@@ -200,8 +200,12 @@ function start(){
 			//敌机存活时检测
 			if(enemies[t].planeDie==false){
 				//敌机碰撞游戏飞机
+				//敌机距离左边的距离加上本身的宽要大于等于自己的飞机距离左边的距离 "并且"" 自己飞机距离左边的距离加上自己飞机本身的宽要
+				//大于等于敌机距离左边的距离(高的原理与宽一样)
+				//宽度碰撞
 				if(enemies[t].planeObj.offsetLeft+enemies[t].width>=myPlane.offsetLeft&&myPlane.offsetLeft+myPlane.offsetWidth>=
 					enemies[t].planeObj.offsetLeft){
+					//高度碰撞
 					if(enemies[t].planeObj.offsetTop+enemies[t].height>=myPlane.offsetTop+40&&myPlane.offsetTop-20+myPlane.offsetHeight>=
 						enemies[t].planeObj.offsetTop){
 						//碰撞后执行
@@ -217,8 +221,12 @@ function start(){
 					}
 				}
 				//子弹碰撞敌机
+				//敌机距离左边的距离加上本身的宽要大于等于子弹距离左边的距离 "并且"" 子弹距离左边的距离加上子弹本身的宽要
+				//大于等于敌机距离左边的距离(高的原理与宽一样)
+				//宽度碰撞
 				if(enemies[t].planeObj.offsetLeft+enemies[t].width>=bullets[k].bulletObj.offsetLeft&&bullets[k].bulletObj.offsetLeft+
 					bullets[k].bulletObj.offsetWidth>=enemies[t].planeObj.offsetLeft){
+					//高度碰撞
 					if(enemies[t].planeObj.offsetTop+enemies[t].height>=bullets[k].bulletObj.offsetTop&&bullets[k].bulletObj.offsetTop+
 						bullets[k].bulletObj.offsetHeight>=enemies[t].planeObj.offsetTop){
 						//碰撞后执行
